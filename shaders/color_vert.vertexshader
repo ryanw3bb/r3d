@@ -1,0 +1,17 @@
+#version 330 core
+
+layout(location = 0) in vec3 vertexPosition_modelspace;
+layout(location = 1) in vec3 vertexColor;
+
+// Values that stay constant for the whole mesh.
+uniform mat4 mvp;
+
+// Output data ; will be interpolated for each fragment.
+out vec3 fragmentColor;
+
+void main()
+{
+    // Output position of the vertex, in clip space : mvp * position
+    gl_Position = mvp * vec4(vertexPosition_modelspace, 1);
+    fragmentColor = vertexColor;
+}

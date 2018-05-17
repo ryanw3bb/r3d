@@ -123,114 +123,6 @@ r3d/fast:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/build
 .PHONY : r3d/fast
 
-common/controls.o: common/controls.cpp.o
-
-.PHONY : common/controls.o
-
-# target to build an object file
-common/controls.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/controls.cpp.o
-.PHONY : common/controls.cpp.o
-
-common/controls.i: common/controls.cpp.i
-
-.PHONY : common/controls.i
-
-# target to preprocess a source file
-common/controls.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/controls.cpp.i
-.PHONY : common/controls.cpp.i
-
-common/controls.s: common/controls.cpp.s
-
-.PHONY : common/controls.s
-
-# target to generate assembly for a file
-common/controls.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/controls.cpp.s
-.PHONY : common/controls.cpp.s
-
-common/loadShaders.o: common/loadShaders.cpp.o
-
-.PHONY : common/loadShaders.o
-
-# target to build an object file
-common/loadShaders.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadShaders.cpp.o
-.PHONY : common/loadShaders.cpp.o
-
-common/loadShaders.i: common/loadShaders.cpp.i
-
-.PHONY : common/loadShaders.i
-
-# target to preprocess a source file
-common/loadShaders.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadShaders.cpp.i
-.PHONY : common/loadShaders.cpp.i
-
-common/loadShaders.s: common/loadShaders.cpp.s
-
-.PHONY : common/loadShaders.s
-
-# target to generate assembly for a file
-common/loadShaders.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadShaders.cpp.s
-.PHONY : common/loadShaders.cpp.s
-
-common/loadTexture.o: common/loadTexture.cpp.o
-
-.PHONY : common/loadTexture.o
-
-# target to build an object file
-common/loadTexture.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadTexture.cpp.o
-.PHONY : common/loadTexture.cpp.o
-
-common/loadTexture.i: common/loadTexture.cpp.i
-
-.PHONY : common/loadTexture.i
-
-# target to preprocess a source file
-common/loadTexture.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadTexture.cpp.i
-.PHONY : common/loadTexture.cpp.i
-
-common/loadTexture.s: common/loadTexture.cpp.s
-
-.PHONY : common/loadTexture.s
-
-# target to generate assembly for a file
-common/loadTexture.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/loadTexture.cpp.s
-.PHONY : common/loadTexture.cpp.s
-
-common/objLoader.o: common/objLoader.cpp.o
-
-.PHONY : common/objLoader.o
-
-# target to build an object file
-common/objLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/objLoader.cpp.o
-.PHONY : common/objLoader.cpp.o
-
-common/objLoader.i: common/objLoader.cpp.i
-
-.PHONY : common/objLoader.i
-
-# target to preprocess a source file
-common/objLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/objLoader.cpp.i
-.PHONY : common/objLoader.cpp.i
-
-common/objLoader.s: common/objLoader.cpp.s
-
-.PHONY : common/objLoader.s
-
-# target to generate assembly for a file
-common/objLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/common/objLoader.cpp.s
-.PHONY : common/objLoader.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -258,6 +150,168 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+r3d/core/controls.o: r3d/core/controls.cpp.o
+
+.PHONY : r3d/core/controls.o
+
+# target to build an object file
+r3d/core/controls.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/controls.cpp.o
+.PHONY : r3d/core/controls.cpp.o
+
+r3d/core/controls.i: r3d/core/controls.cpp.i
+
+.PHONY : r3d/core/controls.i
+
+# target to preprocess a source file
+r3d/core/controls.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/controls.cpp.i
+.PHONY : r3d/core/controls.cpp.i
+
+r3d/core/controls.s: r3d/core/controls.cpp.s
+
+.PHONY : r3d/core/controls.s
+
+# target to generate assembly for a file
+r3d/core/controls.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/controls.cpp.s
+.PHONY : r3d/core/controls.cpp.s
+
+r3d/core/object.o: r3d/core/object.cpp.o
+
+.PHONY : r3d/core/object.o
+
+# target to build an object file
+r3d/core/object.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/object.cpp.o
+.PHONY : r3d/core/object.cpp.o
+
+r3d/core/object.i: r3d/core/object.cpp.i
+
+.PHONY : r3d/core/object.i
+
+# target to preprocess a source file
+r3d/core/object.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/object.cpp.i
+.PHONY : r3d/core/object.cpp.i
+
+r3d/core/object.s: r3d/core/object.cpp.s
+
+.PHONY : r3d/core/object.s
+
+# target to generate assembly for a file
+r3d/core/object.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/object.cpp.s
+.PHONY : r3d/core/object.cpp.s
+
+r3d/load/loadMesh.o: r3d/load/loadMesh.cpp.o
+
+.PHONY : r3d/load/loadMesh.o
+
+# target to build an object file
+r3d/load/loadMesh.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadMesh.cpp.o
+.PHONY : r3d/load/loadMesh.cpp.o
+
+r3d/load/loadMesh.i: r3d/load/loadMesh.cpp.i
+
+.PHONY : r3d/load/loadMesh.i
+
+# target to preprocess a source file
+r3d/load/loadMesh.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadMesh.cpp.i
+.PHONY : r3d/load/loadMesh.cpp.i
+
+r3d/load/loadMesh.s: r3d/load/loadMesh.cpp.s
+
+.PHONY : r3d/load/loadMesh.s
+
+# target to generate assembly for a file
+r3d/load/loadMesh.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadMesh.cpp.s
+.PHONY : r3d/load/loadMesh.cpp.s
+
+r3d/load/loadShaders.o: r3d/load/loadShaders.cpp.o
+
+.PHONY : r3d/load/loadShaders.o
+
+# target to build an object file
+r3d/load/loadShaders.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadShaders.cpp.o
+.PHONY : r3d/load/loadShaders.cpp.o
+
+r3d/load/loadShaders.i: r3d/load/loadShaders.cpp.i
+
+.PHONY : r3d/load/loadShaders.i
+
+# target to preprocess a source file
+r3d/load/loadShaders.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadShaders.cpp.i
+.PHONY : r3d/load/loadShaders.cpp.i
+
+r3d/load/loadShaders.s: r3d/load/loadShaders.cpp.s
+
+.PHONY : r3d/load/loadShaders.s
+
+# target to generate assembly for a file
+r3d/load/loadShaders.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadShaders.cpp.s
+.PHONY : r3d/load/loadShaders.cpp.s
+
+r3d/load/loadTexture.o: r3d/load/loadTexture.cpp.o
+
+.PHONY : r3d/load/loadTexture.o
+
+# target to build an object file
+r3d/load/loadTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadTexture.cpp.o
+.PHONY : r3d/load/loadTexture.cpp.o
+
+r3d/load/loadTexture.i: r3d/load/loadTexture.cpp.i
+
+.PHONY : r3d/load/loadTexture.i
+
+# target to preprocess a source file
+r3d/load/loadTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadTexture.cpp.i
+.PHONY : r3d/load/loadTexture.cpp.i
+
+r3d/load/loadTexture.s: r3d/load/loadTexture.cpp.s
+
+.PHONY : r3d/load/loadTexture.s
+
+# target to generate assembly for a file
+r3d/load/loadTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/load/loadTexture.cpp.s
+.PHONY : r3d/load/loadTexture.cpp.s
+
+r3d/r3d.o: r3d/r3d.cpp.o
+
+.PHONY : r3d/r3d.o
+
+# target to build an object file
+r3d/r3d.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/r3d.cpp.o
+.PHONY : r3d/r3d.cpp.o
+
+r3d/r3d.i: r3d/r3d.cpp.i
+
+.PHONY : r3d/r3d.i
+
+# target to preprocess a source file
+r3d/r3d.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/r3d.cpp.i
+.PHONY : r3d/r3d.cpp.i
+
+r3d/r3d.s: r3d/r3d.cpp.s
+
+.PHONY : r3d/r3d.s
+
+# target to generate assembly for a file
+r3d/r3d.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/r3d.cpp.s
+.PHONY : r3d/r3d.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,21 +321,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... r3d"
-	@echo "... common/controls.o"
-	@echo "... common/controls.i"
-	@echo "... common/controls.s"
-	@echo "... common/loadShaders.o"
-	@echo "... common/loadShaders.i"
-	@echo "... common/loadShaders.s"
-	@echo "... common/loadTexture.o"
-	@echo "... common/loadTexture.i"
-	@echo "... common/loadTexture.s"
-	@echo "... common/objLoader.o"
-	@echo "... common/objLoader.i"
-	@echo "... common/objLoader.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... r3d/core/controls.o"
+	@echo "... r3d/core/controls.i"
+	@echo "... r3d/core/controls.s"
+	@echo "... r3d/core/object.o"
+	@echo "... r3d/core/object.i"
+	@echo "... r3d/core/object.s"
+	@echo "... r3d/load/loadMesh.o"
+	@echo "... r3d/load/loadMesh.i"
+	@echo "... r3d/load/loadMesh.s"
+	@echo "... r3d/load/loadShaders.o"
+	@echo "... r3d/load/loadShaders.i"
+	@echo "... r3d/load/loadShaders.s"
+	@echo "... r3d/load/loadTexture.o"
+	@echo "... r3d/load/loadTexture.i"
+	@echo "... r3d/load/loadTexture.s"
+	@echo "... r3d/r3d.o"
+	@echo "... r3d/r3d.i"
+	@echo "... r3d/r3d.s"
 .PHONY : help
 
 

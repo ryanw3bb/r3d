@@ -4,11 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/ryan/Documents/Git/r3d/common/controls.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/common/controls.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/common/loadShaders.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/common/loadShaders.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/common/loadTexture.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/common/loadTexture.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/common/objLoader.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/common/objLoader.cpp.o"
   "/Users/ryan/Documents/Git/r3d/main.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/main.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/controls.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/object.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/object.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/loadMesh.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadMesh.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/loadShaders.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadShaders.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/loadTexture.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadTexture.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/r3d.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/r3d.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

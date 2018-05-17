@@ -9,25 +9,25 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "r3d/core/controls.hpp"
-#include "r3d/core/object.hpp"
-#include "r3d/load/loadShaders.hpp"
-#include "r3d/load/loadTexture.hpp"
-#include "r3d/load/loadMesh.hpp"
-#include "main.hpp"
+#include "core/controls.hpp"
+#include "core/object.hpp"
+#include "load/loadShaders.hpp"
+#include "load/loadTexture.hpp"
+#include "load/loadMesh.hpp"
+#include "r3d.hpp"
 
 using namespace std;
 
-const int width = 1024;
-const int height = 768;
+//const int width = 1024;
+//const int height = 768;
 
-int main()
+r3d::r3d(int width, int height)
 {
     // Initialise GLFW
     if(!glfwInit())
     {
         fprintf( stderr, "Failed to initialize GLFW\n" );
-        return -1;
+        return;
     }
 
     glfwWindowHint(GLFW_SAMPLES, 4); // antialiasing
@@ -42,7 +42,7 @@ int main()
     {
         fprintf(stderr, "Failed to open GLFW window\n");
         glfwTerminate();
-        return -1;
+        return;
     }
     glfwMakeContextCurrent(window); // Initialize GLFW
 
@@ -52,7 +52,7 @@ int main()
     if(glewInit() != GLEW_OK)
     {
         fprintf(stderr, "Failed to initialize GLEW\n");
-        return -1;
+        return;
     }
 
     // setting callbacks
@@ -221,8 +221,21 @@ int main()
     glDeleteVertexArrays(1, &VertexArrayID);
 
     glfwTerminate();
+}
 
-    return 0;
+void init()
+{
+
+}
+
+void update()
+{
+
+}
+
+void add_object()
+{
+
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)

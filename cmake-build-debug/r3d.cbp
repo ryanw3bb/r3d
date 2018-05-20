@@ -86,40 +86,55 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/main.hpp">
 			<Option target="r3d"/>
 		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/component.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/component.hpp">
+			<Option target="r3d"/>
+		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/object.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/object.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadMesh.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadMesh.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadShaders.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadShaders.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.cpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadTexture.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/loadTexture.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.cpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/r3d.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/r3d.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/scene.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/scene.hpp">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/color_frag.fragmentshader">

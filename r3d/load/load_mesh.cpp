@@ -1,18 +1,18 @@
 #include <vector>
-#include <stdio.h>
+#include <cstdio>
 #include <string>
 #include <cstring>
 #include <glm/glm.hpp>
-#include "loadMesh.hpp"
+#include "load_mesh.hpp"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-bool loadObj(const char *path,
-		std::vector<unsigned short> &indices,
-		std::vector<glm::vec3> &vertices,
-		std::vector<glm::vec2> &uvs,
-		std::vector<glm::vec3> &normals
+bool load_mesh(const char *path,
+			   std::vector<unsigned short> &indices,
+			   std::vector<glm::vec3> &vertices,
+			   std::vector<glm::vec2> &uvs,
+			   std::vector<glm::vec3> &normals
 ){
 	Assimp::Importer importer;
 

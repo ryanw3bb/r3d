@@ -5,12 +5,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/ryan/Documents/Git/r3d/main.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/main.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/component.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/component.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/controls.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/r3d/core/object.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/object.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/r3d/load/loadMesh.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadMesh.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/r3d/load/loadShaders.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadShaders.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/r3d/load/loadTexture.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/loadTexture.cpp.o"
-  "/Users/ryan/Documents/Git/r3d/r3d/r3d.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/r3d.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/scene.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/scene.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

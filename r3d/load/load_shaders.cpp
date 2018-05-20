@@ -6,9 +6,9 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
-#include "loadShaders.hpp"
+#include "load_shaders.hpp"
 
-GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
+GLuint load_shaders(const char *vertex_file_path, const char *fragment_file_path)
 {
     // Create the shaders
     GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);

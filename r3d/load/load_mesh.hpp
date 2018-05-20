@@ -1,7 +1,7 @@
 #ifndef OBJLOADER_H
 #define OBJLOADER_H
 
-bool loadObj(
+bool load_mesh(
 		const char *path,
 		std::vector<unsigned short> &indices,
 		std::vector<glm::vec3> &vertices,

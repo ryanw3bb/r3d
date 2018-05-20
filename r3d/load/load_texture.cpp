@@ -94,7 +94,7 @@ GLuint loadBMP(const char * imagepath)
 #define FOURCC_DXT3 0x33545844 // Equivalent to "DXT3" in ASCII
 #define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
-GLuint loadDDS(const char * imagepath)
+GLuint load_dds(const char *imagepath)
 {
 	unsigned char header[124];
 
@@ -102,7 +102,7 @@ GLuint loadDDS(const char * imagepath)
  
 	/* try to open the file */ 
 	fp = fopen(imagepath, "rb"); 
-	if (fp == NULL){
+	if(fp == NULL){
 		printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar(); 
 		return 0;
 	}
@@ -110,7 +110,7 @@ GLuint loadDDS(const char * imagepath)
 	/* verify the type of file */ 
 	char filecode[4]; 
 	fread(filecode, 1, 4, fp); 
-	if (strncmp(filecode, "DDS ", 4) != 0) { 
+	if(strncmp(filecode, "DDS ", 4) != 0) {
 		fclose(fp); 
 		return 0; 
 	}

@@ -13,16 +13,34 @@ r3d/scene.hpp
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 r3d/core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
-r3d/core/mesh_renderer.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.hpp
+r3d/component/mesh_renderer.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
 /Users/ryan/Documents/Git/r3d/main.hpp
 
-/Users/ryan/Documents/Git/r3d/r3d/core/component.cpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.cpp
 component.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/component.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
 
-/Users/ryan/Documents/Git/r3d/r3d/core/component.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp
+mesh_renderer.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
+../load/load_mesh.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
+iostream
+-
+vector
+-
+../core/gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+../core/material.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/material.hpp
+component.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp
 GLFW/glfw3.h
@@ -47,8 +65,8 @@ vector
 -
 gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
-component.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/component.hpp
+../component/component.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 GL/glew.h
@@ -60,23 +78,31 @@ glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 -
 
-/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp
-mesh_renderer.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.hpp
-../load/load_mesh.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/material.cpp
+material.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/material.hpp
 ../load/load_texture.hpp
 /Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp
 
-/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/material.hpp
 iostream
 -
-vector
+../core/gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.cpp
+shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
+../load/load_shaders.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
+iostream
 -
 gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
-component.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/component.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.cpp
 vector
@@ -139,14 +165,8 @@ core/controls.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
 core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
-load/load_shaders.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp
-load/load_texture.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp
-load/load_mesh.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
-core/mesh_renderer.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.hpp
+component/mesh_renderer.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 core/gl_includes.hpp

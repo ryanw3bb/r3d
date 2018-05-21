@@ -153,28 +153,28 @@ CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o.provides: CMakeFiles/r3d.dir/r3d/c
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o
 
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o: CMakeFiles/r3d.dir/flags.make
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o: ../r3d/core/mesh_renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: ../r3d/component/mesh_renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp > CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.i
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp > CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.i
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/mesh_renderer.cpp -o CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.s
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp -o CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.s
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.requires:
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.requires:
 
-.PHONY : CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.requires
+.PHONY : CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.requires
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.provides.build
-.PHONY : CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.provides
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.provides: CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.provides
 
-CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o
+CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o
 
 
 CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o: CMakeFiles/r3d.dir/flags.make
@@ -249,28 +249,76 @@ CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o.provides: CMakeFiles/r3d.dir/r3d/loa
 CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o
 
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.o: CMakeFiles/r3d.dir/flags.make
-CMakeFiles/r3d.dir/r3d/core/component.cpp.o: ../r3d/core/component.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/r3d.dir/r3d/core/component.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/component.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/component.cpp
+CMakeFiles/r3d.dir/r3d/component/component.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/component/component.cpp.o: ../r3d/component/component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/r3d.dir/r3d/component/component.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/component/component.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/component/component.cpp
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/component.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/component.cpp > CMakeFiles/r3d.dir/r3d/core/component.cpp.i
+CMakeFiles/r3d.dir/r3d/component/component.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/component/component.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/component/component.cpp > CMakeFiles/r3d.dir/r3d/component/component.cpp.i
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/component.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/component.cpp -o CMakeFiles/r3d.dir/r3d/core/component.cpp.s
+CMakeFiles/r3d.dir/r3d/component/component.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/component/component.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/component/component.cpp -o CMakeFiles/r3d.dir/r3d/component/component.cpp.s
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.o.requires:
+CMakeFiles/r3d.dir/r3d/component/component.cpp.o.requires:
 
-.PHONY : CMakeFiles/r3d.dir/r3d/core/component.cpp.o.requires
+.PHONY : CMakeFiles/r3d.dir/r3d/component/component.cpp.o.requires
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/component.cpp.o.requires
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/component.cpp.o.provides.build
-.PHONY : CMakeFiles/r3d.dir/r3d/core/component.cpp.o.provides
+CMakeFiles/r3d.dir/r3d/component/component.cpp.o.provides: CMakeFiles/r3d.dir/r3d/component/component.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/component.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/component/component.cpp.o.provides
 
-CMakeFiles/r3d.dir/r3d/core/component.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/component.cpp.o
+CMakeFiles/r3d.dir/r3d/component/component.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/component/component.cpp.o
+
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/core/material.cpp.o: ../r3d/core/material.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/r3d.dir/r3d/core/material.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/material.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/material.cpp
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/material.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/material.cpp > CMakeFiles/r3d.dir/r3d/core/material.cpp.i
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/material.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/material.cpp -o CMakeFiles/r3d.dir/r3d/core/material.cpp.s
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.o.requires:
+
+.PHONY : CMakeFiles/r3d.dir/r3d/core/material.cpp.o.requires
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/material.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/material.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/core/material.cpp.o.provides
+
+CMakeFiles/r3d.dir/r3d/core/material.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/material.cpp.o
+
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/core/shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/r3d.dir/r3d/core/shader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/shader.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/shader.cpp
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/shader.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/shader.cpp > CMakeFiles/r3d.dir/r3d/core/shader.cpp.i
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/shader.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/shader.cpp -o CMakeFiles/r3d.dir/r3d/core/shader.cpp.s
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.requires:
+
+.PHONY : CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.requires
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.provides
+
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o
 
 
 # Object files for target r3d
@@ -279,11 +327,13 @@ r3d_OBJECTS = \
 "CMakeFiles/r3d.dir/r3d/scene.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/core/controls.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o" \
-"CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o" \
+"CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o" \
-"CMakeFiles/r3d.dir/r3d/core/component.cpp.o"
+"CMakeFiles/r3d.dir/r3d/component/component.cpp.o" \
+"CMakeFiles/r3d.dir/r3d/core/material.cpp.o" \
+"CMakeFiles/r3d.dir/r3d/core/shader.cpp.o"
 
 # External object files for target r3d
 r3d_EXTERNAL_OBJECTS =
@@ -292,14 +342,16 @@ r3d: CMakeFiles/r3d.dir/main.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/scene.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/core/controls.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o
-r3d: CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o
-r3d: CMakeFiles/r3d.dir/r3d/core/component.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/component/component.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/core/material.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o
 r3d: CMakeFiles/r3d.dir/build.make
 r3d: CMakeFiles/r3d.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable r3d"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable r3d"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/r3d.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -311,11 +363,13 @@ CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/main.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/scene.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/controls.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o.requires
-CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o.requires
-CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/component.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/component/component.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/material.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.requires
 
 .PHONY : CMakeFiles/r3d.dir/requires
 

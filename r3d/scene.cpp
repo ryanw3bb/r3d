@@ -8,21 +8,11 @@
 #include "scene.hpp"
 #include "core/controls.hpp"
 #include "core/game_object.hpp"
-#include "load/load_shaders.hpp"
-#include "load/load_texture.hpp"
-#include "load/load_mesh.hpp"
-#include "core/mesh_renderer.hpp"
+#include "component/mesh_renderer.hpp"
 
 using namespace r3d;
 
 std::vector<r3d::game_object *> game_objects;
-GLuint vao;
-GLuint program_id;
-GLuint matrix_id;
-GLuint view_matrix_id;
-GLuint model_matrix_id;
-GLuint texture_sampler_id;
-GLuint light_id;
 
 scene::scene(int width, int height)
 {
@@ -69,145 +59,6 @@ scene::scene(int width, int height)
     // Cull triangles which normal is not towards the camera
     glEnable(GL_CULL_FACE);
 
-    // glew VAO
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    // shader program
-    program_id = load_shaders("shaders/diffuse_vert.vertexshader", "shaders/diffuse_frag.fragmentshader");
-
-    // Get a handle for our "MVP" uniform
-    matrix_id = glGetUniformLocation(program_id, "MVP");
-    view_matrix_id = glGetUniformLocation(program_id, "V");
-    model_matrix_id = glGetUniformLocation(program_id, "M");
-
-    // Get a handle for our "myTextureSampler" uniform
-    texture_sampler_id = glGetUniformLocation(program_id, "Sampler");
-
-    glUseProgram(program_id);
-    light_id = glGetUniformLocation(program_id, "LightPosition_worldspace");
-
-    // load bmp, get texture id
-    /*GLuint texture = load_dds("assets/uvmap.dds");
-
-    // Read our .obj file
-    std::vector<unsigned short> indices;
-    std::vector<glm::vec3> vertices;
-    std::vector<glm::vec2> uvs;
-    std::vector<glm::vec3> normals; // Won't be used at the moment.
-    bool res = load_mesh("assets/suzanne.obj", indices, vertices, uvs, normals);
-
-    // 1. Vertex buffer
-    GLuint vertex_buffer;
-    // Generate 1 buffer, put the resulting identifier in vertex_buffer
-    glGenBuffers(1, &vertex_buffer);
-    // The following commands will talk about our 'vertex_buffer' buffer
-    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-    // Give our vertices to OpenGL.
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
-
-    // 2. UV buffer (using instead of colour buffer)
-    GLuint uv_buffer;
-    glGenBuffers(1, &uv_buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, uv_buffer);
-    glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
-
-    // 3. Normal buffer
-    GLuint normal_buffer;
-    glGenBuffers(1, &normal_buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, normal_buffer);
-    glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
-
-    // Get a handle for our "LightPosition" uniform
-    glUseProgram(program_id);
-    light_id = glGetUniformLocation(program_id, "LightPosition_worldspace");
-
-    while(glfwWindowShouldClose(window) == 0)
-    {
-        // render scene loop
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        // mvp bruv
-        computeMatricesFromInputs(window);
-        glm::mat4 projection = getProjectionMatrix();
-        glm::mat4 view = getViewMatrix();
-        glm::mat4 model = glm::mat4(1.0f);
-        glm::mat4 mvp = projection * view * model;
-
-        // use our shader
-        glUseProgram(program_id);
-
-        // Send our transformation to the currently bound shader,
-        // in the "MVP" uniform
-        glUniformMatrix4fv(matrix_id, 1, GL_FALSE, &mvp[0][0]);
-        glUniformMatrix4fv(model_matrix_id, 1, GL_FALSE, &model[0][0]);
-        glUniformMatrix4fv(view_matrix_id, 1, GL_FALSE, &view[0][0]);
-
-        glm::vec3 lightPos = glm::vec3(4, 4, 4);
-        glUniform3f(light_id, lightPos.x, lightPos.y, lightPos.z);
-
-        // Bind our texture in Texture Unit 0
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        // Set our sampler to use Texture Unit 0
-        glUniform1i(texture_sampler_id, 0);
-
-        // first attribute buffer : vertices
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-        glVertexAttribPointer(
-                0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-                3,                  // size
-                GL_FLOAT,           // type
-                GL_FALSE,           // normalized?
-                0,                  // stride
-                (void*)0            // array buffer offset
-        );
-
-        // 2nd attribute buffer : uv
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, uv_buffer);
-        glVertexAttribPointer(
-                1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-                2,                                // size
-                GL_FLOAT,                         // type
-                GL_FALSE,                         // normalized?
-                0,                                // stride
-                (void*)0                          // array buffer offset
-        );
-
-        // 3rd attribute buffer : normals
-        glEnableVertexAttribArray(2);
-        glBindBuffer(GL_ARRAY_BUFFER, normal_buffer);
-        glVertexAttribPointer(
-                2,                                // attribute
-                3,                                // size
-                GL_FLOAT,                         // type
-                GL_FALSE,                         // normalized?
-                0,                                // stride
-                (void*)0                          // array buffer offset
-        );
-
-        // draw
-        glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    glDeleteBuffers(1, &vertex_buffer);
-    glDeleteBuffers(1, &uv_buffer);
-    glDeleteBuffers(1, &normal_buffer);
-    glDeleteProgram(program_id);
-    glDeleteTextures(1, &texture);
-    glDeleteVertexArrays(1, &vao);
-
-    glfwTerminate();*/
-
     shouldUpdate = true;
 }
 
@@ -235,22 +86,22 @@ void scene::update()
        glm::mat4 mvp = projection * view * model;
 
        // use our shader
-       glUseProgram(program_id);
+       glUseProgram(renderer->material->shader->program);
 
        // Send our transformation to the currently bound shader,
        // in the "MVP" uniform
-       glUniformMatrix4fv(matrix_id, 1, GL_FALSE, &mvp[0][0]);
-       glUniformMatrix4fv(model_matrix_id, 1, GL_FALSE, &model[0][0]);
-       glUniformMatrix4fv(view_matrix_id, 1, GL_FALSE, &view[0][0]);
+       glUniformMatrix4fv(renderer->material->shader->mvp_matrix, 1, GL_FALSE, &mvp[0][0]);
+       glUniformMatrix4fv(renderer->material->shader->model_matrix, 1, GL_FALSE, &model[0][0]);
+       glUniformMatrix4fv(renderer->material->shader->view_matrix, 1, GL_FALSE, &view[0][0]);
 
        glm::vec3 light_pos = glm::vec3(4, 4, 4);
-       glUniform3f(light_id, light_pos.x, light_pos.y, light_pos.z);
+       glUniform3f(renderer->material->shader->light_world_pos, light_pos.x, light_pos.y, light_pos.z);
 
        // Bind our texture in Texture Unit 0
        glActiveTexture(GL_TEXTURE0);
-       glBindTexture(GL_TEXTURE_2D, renderer->texture);
+       glBindTexture(GL_TEXTURE_2D, renderer->material->texture);
        // Set our sampler to use Texture Unit 0
-       glUniform1i(texture_sampler_id, 0);
+       glUniform1i(renderer->material->shader->texture_sampler, 0);
 
        // first attribute buffer : vertices
        glEnableVertexAttribArray(0);
@@ -288,7 +139,16 @@ void scene::update()
                (void*)0                          // array buffer offset
        );
 
-       // draw
+       // TODO: VBO Indexing
+       /*glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderer->indices_buffer);
+
+       glDrawElements(
+               GL_TRIANGLES,      // mode
+               renderer->indices.size(),    // count
+               GL_UNSIGNED_INT,   // type
+               (void*)0           // element array buffer offset
+       );*/
+
        glDrawArrays(GL_TRIANGLES, 0, renderer->vertices.size());
 
        glDisableVertexAttribArray(0);
@@ -317,10 +177,11 @@ void scene::exit()
         glDeleteBuffers(1, renderer->uv_buffer);
         glDeleteBuffers(1, renderer->normal_buffer);
         glDeleteTextures(1, renderer->texture);*/
+
+        glDeleteProgram(renderer->material->shader->program);
+        glDeleteVertexArrays(1, &renderer->vertex_array_object);
     }
 
-    glDeleteProgram(program_id);
-    glDeleteVertexArrays(1, &vao);
     glfwTerminate();
 }
 

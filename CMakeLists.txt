@@ -12,12 +12,12 @@ add_executable(r3d
         r3d/scene.cpp r3d/scene.hpp
         r3d/core/controls.cpp r3d/core/controls.hpp
         r3d/core/game_object.cpp r3d/core/game_object.hpp
-        r3d/core/mesh_renderer.cpp r3d/core/mesh_renderer.hpp
+        r3d/component/mesh_renderer.cpp r3d/component/mesh_renderer.hpp
         r3d/load/load_shaders.cpp r3d/load/load_shaders.hpp
         r3d/load/load_texture.cpp r3d/load/load_texture.hpp
         r3d/load/load_mesh.cpp r3d/load/load_mesh.hpp
         shaders/diffuse_frag.fragmentshader shaders/diffuse_vert.vertexshader
         shaders/color_frag.fragmentshader shaders/color_vert.vertexshader
-        shaders/texture_frag.fragmentshader shaders/texture_vert.vertexshader r3d/core/component.cpp r3d/core/component.hpp r3d/core/gl_includes.hpp)
+        shaders/texture_frag.fragmentshader shaders/texture_vert.vertexshader r3d/component/component.cpp r3d/component/component.hpp r3d/core/gl_includes.hpp r3d/core/material.cpp r3d/core/material.hpp r3d/core/shader.cpp r3d/core/shader.hpp)
 
 target_link_libraries(${PROJECT_NAME} glew glfw assimp ${OPENGL_gl_LIBRARY})

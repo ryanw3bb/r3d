@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "gl_includes.hpp"
-#include "component.hpp"
+#include "../component/component.hpp"
 
 namespace r3d
 {

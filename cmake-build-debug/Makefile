@@ -150,32 +150,59 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-r3d/core/component.o: r3d/core/component.cpp.o
+r3d/component/component.o: r3d/component/component.cpp.o
 
-.PHONY : r3d/core/component.o
+.PHONY : r3d/component/component.o
 
 # target to build an object file
-r3d/core/component.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/component.cpp.o
-.PHONY : r3d/core/component.cpp.o
+r3d/component/component.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/component.cpp.o
+.PHONY : r3d/component/component.cpp.o
 
-r3d/core/component.i: r3d/core/component.cpp.i
+r3d/component/component.i: r3d/component/component.cpp.i
 
-.PHONY : r3d/core/component.i
+.PHONY : r3d/component/component.i
 
 # target to preprocess a source file
-r3d/core/component.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/component.cpp.i
-.PHONY : r3d/core/component.cpp.i
+r3d/component/component.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/component.cpp.i
+.PHONY : r3d/component/component.cpp.i
 
-r3d/core/component.s: r3d/core/component.cpp.s
+r3d/component/component.s: r3d/component/component.cpp.s
 
-.PHONY : r3d/core/component.s
+.PHONY : r3d/component/component.s
 
 # target to generate assembly for a file
-r3d/core/component.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/component.cpp.s
-.PHONY : r3d/core/component.cpp.s
+r3d/component/component.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/component.cpp.s
+.PHONY : r3d/component/component.cpp.s
+
+r3d/component/mesh_renderer.o: r3d/component/mesh_renderer.cpp.o
+
+.PHONY : r3d/component/mesh_renderer.o
+
+# target to build an object file
+r3d/component/mesh_renderer.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o
+.PHONY : r3d/component/mesh_renderer.cpp.o
+
+r3d/component/mesh_renderer.i: r3d/component/mesh_renderer.cpp.i
+
+.PHONY : r3d/component/mesh_renderer.i
+
+# target to preprocess a source file
+r3d/component/mesh_renderer.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.i
+.PHONY : r3d/component/mesh_renderer.cpp.i
+
+r3d/component/mesh_renderer.s: r3d/component/mesh_renderer.cpp.s
+
+.PHONY : r3d/component/mesh_renderer.s
+
+# target to generate assembly for a file
+r3d/component/mesh_renderer.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.s
+.PHONY : r3d/component/mesh_renderer.cpp.s
 
 r3d/core/controls.o: r3d/core/controls.cpp.o
 
@@ -231,32 +258,59 @@ r3d/core/game_object.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/game_object.cpp.s
 .PHONY : r3d/core/game_object.cpp.s
 
-r3d/core/mesh_renderer.o: r3d/core/mesh_renderer.cpp.o
+r3d/core/material.o: r3d/core/material.cpp.o
 
-.PHONY : r3d/core/mesh_renderer.o
+.PHONY : r3d/core/material.o
 
 # target to build an object file
-r3d/core/mesh_renderer.cpp.o:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o
-.PHONY : r3d/core/mesh_renderer.cpp.o
+r3d/core/material.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/material.cpp.o
+.PHONY : r3d/core/material.cpp.o
 
-r3d/core/mesh_renderer.i: r3d/core/mesh_renderer.cpp.i
+r3d/core/material.i: r3d/core/material.cpp.i
 
-.PHONY : r3d/core/mesh_renderer.i
+.PHONY : r3d/core/material.i
 
 # target to preprocess a source file
-r3d/core/mesh_renderer.cpp.i:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.i
-.PHONY : r3d/core/mesh_renderer.cpp.i
+r3d/core/material.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/material.cpp.i
+.PHONY : r3d/core/material.cpp.i
 
-r3d/core/mesh_renderer.s: r3d/core/mesh_renderer.cpp.s
+r3d/core/material.s: r3d/core/material.cpp.s
 
-.PHONY : r3d/core/mesh_renderer.s
+.PHONY : r3d/core/material.s
 
 # target to generate assembly for a file
-r3d/core/mesh_renderer.cpp.s:
-	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.s
-.PHONY : r3d/core/mesh_renderer.cpp.s
+r3d/core/material.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/material.cpp.s
+.PHONY : r3d/core/material.cpp.s
+
+r3d/core/shader.o: r3d/core/shader.cpp.o
+
+.PHONY : r3d/core/shader.o
+
+# target to build an object file
+r3d/core/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/shader.cpp.o
+.PHONY : r3d/core/shader.cpp.o
+
+r3d/core/shader.i: r3d/core/shader.cpp.i
+
+.PHONY : r3d/core/shader.i
+
+# target to preprocess a source file
+r3d/core/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/shader.cpp.i
+.PHONY : r3d/core/shader.cpp.i
+
+r3d/core/shader.s: r3d/core/shader.cpp.s
+
+.PHONY : r3d/core/shader.s
+
+# target to generate assembly for a file
+r3d/core/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/shader.cpp.s
+.PHONY : r3d/core/shader.cpp.s
 
 r3d/load/load_mesh.o: r3d/load/load_mesh.cpp.o
 
@@ -378,18 +432,24 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... r3d/core/component.o"
-	@echo "... r3d/core/component.i"
-	@echo "... r3d/core/component.s"
+	@echo "... r3d/component/component.o"
+	@echo "... r3d/component/component.i"
+	@echo "... r3d/component/component.s"
+	@echo "... r3d/component/mesh_renderer.o"
+	@echo "... r3d/component/mesh_renderer.i"
+	@echo "... r3d/component/mesh_renderer.s"
 	@echo "... r3d/core/controls.o"
 	@echo "... r3d/core/controls.i"
 	@echo "... r3d/core/controls.s"
 	@echo "... r3d/core/game_object.o"
 	@echo "... r3d/core/game_object.i"
 	@echo "... r3d/core/game_object.s"
-	@echo "... r3d/core/mesh_renderer.o"
-	@echo "... r3d/core/mesh_renderer.i"
-	@echo "... r3d/core/mesh_renderer.s"
+	@echo "... r3d/core/material.o"
+	@echo "... r3d/core/material.i"
+	@echo "... r3d/core/material.s"
+	@echo "... r3d/core/shader.o"
+	@echo "... r3d/core/shader.i"
+	@echo "... r3d/core/shader.s"
 	@echo "... r3d/load/load_mesh.o"
 	@echo "... r3d/load/load_mesh.i"
 	@echo "... r3d/load/load_mesh.s"

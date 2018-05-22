@@ -13,31 +13,19 @@
   <component name="ChangeListManager">
     <list default="true" id="321aaf0b-aa5a-49ac-9d53-791696be0ea5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/component.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/mesh_renderer.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/r3d.dir/r3d/scene.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/r3d" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/r3d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/r3d.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/r3d.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/r3d/core/component.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/r3d/core/component.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r3d/component/mesh_renderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/component/mesh_renderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/r3d/core/controls.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/core/controls.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/r3d/core/controls.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/core/controls.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/r3d/core/game_object.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/core/game_object.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/r3d/core/game_object.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/core/game_object.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/r3d/core/mesh_renderer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/r3d/core/mesh_renderer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r3d/load/load_shaders.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/load/load_shaders.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/r3d/scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/r3d/scene.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -57,8 +45,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#41#60#0" expanded="true" />
               </folding>
@@ -69,8 +57,8 @@
       <file leaf-file-name="mesh_renderer.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/r3d/component/mesh_renderer.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="33" />
+            <state relative-caret-position="510">
+              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <element signature="e#100#119#0" expanded="true" />
               </folding>
@@ -78,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mesh_renderer.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mesh_renderer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/r3d/component/mesh_renderer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="645">
+              <caret line="43" column="79" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="79" />
               <folding>
                 <element signature="e#41#69#0" expanded="true" />
               </folding>
@@ -90,20 +78,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scene.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/r3d/scene.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1444">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game_object.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/r3d/core/game_object.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+            <state relative-caret-position="2118">
+              <caret line="161" column="41" lean-forward="true" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
+              <folding>
+                <element signature="e#41#60#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,8 +93,8 @@
       <file leaf-file-name="game_object.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/r3d/core/game_object.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state relative-caret-position="450">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
               <folding>
                 <element signature="e#98#117#0" expanded="true" />
               </folding>
@@ -120,11 +102,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/r3d/scene.hpp">
+      <file leaf-file-name="game_object.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/r3d/core/game_object.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="240">
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding>
+                <element signature="e#41#74#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -182,24 +167,24 @@
         <option value="$PROJECT_DIR$/r3d/load/loadTexture.cpp" />
         <option value="$PROJECT_DIR$/r3d/load/load_texture.cpp" />
         <option value="$PROJECT_DIR$/r3d/load/loadShaders.cpp" />
-        <option value="$PROJECT_DIR$/r3d/load/load_shaders.cpp" />
         <option value="$PROJECT_DIR$/r3d/core/component.cpp" />
-        <option value="$PROJECT_DIR$/r3d/core/game_object.hpp" />
         <option value="$PROJECT_DIR$/r3d/load/load_mesh.cpp" />
         <option value="$PROJECT_DIR$/r3d/core/controls.cpp" />
         <option value="$PROJECT_DIR$/main.hpp" />
         <option value="$PROJECT_DIR$/r3d/scene.hpp" />
-        <option value="$PROJECT_DIR$/r3d/core/game_object.cpp" />
         <option value="$PROJECT_DIR$/r3d/core/mesh_renderer.hpp" />
         <option value="$PROJECT_DIR$/r3d/core/mesh_renderer.cpp" />
         <option value="$PROJECT_DIR$/r3d/core/shader.cpp" />
         <option value="$PROJECT_DIR$/r3d/core/shader.hpp" />
         <option value="$PROJECT_DIR$/r3d/core/material.hpp" />
         <option value="$PROJECT_DIR$/r3d/core/material.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/r3d/component/mesh_renderer.hpp" />
-        <option value="$PROJECT_DIR$/r3d/scene.cpp" />
+        <option value="$PROJECT_DIR$/r3d/load/load_shaders.cpp" />
         <option value="$PROJECT_DIR$/r3d/component/mesh_renderer.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/r3d/scene.cpp" />
+        <option value="$PROJECT_DIR$/r3d/core/game_object.hpp" />
+        <option value="$PROJECT_DIR$/r3d/core/game_object.cpp" />
       </list>
     </option>
   </component>
@@ -368,11 +353,12 @@
       <workItem from="1526843169861" duration="6747000" />
       <workItem from="1526901866075" duration="2570000" />
       <workItem from="1526929481012" duration="4276000" />
+      <workItem from="1526984966474" duration="6428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100008000" />
+    <option name="totallyTimeSpent" value="106436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1283" y="-617" width="1280" height="1412" extended-state="0" />
@@ -383,7 +369,7 @@
       <window_info anchor="bottom" id="Messages" order="10" weight="0.26307923" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32810163" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21001495" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21001495" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
@@ -562,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/r3d/load/load_shaders.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shaders/diffuse_frag.fragmentshader">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -625,9 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding>
-            <element signature="e#88#107#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -663,38 +639,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/r3d/core/controls.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="589">
+          <caret line="72" column="46" lean-forward="true" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
           <folding>
             <element signature="e#41#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/r3d/core/game_object.cpp">
+    <entry file="file://$PROJECT_DIR$/r3d/load/load_shaders.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding>
-            <element signature="e#41#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/r3d/core/game_object.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding>
-            <element signature="e#98#117#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="900">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -705,29 +661,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/r3d/scene.cpp">
+    <entry file="file://$PROJECT_DIR$/r3d/component/mesh_renderer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1444">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="645">
+          <caret line="43" column="79" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="79" />
+          <folding>
+            <element signature="e#41#69#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/r3d/component/mesh_renderer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="33" />
+        <state relative-caret-position="510">
+          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
           <folding>
             <element signature="e#100#119#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/r3d/component/mesh_renderer.cpp">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="e#41#69#0" expanded="true" />
+            <element signature="e#41#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/r3d/core/game_object.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <element signature="e#98#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/r3d/core/game_object.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#41#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/r3d/scene.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2118">
+          <caret line="161" column="41" lean-forward="true" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
+          <folding>
+            <element signature="e#41#60#0" expanded="true" />
           </folding>
         </state>
       </provider>

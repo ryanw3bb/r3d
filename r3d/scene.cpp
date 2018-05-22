@@ -66,7 +66,7 @@ void scene::add_object(r3d::game_object * obj)
 {
     game_objects.push_back(obj);
 
-    printf("add object: %s\n", obj->name.c_str());
+    printf("Add object to scene: %s\n", obj->name.c_str());
 }
 
 void scene::update()
@@ -80,9 +80,9 @@ void scene::update()
 
        // calculate mvp matrices
        computeMatricesFromInputs(window);
-       glm::mat4 projection = getProjectionMatrix();
-       glm::mat4 view = getViewMatrix();
-       glm::mat4 model = glm::mat4(1.0f);
+       glm::mat4 projection = get_projection_matrix();
+       glm::mat4 view = get_view_matrix();
+       glm::mat4 model = (*it)->get_transform();
        glm::mat4 mvp = projection * view * model;
 
        // use our shader
@@ -167,12 +167,13 @@ void scene::update()
 
 void scene::exit()
 {
-    printf("exit\n");
+    printf("Exit\n");
 
     for(std::vector<game_object *>::iterator it = game_objects.begin(); it != game_objects.end(); ++it)
     {
         r3d::mesh_renderer * renderer = (mesh_renderer *) (*it)->components.at(0);
 
+        // TODO: Delete buffers on exit
         /*glDeleteBuffers(1, renderer->vertex_buffer);
         glDeleteBuffers(1, renderer->uv_buffer);
         glDeleteBuffers(1, renderer->normal_buffer);

@@ -41,5 +41,5 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
-    printf("add mesh renderer: %s  vert count: %lu\n", model_path.c_str(), vertices.size());
+    printf("Add mesh renderer: %s [verts: %lu]\n", model_path.c_str(), vertices.size());
 }

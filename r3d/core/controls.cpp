@@ -10,11 +10,11 @@
 glm::mat4 viewMatrix;
 glm::mat4 projectionMatrix;
 
-glm::mat4 getViewMatrix()
+glm::mat4 get_view_matrix()
 {
     return viewMatrix;
 }
-glm::mat4 getProjectionMatrix()
+glm::mat4 get_projection_matrix()
 {
     return projectionMatrix;
 }

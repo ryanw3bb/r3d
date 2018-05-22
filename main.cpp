@@ -13,7 +13,11 @@ const int height = 768;
 int main()
 {
     r3d::scene * scene = new r3d::scene(width, height);
+
     r3d::game_object * monkey = new r3d::game_object("Monkey");
+    monkey->position = glm::vec3(0, 0, 0);
+    monkey->euler_angles = glm::vec3(0, 90, 0);
+
     r3d::shader * diffuse = new r3d::shader("shaders/diffuse_vert.vertexshader", "shaders/diffuse_frag.fragmentshader");
     r3d::mesh_renderer * renderer = new r3d::mesh_renderer("assets/suzanne.obj", new r3d::material("assets/uvmap.dds", diffuse));
 

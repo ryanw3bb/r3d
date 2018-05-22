@@ -55,16 +55,12 @@ controls.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp
-game_object.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
-glm/gtc/quaternion.hpp
--
 glm/gtx/quaternion.hpp
--
-glm/gtc/matrix_transform.hpp
 -
 glm/gtx/transform.hpp
 -
+game_object.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 iostream
@@ -1110,20 +1106,6 @@ matrix_transform.inl
 quaternion.inl
 /usr/local/include/glm/gtc/quaternion.inl
 
-/usr/local/include/glm/gtc/quaternion.inl
-../trigonometric.hpp
-/usr/local/include/glm/trigonometric.hpp
-../geometric.hpp
-/usr/local/include/glm/geometric.hpp
-../exponential.hpp
-/usr/local/include/glm/exponential.hpp
-limits
--
-quaternion_simd.inl
-/usr/local/include/glm/gtc/quaternion_simd.inl
-
-/usr/local/include/glm/gtc/quaternion_simd.inl
-
 /usr/local/include/glm/gtx/norm.hpp
 ../detail/func_geometric.hpp
 /usr/local/include/glm/detail/func_geometric.hpp
@@ -1147,6 +1129,12 @@ norm.inl
 /usr/local/include/glm/gtx/norm.hpp
 quaternion.inl
 /usr/local/include/glm/gtx/quaternion.inl
+
+/usr/local/include/glm/gtx/quaternion.inl
+limits
+-
+../gtc/constants.hpp
+/usr/local/include/glm/gtc/constants.hpp
 
 /usr/local/include/glm/gtx/transform.hpp
 ../glm.hpp

@@ -14,15 +14,16 @@ int main()
 {
     r3d::scene * scene = new r3d::scene(width, height);
 
-    r3d::game_object * monkey = new r3d::game_object("Monkey");
-    monkey->position = glm::vec3(0, 0, 0);
-    monkey->euler_angles = glm::vec3(0, 90, 0);
-
     r3d::shader * diffuse = new r3d::shader("shaders/diffuse_vert.vertexshader", "shaders/diffuse_frag.fragmentshader");
     r3d::mesh_renderer * renderer = new r3d::mesh_renderer("assets/suzanne.obj", new r3d::material("assets/uvmap.dds", diffuse));
 
+    r3d::game_object * monkey = new r3d::game_object("Monkey", glm::vec3(0, 0, 0), glm::vec3(0, 90, 0), glm::vec3(1, 1, 1));
     monkey->add_component(renderer);
     scene->add_object(monkey);
+
+    r3d::game_object * monkey2 = new r3d::game_object("Monkey 2", glm::vec3(5, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
+    monkey2->add_component(renderer);
+    scene->add_object(monkey2);
 
     while(scene->shouldUpdate)
     {

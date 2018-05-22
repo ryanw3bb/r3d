@@ -24,5 +24,4 @@ namespace r3d
     };
 }
 
-
 #endif //R3D_SHADER_HPP

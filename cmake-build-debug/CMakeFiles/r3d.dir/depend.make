@@ -398,11 +398,10 @@ CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/consta
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/matrix_transform.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/matrix_transform.inl
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/quaternion.hpp
-CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/quaternion.inl
-CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtc/quaternion_simd.inl
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/norm.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/norm.inl
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/quaternion.hpp
+CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/quaternion.inl
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/transform.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/gtx/transform.inl
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: /usr/local/include/glm/integer.hpp

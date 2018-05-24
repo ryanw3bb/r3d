@@ -258,6 +258,33 @@ r3d/core/game_object.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/game_object.cpp.s
 .PHONY : r3d/core/game_object.cpp.s
 
+r3d/core/light.o: r3d/core/light.cpp.o
+
+.PHONY : r3d/core/light.o
+
+# target to build an object file
+r3d/core/light.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/light.cpp.o
+.PHONY : r3d/core/light.cpp.o
+
+r3d/core/light.i: r3d/core/light.cpp.i
+
+.PHONY : r3d/core/light.i
+
+# target to preprocess a source file
+r3d/core/light.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/light.cpp.i
+.PHONY : r3d/core/light.cpp.i
+
+r3d/core/light.s: r3d/core/light.cpp.s
+
+.PHONY : r3d/core/light.s
+
+# target to generate assembly for a file
+r3d/core/light.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/light.cpp.s
+.PHONY : r3d/core/light.cpp.s
+
 r3d/core/material.o: r3d/core/material.cpp.o
 
 .PHONY : r3d/core/material.o
@@ -444,6 +471,9 @@ help:
 	@echo "... r3d/core/game_object.o"
 	@echo "... r3d/core/game_object.i"
 	@echo "... r3d/core/game_object.s"
+	@echo "... r3d/core/light.o"
+	@echo "... r3d/core/light.i"
+	@echo "... r3d/core/light.s"
 	@echo "... r3d/core/material.o"
 	@echo "... r3d/core/material.i"
 	@echo "... r3d/core/material.s"

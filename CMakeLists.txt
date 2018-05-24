@@ -18,6 +18,6 @@ add_executable(r3d
         r3d/load/load_mesh.cpp r3d/load/load_mesh.hpp
         shaders/diffuse_frag.fragmentshader shaders/diffuse_vert.vertexshader
         shaders/color_frag.fragmentshader shaders/color_vert.vertexshader
-        shaders/texture_frag.fragmentshader shaders/texture_vert.vertexshader r3d/component/component.cpp r3d/component/component.hpp r3d/core/gl_includes.hpp r3d/core/material.cpp r3d/core/material.hpp r3d/core/shader.cpp r3d/core/shader.hpp)
+        shaders/texture_frag.fragmentshader shaders/texture_vert.vertexshader r3d/component/component.cpp r3d/component/component.hpp r3d/core/gl_includes.hpp r3d/core/material.cpp r3d/core/material.hpp r3d/core/shader.cpp r3d/core/shader.hpp r3d/core/light.cpp r3d/core/light.hpp r3d/load/vbo_indexer.hpp)
 
 target_link_libraries(${PROJECT_NAME} glew glfw assimp ${OPENGL_gl_LIBRARY})

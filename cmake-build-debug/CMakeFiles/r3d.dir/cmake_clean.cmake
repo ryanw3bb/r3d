@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/r3d.dir/r3d/component/component.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/material.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/shader.cpp.o"
+  "CMakeFiles/r3d.dir/r3d/core/light.cpp.o"
   "r3d.pdb"
   "r3d"
 )

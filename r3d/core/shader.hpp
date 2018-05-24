@@ -21,6 +21,8 @@ namespace r3d
             GLuint model_matrix;
             GLuint texture_sampler;
             GLuint light_world_pos;
+            GLuint color;
+            GLuint intensity;
     };
 }
 

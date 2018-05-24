@@ -19,11 +19,8 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
     glBindVertexArray(vertex_array_object);
 
     // Vertex buffer
-    // Generate 1 buffer, put the resulting identifier in vertex_buffer
     glGenBuffers(1, &vertex_buffer);
-    // The following commands will talk about our 'vertex_buffer' buffer
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-    // Give our vertices to OpenGL.
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
 
     // UV buffer (using instead of colour buffer)
@@ -39,7 +36,11 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
     // Indices buffer
     glGenBuffers(1, &indices_buffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
 
-    printf("Add mesh renderer: %s [verts: %lu]\n", model_path.c_str(), vertices.size());
+    // Remove bindings
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+    printf("Add mesh renderer: %s [indices: %lu]\n", model_path.c_str(), indices.size());
 }

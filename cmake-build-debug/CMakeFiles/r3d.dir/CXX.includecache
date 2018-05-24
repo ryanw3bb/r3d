@@ -13,6 +13,8 @@ r3d/scene.hpp
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 r3d/core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
+r3d/core/light.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 r3d/component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
@@ -82,6 +84,14 @@ glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 -
 
+/Users/ryan/Documents/Git/r3d/r3d/core/light.cpp
+light.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
+gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+
 /Users/ryan/Documents/Git/r3d/r3d/core/material.cpp
 material.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/material.hpp
@@ -117,18 +127,18 @@ string
 -
 cstring
 -
-glm/glm.hpp
--
-load_mesh.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
 assimp/Importer.hpp
 -
 assimp/scene.h
 -
 assimp/postprocess.h
 -
+load_mesh.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp
+../core/gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.cpp
 GLFW/glfw3.h
@@ -167,8 +177,6 @@ scene.hpp
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 core/controls.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
-core/game_object.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
@@ -177,6 +185,8 @@ core/gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
+core/light.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 
 /usr/local/include/GL/glew.h
 stddef.h

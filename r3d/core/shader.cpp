@@ -12,14 +12,14 @@ shader::shader(std::string vert, std::string frag)
     // shader program
     program = load_shaders(vert.c_str(), frag.c_str());
 
-    // Get a handle for our "MVP" uniform
+    // Get handles for our uniforms
     mvp_matrix = glGetUniformLocation(program, "MVP");
     view_matrix = glGetUniformLocation(program, "V");
     model_matrix = glGetUniformLocation(program, "M");
-
-    // Get a handle for our "myTextureSampler" uniform
     texture_sampler = glGetUniformLocation(program, "Sampler");
+    light_world_pos = glGetUniformLocation(program, "LightPosition_worldspace");
+    color = glGetUniformLocation(program, "LightColor");
+    intensity = glGetUniformLocation(program, "LightPower");
 
     glUseProgram(program);
-    light_world_pos = glGetUniformLocation(program, "LightPosition_worldspace");
 }

@@ -1,6 +1,8 @@
 #ifndef OBJLOADER_H
 #define OBJLOADER_H
 
+#include "../core/gl_includes.hpp"
+
 bool load_mesh(
 		const char *path,
 		std::vector<unsigned short> &indices,

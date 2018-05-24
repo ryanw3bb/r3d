@@ -7,12 +7,12 @@
 
 #include "scene.hpp"
 #include "core/controls.hpp"
-#include "core/game_object.hpp"
 #include "component/mesh_renderer.hpp"
 
 using namespace r3d;
 
 std::vector<r3d::game_object *> game_objects;
+std::vector<r3d::light *> lights;
 
 scene::scene(int width, int height)
 {
@@ -66,40 +66,49 @@ void scene::add_object(r3d::game_object * obj)
     printf("Add object to scene: %s\n", obj->name.c_str());
 }
 
+void scene::add_light(r3d::light * light)
+{
+    lights.push_back(light);
+}
+
 void scene::update()
 {
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    // calculate view and projection matrices
+    computeMatricesFromInputs(window);
+    glm::mat4 projection = get_projection_matrix();
+    glm::mat4 view = get_view_matrix();
+
     for(std::vector<game_object *>::iterator it = game_objects.begin(); it != game_objects.end(); ++it)
     {
         r3d::mesh_renderer * renderer = (mesh_renderer *)(*it)->components.at(0);
 
-        // calculate mvp matrices
-        computeMatricesFromInputs(window);
-        glm::mat4 projection = get_projection_matrix();
-        glm::mat4 view = get_view_matrix();
+        // calculate mvp matrix per model
         glm::mat4 model = (*it)->get_transform();
         glm::mat4 mvp = projection * view * model;
 
         // use our shader
         glUseProgram(renderer->material->shader->program);
 
-        // Send our transformation to the currently bound shader,
-        // in the "MVP" uniform
+        // Send our transformation to the currently bound shader
         glUniformMatrix4fv(renderer->material->shader->mvp_matrix, 1, GL_FALSE, &mvp[0][0]);
         glUniformMatrix4fv(renderer->material->shader->model_matrix, 1, GL_FALSE, &model[0][0]);
         glUniformMatrix4fv(renderer->material->shader->view_matrix, 1, GL_FALSE, &view[0][0]);
 
-        glm::vec3 light_pos = glm::vec3(4, 4, 4);
-        glUniform3f(renderer->material->shader->light_world_pos, light_pos.x, light_pos.y, light_pos.z);
+        // setting light uniforms
+        glUniform3f(renderer->material->shader->light_world_pos, lights.front()->position.x, lights.front()->position.y, lights.front()->position.z);
+        glUniform3f(renderer->material->shader->color, lights.front()->color.x, lights.front()->color.y, lights.front()->color.z);
+        glUniform1f(renderer->material->shader->intensity, lights.front()->intensity);
 
-        // Bind our texture in Texture Unit 0
+        // Bind texture
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, renderer->material->texture);
         // Set our sampler to use Texture Unit 0
         glUniform1i(renderer->material->shader->texture_sampler, 0);
 
+        // vao
         glBindVertexArray(renderer->vertex_array_object);
 
         // vertex buffer
@@ -117,16 +126,11 @@ void scene::update()
         glBindBuffer(GL_ARRAY_BUFFER, renderer->normal_buffer);
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
-        // TODO: VBO Indexing
-        /*glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderer->indices_buffer);
-        glDrawElements(
-               GL_TRIANGLES,      // mode
-               renderer->indices.size(),    // count
-               GL_UNSIGNED_INT,   // type
-               (void*)0           // element array buffer offset
-        );*/
+        // index buffer
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderer->indices_buffer);
+        glDrawElements(GL_TRIANGLES, renderer->indices.size(), GL_UNSIGNED_SHORT, (void*)0);
 
-        glDrawArrays(GL_TRIANGLES, 0, renderer->vertices.size());
+        glBindVertexArray(0);
     }
 
     glDisableVertexAttribArray(0);
@@ -150,14 +154,12 @@ void scene::exit()
     {
         r3d::mesh_renderer * renderer = (mesh_renderer *) (*it)->components.at(0);
 
-        // TODO: Delete buffers on exit
-        /*glDeleteBuffers(1, renderer->vertex_buffer);
-        glDeleteBuffers(1, renderer->uv_buffer);
-        glDeleteBuffers(1, renderer->normal_buffer);
-        glDeleteTextures(1, renderer->texture);*/
-
-        glDeleteProgram(renderer->material->shader->program);
+        glDeleteBuffers(1, &renderer->vertex_buffer);
+        glDeleteBuffers(1, &renderer->uv_buffer);
+        glDeleteBuffers(1, &renderer->normal_buffer);
+        glDeleteTextures(1, &renderer->material->texture);
         glDeleteVertexArrays(1, &renderer->vertex_array_object);
+        glDeleteProgram(renderer->material->shader->program);
     }
 
     glfwTerminate();

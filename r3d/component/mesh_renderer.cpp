@@ -44,3 +44,8 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
 
     printf("Add mesh renderer: %s [indices: %lu]\n", model_path.c_str(), indices.size());
 }
+
+mesh_renderer::render()
+{
+
+}

@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+r3d/component/behaviour.o: r3d/component/behaviour.cpp.o
+
+.PHONY : r3d/component/behaviour.o
+
+# target to build an object file
+r3d/component/behaviour.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o
+.PHONY : r3d/component/behaviour.cpp.o
+
+r3d/component/behaviour.i: r3d/component/behaviour.cpp.i
+
+.PHONY : r3d/component/behaviour.i
+
+# target to preprocess a source file
+r3d/component/behaviour.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.i
+.PHONY : r3d/component/behaviour.cpp.i
+
+r3d/component/behaviour.s: r3d/component/behaviour.cpp.s
+
+.PHONY : r3d/component/behaviour.s
+
+# target to generate assembly for a file
+r3d/component/behaviour.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.s
+.PHONY : r3d/component/behaviour.cpp.s
+
 r3d/component/component.o: r3d/component/component.cpp.o
 
 .PHONY : r3d/component/component.o
@@ -459,6 +486,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... r3d/component/behaviour.o"
+	@echo "... r3d/component/behaviour.i"
+	@echo "... r3d/component/behaviour.s"
 	@echo "... r3d/component/component.o"
 	@echo "... r3d/component/component.i"
 	@echo "... r3d/component/component.s"

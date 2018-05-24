@@ -61,19 +61,19 @@ void computeMatricesFromInputs(GLFWwindow* window)
     glm::vec3 up = glm::cross( right, direction );
 
     // Move forward
-    if (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){
+    if(glfwGetKey( window, GLFW_KEY_UP) == GLFW_PRESS){
         position += direction * deltaTime * speed;
     }
     // Move backward
-    if (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){
+    if(glfwGetKey( window, GLFW_KEY_DOWN) == GLFW_PRESS){
         position -= direction * deltaTime * speed;
     }
     // Strafe right
-    if (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){
+    if(glfwGetKey( window, GLFW_KEY_RIGHT) == GLFW_PRESS){
         position += right * deltaTime * speed;
     }
     // Strafe left
-    if (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
+    if(glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){
         position -= right * deltaTime * speed;
     }
 

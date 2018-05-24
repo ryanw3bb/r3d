@@ -86,6 +86,12 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/main.hpp">
 			<Option target="r3d"/>
 		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.hpp">
+			<Option target="r3d"/>
+		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/component/component.cpp">
 			<Option target="r3d"/>
 		</Unit>
@@ -147,9 +153,6 @@
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp">
-			<Option target="r3d"/>
-		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/vbo_indexer.hpp">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/scene.cpp">

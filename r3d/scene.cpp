@@ -83,6 +83,10 @@ void scene::update()
 
     for(std::vector<game_object *>::iterator it = game_objects.begin(); it != game_objects.end(); ++it)
     {
+        // TODO: loop through components
+        // move code to mesh_renderer::render
+
+        //if(typeof((*it)->components))
         r3d::mesh_renderer * renderer = (mesh_renderer *)(*it)->components.at(0);
 
         // calculate mvp matrix per model

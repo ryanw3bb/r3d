@@ -18,6 +18,7 @@ namespace r3d
     {
         public:
             mesh_renderer(std::string, r3d::material *);
+            mesh_renderer::render();
 
             std::vector<unsigned short> indices;
             std::vector<glm::vec3> vertices;

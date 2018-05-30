@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <vector>
-
+#include "../core/light.hpp"
 #include "../core/gl_includes.hpp"
 #include "../core/material.hpp"
 #include "component.hpp"
@@ -17,8 +17,9 @@ namespace r3d
     class mesh_renderer : public component
     {
         public:
+            mesh_renderer();
             mesh_renderer(std::string, r3d::material *);
-            mesh_renderer::render();
+            void render(glm::mat4, glm::mat4, std::vector<r3d::light *>);
 
             std::vector<unsigned short> indices;
             std::vector<glm::vec3> vertices;

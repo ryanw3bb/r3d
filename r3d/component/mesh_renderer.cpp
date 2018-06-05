@@ -44,34 +44,11 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    printf("Add mesh renderer: %s [indices: %lu]\n", model_path.c_str(), indices.size());
+    printf("Add mesh_renderer: %s [indices: %lu]\n", model_path.c_str(), indices.size());
 }
 
-void mesh_renderer::render(glm::mat4 projection, glm::mat4 view, std::vector<r3d::light *> lights)
+void mesh_renderer::render()
 {
-    // calculate mvp matrix per model
-    /*glm::mat4 model = (*it)->get_transform();
-    glm::mat4 mvp = projection * view * model;
-
-    // use our shader
-    glUseProgram(material->shader->program);
-
-    // Send our transformation to the currently bound shader
-    glUniformMatrix4fv(material->shader->mvp_matrix, 1, GL_FALSE, &mvp[0][0]);
-    glUniformMatrix4fv(material->shader->model_matrix, 1, GL_FALSE, &model[0][0]);
-    glUniformMatrix4fv(material->shader->view_matrix, 1, GL_FALSE, &view[0][0]);
-
-    // setting light uniforms
-    glUniform3f(material->shader->light_world_pos, lights.front()->position.x, lights.front()->position.y, lights.front()->position.z);
-    glUniform3f(material->shader->color, lights.front()->color.x, lights.front()->color.y, lights.front()->color.z);
-    glUniform1f(material->shader->intensity, lights.front()->intensity);
-
-    // Bind texture
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, material->texture);
-    // Set our sampler to use Texture Unit 0
-    glUniform1i(material->shader->texture_sampler, 0);
-
     // vao
     glBindVertexArray(vertex_array_object);
 
@@ -94,9 +71,8 @@ void mesh_renderer::render(glm::mat4 projection, glm::mat4 view, std::vector<r3d
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_SHORT, (void*)0);
 
-    glBindVertexArray(0);
-
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);*/
+    glDisableVertexAttribArray(2);
+    glBindVertexArray(0);
 }

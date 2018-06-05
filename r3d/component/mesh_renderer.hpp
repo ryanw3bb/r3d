@@ -2,8 +2,8 @@
 // Created by Ryan on 19/05/2018.
 //
 
-#ifndef R3D_MESHRENDERER_HPP
-#define R3D_MESHRENDERER_HPP
+#ifndef R3D_RENDEROBJECT_HPP
+#define R3D_RENDEROBJECT_HPP
 
 #include <iostream>
 #include <vector>
@@ -19,7 +19,7 @@ namespace r3d
         public:
             mesh_renderer();
             mesh_renderer(std::string, r3d::material *);
-            void render(glm::mat4, glm::mat4, std::vector<r3d::light *>);
+            void render();
 
             std::vector<unsigned short> indices;
             std::vector<glm::vec3> vertices;
@@ -34,4 +34,4 @@ namespace r3d
     };
 }
 
-#endif //R3D_MESHRENDERER_HPP
+#endif //R3D_RENDEROBJECT_HPP

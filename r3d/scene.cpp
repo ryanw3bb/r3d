@@ -4,17 +4,18 @@
 
 #include <iostream>
 #include <vector>
-
 #include "scene.hpp"
 #include "core/controls.hpp"
 #include "component/mesh_renderer.hpp"
+#include "component/behaviour.hpp"
+#include "core/constants.hpp"
 
 using namespace r3d;
 
 std::vector<r3d::game_object *> game_objects;
 std::vector<r3d::light *> lights;
 
-scene::scene(int width, int height)
+scene::scene(int width, int height): main_camera()
 {
     // Initialise GLFW
     if(!glfwInit())
@@ -73,73 +74,51 @@ void scene::add_light(r3d::light * light)
 
 void scene::update()
 {
+    // TODO: skip disabled objects
+    // TODO: get rid of controls class, some of it needs to go in camera class and the rest outside of r3d lib
+    // TODO: one big uber shader passing 'unlit', 'diffuse', 'specular'
+
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // calculate view and projection matrices
     computeMatricesFromInputs(window);
-    glm::mat4 projection = get_projection_matrix();
-    glm::mat4 view = get_view_matrix();
 
-    for(std::vector<game_object *>::iterator it = game_objects.begin(); it != game_objects.end(); ++it)
+    main_camera.projection = get_projection_matrix();
+    main_camera.view = get_view_matrix();
+
+    behaviour * script;
+
+    for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
     {
-        // TODO: loop through components
-        // move code to mesh_renderer::render
-
-        //if(typeof((*it)->components))
-        r3d::mesh_renderer * renderer = (mesh_renderer *)(*it)->components.at(0);
-
-        // calculate mvp matrix per model
-        glm::mat4 model = (*it)->get_transform();
-        glm::mat4 mvp = projection * view * model;
-
-        // use our shader
-        glUseProgram(renderer->material->shader->program);
-
-        // Send our transformation to the currently bound shader
-        glUniformMatrix4fv(renderer->material->shader->mvp_matrix, 1, GL_FALSE, &mvp[0][0]);
-        glUniformMatrix4fv(renderer->material->shader->model_matrix, 1, GL_FALSE, &model[0][0]);
-        glUniformMatrix4fv(renderer->material->shader->view_matrix, 1, GL_FALSE, &view[0][0]);
-
-        // setting light uniforms
-        glUniform3f(renderer->material->shader->light_world_pos, lights.front()->position.x, lights.front()->position.y, lights.front()->position.z);
-        glUniform3f(renderer->material->shader->color, lights.front()->color.x, lights.front()->color.y, lights.front()->color.z);
-        glUniform1f(renderer->material->shader->intensity, lights.front()->intensity);
-
-        // Bind texture
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, renderer->material->texture);
-        // Set our sampler to use Texture Unit 0
-        glUniform1i(renderer->material->shader->texture_sampler, 0);
-
-        // vao
-        glBindVertexArray(renderer->vertex_array_object);
-
-        // vertex buffer
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, renderer->vertex_buffer);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-        // uv buffer
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, renderer->uv_buffer);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-        // normal buffer
-        glEnableVertexAttribArray(2);
-        glBindBuffer(GL_ARRAY_BUFFER, renderer->normal_buffer);
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-        // index buffer
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderer->indices_buffer);
-        glDrawElements(GL_TRIANGLES, renderer->indices.size(), GL_UNSIGNED_SHORT, (void*)0);
-
-        glBindVertexArray(0);
+        script = (behaviour *)(*it)->get_component(constants::BEHAVIOUR);
+        if(script)
+        {
+            script->update();
+        }
     }
 
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);
+    mesh_renderer * render_obj;
+
+    for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
+    {
+        render_obj = (mesh_renderer *)(*it)->get_component(constants::RENDER_OBJECT);
+
+        // use our shader
+        render_obj->material->shader->bind();
+
+        // set camera uniforms
+        main_camera.set_uniforms(render_obj->material->shader, (*it)->get_transform());
+
+        // set light uniforms
+        lights.front()->set_uniforms(render_obj->material->shader);
+
+        // bind texture
+        render_obj->material->bind();
+
+        // bind buffers and draw elements
+        render_obj->render();
+    }
 
     glfwSwapBuffers(window);
     glfwPollEvents();

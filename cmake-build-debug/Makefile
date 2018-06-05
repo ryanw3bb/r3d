@@ -231,6 +231,60 @@ r3d/component/mesh_renderer.cpp.s:
 	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.s
 .PHONY : r3d/component/mesh_renderer.cpp.s
 
+r3d/core/camera.o: r3d/core/camera.cpp.o
+
+.PHONY : r3d/core/camera.o
+
+# target to build an object file
+r3d/core/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/camera.cpp.o
+.PHONY : r3d/core/camera.cpp.o
+
+r3d/core/camera.i: r3d/core/camera.cpp.i
+
+.PHONY : r3d/core/camera.i
+
+# target to preprocess a source file
+r3d/core/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/camera.cpp.i
+.PHONY : r3d/core/camera.cpp.i
+
+r3d/core/camera.s: r3d/core/camera.cpp.s
+
+.PHONY : r3d/core/camera.s
+
+# target to generate assembly for a file
+r3d/core/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/camera.cpp.s
+.PHONY : r3d/core/camera.cpp.s
+
+r3d/core/constants.o: r3d/core/constants.cpp.o
+
+.PHONY : r3d/core/constants.o
+
+# target to build an object file
+r3d/core/constants.cpp.o:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/constants.cpp.o
+.PHONY : r3d/core/constants.cpp.o
+
+r3d/core/constants.i: r3d/core/constants.cpp.i
+
+.PHONY : r3d/core/constants.i
+
+# target to preprocess a source file
+r3d/core/constants.cpp.i:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/constants.cpp.i
+.PHONY : r3d/core/constants.cpp.i
+
+r3d/core/constants.s: r3d/core/constants.cpp.s
+
+.PHONY : r3d/core/constants.s
+
+# target to generate assembly for a file
+r3d/core/constants.cpp.s:
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/constants.cpp.s
+.PHONY : r3d/core/constants.cpp.s
+
 r3d/core/controls.o: r3d/core/controls.cpp.o
 
 .PHONY : r3d/core/controls.o
@@ -495,6 +549,12 @@ help:
 	@echo "... r3d/component/mesh_renderer.o"
 	@echo "... r3d/component/mesh_renderer.i"
 	@echo "... r3d/component/mesh_renderer.s"
+	@echo "... r3d/core/camera.o"
+	@echo "... r3d/core/camera.i"
+	@echo "... r3d/core/camera.s"
+	@echo "... r3d/core/constants.o"
+	@echo "... r3d/core/constants.i"
+	@echo "... r3d/core/constants.s"
 	@echo "... r3d/core/controls.o"
 	@echo "... r3d/core/controls.i"
 	@echo "... r3d/core/controls.s"

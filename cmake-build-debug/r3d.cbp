@@ -104,6 +104,18 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp">
 			<Option target="r3d"/>
 		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp">
+			<Option target="r3d"/>
+		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp">
 			<Option target="r3d"/>
 		</Unit>

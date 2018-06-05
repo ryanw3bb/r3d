@@ -14,6 +14,7 @@ namespace r3d
     {
         public:
             shader(std::string, std::string);
+            void bind();
 
             GLuint program;
             GLuint mvp_matrix;

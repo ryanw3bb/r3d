@@ -7,10 +7,15 @@
 
 using namespace r3d;
 
-material::material(std::string tex_path, r3d::shader * shader)
+material::material(std::string tex_path, r3d::shader * shad)
 {
-    // load bmp, get texture id
     texture = load_dds(tex_path.c_str());
+    this->shader = shad;
+}
 
-    this->shader = shader;
+void material::bind()
+{
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glUniform1i(shader->texture_sampler, 0);
 }

@@ -6,6 +6,7 @@
 #define R3D_LIGHT_HPP
 
 #include "gl_includes.hpp"
+#include "shader.hpp"
 
 namespace r3d
 {
@@ -14,6 +15,7 @@ namespace r3d
         public:
             light();
             light(glm::vec3, glm::vec3, float);
+            void set_uniforms(r3d::shader *);
 
             glm::vec3 position;
             glm::vec3 color;

@@ -23,3 +23,8 @@ shader::shader(std::string vert, std::string frag)
 
     glUseProgram(program);
 }
+
+void shader::bind()
+{
+    glUseProgram(program);
+}

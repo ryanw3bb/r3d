@@ -24,6 +24,8 @@ add_executable(r3d
         r3d/core/material.cpp r3d/core/material.hpp
         r3d/core/shader.cpp r3d/core/shader.hpp
         r3d/core/light.cpp r3d/core/light.hpp
-        r3d/component/behaviour.cpp r3d/component/behaviour.hpp)
+        r3d/component/behaviour.cpp r3d/component/behaviour.hpp
+        r3d/core/constants.hpp r3d/core/constants.cpp
+        r3d/core/camera.cpp r3d/core/camera.hpp)
 
 target_link_libraries(${PROJECT_NAME} glew glfw assimp ${OPENGL_gl_LIBRARY})

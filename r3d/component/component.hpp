@@ -5,12 +5,15 @@
 #ifndef R3D_COMPONENT_HPP
 #define R3D_COMPONENT_HPP
 
+#include <iostream>
+
 namespace r3d
 {
     class component
     {
         public:
             component();
+            std::string name;
     };
 }
 

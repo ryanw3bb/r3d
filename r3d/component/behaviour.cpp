@@ -11,12 +11,12 @@ behaviour::behaviour()
 
 }
 
-virtual void behaviour::init()
+void behaviour::init()
 {
 
 }
 
-virtual void behaviour::update()
+void behaviour::update()
 {
 
 }

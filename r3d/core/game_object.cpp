@@ -4,8 +4,9 @@
 
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
-
+#include <algorithm>
 #include "game_object.hpp"
+#include "../component/mesh_renderer.hpp"
 
 using namespace r3d;
 
@@ -29,6 +30,24 @@ game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_a
 void game_object::add_component(r3d::component * component)
 {
     components.push_back(component);
+}
+
+r3d::component * game_object::get_component(std::string component_name)
+{
+    std::vector<component *>::iterator it = find_if(components.begin(), components.end(),
+                                                    [component_name](r3d::component * c)
+                                                    {
+                                                        return c->name == component_name;
+                                                    });
+
+    if(it != components.end())
+    {
+        return (r3d::component *)(*it);
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
 glm::mat4 game_object::get_transform()

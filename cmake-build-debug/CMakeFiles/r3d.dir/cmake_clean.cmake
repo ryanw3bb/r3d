@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/r3d.dir/r3d/core/shader.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/light.cpp.o"
   "CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o"
+  "CMakeFiles/r3d.dir/r3d/core/constants.cpp.o"
+  "CMakeFiles/r3d.dir/r3d/core/camera.cpp.o"
   "r3d.pdb"
   "r3d"
 )

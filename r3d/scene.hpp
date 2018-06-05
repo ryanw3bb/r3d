@@ -8,6 +8,7 @@
 #include "core/gl_includes.hpp"
 #include "core/game_object.hpp"
 #include "core/light.hpp"
+#include "core/camera.hpp"
 
 namespace r3d
 {
@@ -22,8 +23,11 @@ namespace r3d
             static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
             static void error_callback(int error, const char *description);
 
-            GLFWwindow* window;
+            GLFWwindow * window;
             bool shouldUpdate;
+
+        private:
+            r3d::camera main_camera;
     };
 }
 

@@ -20,11 +20,21 @@ r3d/component/mesh_renderer.hpp
 
 /Users/ryan/Documents/Git/r3d/main.hpp
 
+/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.cpp
+behaviour.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.hpp
+component.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
+
 /Users/ryan/Documents/Git/r3d/r3d/component/component.cpp
 component.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
+iostream
+-
 
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp
 mesh_renderer.hpp
@@ -37,12 +47,32 @@ iostream
 -
 vector
 -
+../core/light.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 ../core/gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 ../core/material.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/material.hpp
 component.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp
+camera.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp
+gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp
+constants.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
+iostream
+-
 
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp
 GLFW/glfw3.h
@@ -61,8 +91,12 @@ glm/gtx/quaternion.hpp
 -
 glm/gtx/transform.hpp
 -
+algorithm
+-
 game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
+../component/mesh_renderer.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 iostream
@@ -91,6 +125,8 @@ light.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/material.cpp
 material.hpp
@@ -179,6 +215,10 @@ core/controls.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
 component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
+component/behaviour.hpp
+/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.hpp
+core/constants.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 core/gl_includes.hpp
@@ -187,6 +227,8 @@ core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 core/light.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
+core/camera.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp
 
 /usr/local/include/GL/glew.h
 stddef.h

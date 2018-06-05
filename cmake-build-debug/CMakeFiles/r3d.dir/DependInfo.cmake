@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/ryan/Documents/Git/r3d/r3d/component/behaviour.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/component/component.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/component/component.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/camera.cpp.o"
+  "/Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/constants.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/controls.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o"
   "/Users/ryan/Documents/Git/r3d/r3d/core/light.cpp" "/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir/r3d/core/light.cpp.o"

@@ -369,6 +369,54 @@ CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o.provides: CMakeFiles/r3d.dir/r3
 CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o
 
 
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.o: ../r3d/core/constants.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/r3d.dir/r3d/core/constants.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/constants.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp
+
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/constants.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp > CMakeFiles/r3d.dir/r3d/core/constants.cpp.i
+
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/constants.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp -o CMakeFiles/r3d.dir/r3d/core/constants.cpp.s
+
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.requires:
+
+.PHONY : CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.requires
+
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.provides
+
+CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/constants.cpp.o
+
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: CMakeFiles/r3d.dir/flags.make
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/r3d.dir/r3d/core/camera.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/r3d.dir/r3d/core/camera.cpp.o -c /Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/r3d.dir/r3d/core/camera.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp > CMakeFiles/r3d.dir/r3d/core/camera.cpp.i
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/r3d.dir/r3d/core/camera.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp -o CMakeFiles/r3d.dir/r3d/core/camera.cpp.s
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.requires:
+
+.PHONY : CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.requires
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.provides: CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.requires
+	$(MAKE) -f CMakeFiles/r3d.dir/build.make CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.provides.build
+.PHONY : CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.provides
+
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.provides.build: CMakeFiles/r3d.dir/r3d/core/camera.cpp.o
+
+
 # Object files for target r3d
 r3d_OBJECTS = \
 "CMakeFiles/r3d.dir/main.cpp.o" \
@@ -383,7 +431,9 @@ r3d_OBJECTS = \
 "CMakeFiles/r3d.dir/r3d/core/material.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/core/shader.cpp.o" \
 "CMakeFiles/r3d.dir/r3d/core/light.cpp.o" \
-"CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o"
+"CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o" \
+"CMakeFiles/r3d.dir/r3d/core/constants.cpp.o" \
+"CMakeFiles/r3d.dir/r3d/core/camera.cpp.o"
 
 # External object files for target r3d
 r3d_EXTERNAL_OBJECTS =
@@ -401,9 +451,11 @@ r3d: CMakeFiles/r3d.dir/r3d/core/material.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/core/light.cpp.o
 r3d: CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/core/constants.cpp.o
+r3d: CMakeFiles/r3d.dir/r3d/core/camera.cpp.o
 r3d: CMakeFiles/r3d.dir/build.make
 r3d: CMakeFiles/r3d.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable r3d"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable r3d"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/r3d.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -424,6 +476,8 @@ CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/material.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/shader.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/light.cpp.o.requires
 CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/constants.cpp.o.requires
+CMakeFiles/r3d.dir/requires: CMakeFiles/r3d.dir/r3d/core/camera.cpp.o.requires
 
 .PHONY : CMakeFiles/r3d.dir/requires
 

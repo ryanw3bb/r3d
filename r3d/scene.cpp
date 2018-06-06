@@ -91,6 +91,8 @@ void scene::update()
 
     for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
     {
+        if(!(*it)->enabled) { continue; }
+
         script = (behaviour *)(*it)->get_component(constants::BEHAVIOUR);
         if(script)
         {
@@ -102,6 +104,8 @@ void scene::update()
 
     for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
     {
+        if(!(*it)->enabled) { continue; }
+
         render_obj = (mesh_renderer *)(*it)->get_component(constants::RENDER_OBJECT);
 
         // use our shader

@@ -10,14 +10,14 @@
 
 using namespace r3d;
 
-game_object::game_object(std::string name)
+game_object::game_object(std::string name): enabled(true)
 {
     this->name = name;
 
     printf("New game_object: %s\n", name.c_str());
 }
 
-game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale)
+game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale): enabled(true)
 {
     this->name = name;
     this->position = position;

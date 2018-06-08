@@ -90,6 +90,11 @@ CMakeFiles/r3d.dir/main.cpp.o
  /usr/local/include/glm/gtc/constants.inl
  /usr/local/include/glm/gtc/matrix_transform.hpp
  /usr/local/include/glm/gtc/matrix_transform.inl
+ /usr/local/include/glm/gtc/quaternion.hpp
+ /usr/local/include/glm/gtx/norm.hpp
+ /usr/local/include/glm/gtx/norm.inl
+ /usr/local/include/glm/gtx/quaternion.hpp
+ /usr/local/include/glm/gtx/quaternion.inl
  /usr/local/include/glm/integer.hpp
  /usr/local/include/glm/mat2x2.hpp
  /usr/local/include/glm/mat2x3.hpp
@@ -228,9 +233,11 @@ CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o
  /usr/local/include/glm/vec4.hpp
  /usr/local/include/glm/vector_relational.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o
+ /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/camera.cpp
  /Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
+ /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
  /usr/local/include/GL/glew.h
@@ -308,6 +315,11 @@ CMakeFiles/r3d.dir/r3d/core/camera.cpp.o
  /usr/local/include/glm/gtc/constants.inl
  /usr/local/include/glm/gtc/matrix_transform.hpp
  /usr/local/include/glm/gtc/matrix_transform.inl
+ /usr/local/include/glm/gtc/quaternion.hpp
+ /usr/local/include/glm/gtx/norm.hpp
+ /usr/local/include/glm/gtx/norm.inl
+ /usr/local/include/glm/gtx/quaternion.hpp
+ /usr/local/include/glm/gtx/quaternion.inl
  /usr/local/include/glm/integer.hpp
  /usr/local/include/glm/mat2x2.hpp
  /usr/local/include/glm/mat2x3.hpp
@@ -337,6 +349,7 @@ CMakeFiles/r3d.dir/r3d/core/constants.cpp.o
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o
  /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
  /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
+ /Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp
  /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
  /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
@@ -1089,6 +1102,11 @@ CMakeFiles/r3d.dir/r3d/scene.cpp.o
  /usr/local/include/glm/gtc/constants.inl
  /usr/local/include/glm/gtc/matrix_transform.hpp
  /usr/local/include/glm/gtc/matrix_transform.inl
+ /usr/local/include/glm/gtc/quaternion.hpp
+ /usr/local/include/glm/gtx/norm.hpp
+ /usr/local/include/glm/gtx/norm.inl
+ /usr/local/include/glm/gtx/quaternion.hpp
+ /usr/local/include/glm/gtx/quaternion.inl
  /usr/local/include/glm/integer.hpp
  /usr/local/include/glm/mat2x2.hpp
  /usr/local/include/glm/mat2x3.hpp

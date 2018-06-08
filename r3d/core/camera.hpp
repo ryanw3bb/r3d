@@ -7,34 +7,23 @@
 
 #include "gl_includes.hpp"
 #include "shader.hpp"
-#include "constants.hpp"
+#include "game_object.hpp"
 
 namespace r3d
 {
-    class camera
+    class camera : public game_object
     {
         public:
-            camera(int, int);
+            camera();
+            camera(int w, int h) : width(w), height(h) {};
             void set_uniforms(r3d::shader *, glm::mat4);
-            void set_rotation(glm::vec3);
-            glm::vec3 get_rotation();
-            void set_position(glm::vec3 p) { position = p; }
-            glm::vec3 get_position() { return position; }
-            glm::vec3 get_forward() { return forward; }
-            glm::vec3 get_up() { return up; }
-            glm::vec3 get_right() { return right; }
             float fov = 45;
             float near = 0.1f;
             float far = 100.0f;
-            int width;
-            int height;
+            int width = 1024;
+            int height = 768;
 
         private:
-            glm::vec3 position;
-            glm::vec3 euler_angles;
-            glm::vec3 forward;
-            glm::vec3 right;
-            glm::vec3 up;
             glm::mat4 projection;
             glm::mat4 view;
     };

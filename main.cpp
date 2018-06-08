@@ -21,7 +21,7 @@ int main()
     scene->main_camera->set_rotation(glm::vec3(0, 180, 0));
 
     // todo: don't specify shader here, simply pass a shader type to material
-    r3d::shader * diffuse = new r3d::shader("r3d/shaders/diffuse_vert.vertexshader", "r3d/shaders/diffuse_frag.fragmentshader");
+    r3d::shader * diffuse = new r3d::shader("r3d/shaders/diffuse_texture.vertexshader", "r3d/shaders/diffuse_texture.fragmentshader");
     r3d::mesh_renderer * renderer = new r3d::mesh_renderer("assets/suzanne.obj", new r3d::material("assets/uvmap.dds", diffuse));
 
     r3d::game_object * monkey = new r3d::game_object("Monkey", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));

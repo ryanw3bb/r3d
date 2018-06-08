@@ -15,9 +15,9 @@ add_executable(r3d
         r3d/load/load_shader.cpp r3d/load/load_shader.hpp
         r3d/load/load_texture.cpp r3d/load/load_texture.hpp
         r3d/load/load_mesh.cpp r3d/load/load_mesh.hpp
-        r3d/shaders/diffuse_frag.fragmentshader r3d/shaders/diffuse_vert.vertexshader
-        r3d/shaders/color_frag.fragmentshader r3d/shaders/color_vert.vertexshader
-        r3d/shaders/texture_frag.fragmentshader r3d/shaders/texture_vert.vertexshader
+        r3d/shaders/diffuse_texture.fragmentshader r3d/shaders/diffuse_texture.vertexshader
+        r3d/shaders/unlit_color.fragmentshader r3d/shaders/unlit_color.vertexshader
+        r3d/shaders/unlit_texture.fragmentshader r3d/shaders/unlit_texture.vertexshader
         r3d/component/component.cpp r3d/component/component.hpp
         r3d/core/gl_includes.hpp
         r3d/core/material.cpp r3d/core/material.hpp

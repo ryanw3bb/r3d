@@ -15,7 +15,7 @@ namespace r3d
         public:
             shader(std::string, std::string);
             void bind();
-
+            enum type { UNLIT_COLOR, UNLIT_TEXTURE, DIFFUSE };
             GLuint program;
             GLuint mvp_matrix;
             GLuint view_matrix;

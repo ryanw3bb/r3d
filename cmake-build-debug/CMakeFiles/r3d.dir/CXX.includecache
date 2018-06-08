@@ -69,8 +69,8 @@ gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 shader.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
-constants.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
+game_object.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp
 constants.hpp
@@ -97,10 +97,14 @@ iostream
 -
 vector
 -
+glm/gtx/quaternion.hpp
+-
 gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 ../component/component.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/component.hpp
+constants.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 GL/glew.h

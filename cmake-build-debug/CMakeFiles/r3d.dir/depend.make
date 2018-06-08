@@ -89,6 +89,11 @@ CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtc/constants.hpp
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtc/constants.inl
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtc/matrix_transform.hpp
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtc/matrix_transform.inl
+CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtc/quaternion.hpp
+CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtx/norm.hpp
+CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtx/norm.inl
+CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtx/quaternion.hpp
+CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/gtx/quaternion.inl
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/integer.hpp
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/mat2x2.hpp
 CMakeFiles/r3d.dir/main.cpp.o: /usr/local/include/glm/mat2x3.hpp
@@ -227,9 +232,11 @@ CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: /usr/local/include/glm/vec
 CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: /usr/local/include/glm/vec4.hpp
 CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: /usr/local/include/glm/vector_relational.hpp
 
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/component/component.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/camera.cpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/camera.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/constants.hpp
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/game_object.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/shader.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/GL/glew.h
@@ -307,6 +314,11 @@ CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtc/constants.h
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtc/constants.inl
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtc/matrix_transform.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtc/matrix_transform.inl
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtc/quaternion.hpp
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtx/norm.hpp
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtx/norm.inl
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtx/quaternion.hpp
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/gtx/quaternion.inl
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/integer.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/mat2x2.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/mat2x3.hpp
@@ -336,6 +348,7 @@ CMakeFiles/r3d.dir/r3d/core/constants.cpp.o: ../r3d/core/constants.hpp
 
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/component/component.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/component/mesh_renderer.hpp
+CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/core/constants.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/core/game_object.cpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/core/game_object.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/core/gl_includes.hpp
@@ -1088,6 +1101,11 @@ CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtc/constants.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtc/constants.inl
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtc/matrix_transform.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtc/matrix_transform.inl
+CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtc/quaternion.hpp
+CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtx/norm.hpp
+CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtx/norm.inl
+CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtx/quaternion.hpp
+CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/gtx/quaternion.inl
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/integer.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/mat2x2.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: /usr/local/include/glm/mat2x3.hpp

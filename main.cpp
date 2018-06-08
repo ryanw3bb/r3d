@@ -6,6 +6,7 @@
 #include "r3d/scene.hpp"
 #include "r3d/core/game_object.hpp"
 #include "r3d/core/light.hpp"
+#include "r3d/core/time.hpp"
 #include "r3d/component/mesh_renderer.hpp"
 
 const int WIDTH = 1024;
@@ -47,15 +48,6 @@ int main()
 
 void get_inputs(GLFWwindow* window)
 {
-    // TODO: calculate delta time in time class
-
-    // glfwGetTime is called only once, the first time this function is called
-    static double lastTime = glfwGetTime();
-
-    // Compute time difference between current and last frame
-    double currentTime = glfwGetTime();
-    float deltaTime = float(currentTime - lastTime);
-
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
 
@@ -68,23 +60,20 @@ void get_inputs(GLFWwindow* window)
 
     if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
-        position += scene->main_camera->get_forward() * deltaTime * MOVE_SPEED;
+        position += scene->main_camera->get_forward() * scene->time->delta_time * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
-        position -= scene->main_camera->get_forward() * deltaTime * MOVE_SPEED;
+        position -= scene->main_camera->get_forward() * scene->time->delta_time * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     {
-        position += scene->main_camera->get_right() * deltaTime * MOVE_SPEED;
+        position += scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS)
     {
-        position -= scene->main_camera->get_right() * deltaTime * MOVE_SPEED;
+        position -= scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
     }
 
     scene->main_camera->set_position(position);
-
-    // For the next frame, the "last time" will be "now"
-    lastTime = currentTime;
 }

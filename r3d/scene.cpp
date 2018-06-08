@@ -58,6 +58,8 @@ scene::scene(int width, int height)
 
     main_camera = new r3d::camera(width, height);
 
+    time = new r3d::time;
+
     should_update = true;
 }
 
@@ -76,6 +78,7 @@ void scene::add_light(r3d::light * light)
 void scene::update()
 {
     // TODO: more elegant solution for shaders
+    time->update();
 
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

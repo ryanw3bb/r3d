@@ -15,6 +15,8 @@ r3d/core/game_object.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.hpp
 r3d/core/light.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
+r3d/core/time.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
 r3d/component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
@@ -149,6 +151,8 @@ gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/time.cpp
 time.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
+gl_includes.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
 
@@ -227,6 +231,8 @@ core/light.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 core/camera.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/camera.hpp
+core/time.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
 
 /usr/local/include/GL/glew.h
 stddef.h

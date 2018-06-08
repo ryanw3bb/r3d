@@ -9,6 +9,7 @@
 #include "core/game_object.hpp"
 #include "core/light.hpp"
 #include "core/camera.hpp"
+#include "core/time.hpp"
 
 namespace r3d
 {
@@ -24,6 +25,7 @@ namespace r3d
             static void error_callback(int error, const char *description);
             GLFWwindow * window;
             r3d::camera * main_camera;
+            r3d::time * time;
             bool should_update;
     };
 }

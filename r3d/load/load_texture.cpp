@@ -3,8 +3,9 @@
 #include <string.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "load_texture.hpp"
 
-GLuint loadBMP(const char * imagepath)
+GLuint r3d::load_bmp(const char *imagepath)
 {
 	printf("Reading image %s\n", imagepath);
 
@@ -94,7 +95,7 @@ GLuint loadBMP(const char * imagepath)
 #define FOURCC_DXT3 0x33545844 // Equivalent to "DXT3" in ASCII
 #define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
-GLuint load_dds(const char *imagepath)
+GLuint r3d::load_dds(const char *imagepath)
 {
 	unsigned char header[124];
 

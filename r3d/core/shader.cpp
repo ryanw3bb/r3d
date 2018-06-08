@@ -3,14 +3,14 @@
 //
 
 #include "shader.hpp"
-#include "../load/load_shaders.hpp"
+#include "../load/load_shader.hpp"
 
 using namespace r3d;
 
 shader::shader(std::string vert, std::string frag)
 {
     // shader program
-    program = load_shaders(vert.c_str(), frag.c_str());
+    program = load_shader(vert.c_str(), frag.c_str());
 
     // Get handles for our uniforms
     mvp_matrix = glGetUniformLocation(program, "MVP");

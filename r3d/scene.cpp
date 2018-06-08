@@ -5,7 +5,6 @@
 #include <iostream>
 #include <vector>
 #include "scene.hpp"
-#include "core/controls.hpp"
 #include "component/mesh_renderer.hpp"
 #include "component/behaviour.hpp"
 #include "core/constants.hpp"
@@ -15,7 +14,7 @@ using namespace r3d;
 std::vector<r3d::game_object *> game_objects;
 std::vector<r3d::light *> lights;
 
-scene::scene(int width, int height): main_camera()
+scene::scene(int width, int height)
 {
     // Initialise GLFW
     if(!glfwInit())
@@ -57,7 +56,9 @@ scene::scene(int width, int height): main_camera()
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    shouldUpdate = true;
+    main_camera = new r3d::camera(width, height);
+
+    should_update = true;
 }
 
 void scene::add_object(r3d::game_object * obj)
@@ -74,18 +75,10 @@ void scene::add_light(r3d::light * light)
 
 void scene::update()
 {
-    // TODO: skip disabled objects
-    // TODO: get rid of controls class, some of it needs to go in camera class and the rest outside of r3d lib
-    // TODO: one big uber shader passing 'unlit', 'diffuse', 'specular'
+    // TODO: more elegant solution for shaders
 
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // calculate view and projection matrices
-    computeMatricesFromInputs(window);
-
-    main_camera.projection = get_projection_matrix();
-    main_camera.view = get_view_matrix();
 
     behaviour * script;
 
@@ -112,7 +105,7 @@ void scene::update()
         render_obj->material->shader->bind();
 
         // set camera uniforms
-        main_camera.set_uniforms(render_obj->material->shader, (*it)->get_transform());
+        main_camera->set_uniforms(render_obj->material->shader, (*it)->get_transform());
 
         // set light uniforms
         lights.front()->set_uniforms(render_obj->material->shader);
@@ -129,7 +122,7 @@ void scene::update()
 
     if(glfwWindowShouldClose(window) != 0)
     {
-        shouldUpdate = false;
+        should_update = false;
     }
 }
 

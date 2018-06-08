@@ -6,6 +6,7 @@ CMakeFiles/r3d.dir/main.cpp.o: ../main.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/component/component.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/component/mesh_renderer.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/core/camera.hpp
+CMakeFiles/r3d.dir/main.cpp.o: ../r3d/core/constants.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/core/game_object.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/main.cpp.o: ../r3d/core/light.hpp
@@ -227,6 +228,7 @@ CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o: /usr/local/include/glm/vec
 
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/camera.cpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/camera.hpp
+CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/constants.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: ../r3d/core/shader.hpp
 CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/GL/glew.h
@@ -330,106 +332,6 @@ CMakeFiles/r3d.dir/r3d/core/camera.cpp.o: /usr/local/include/glm/vector_relation
 
 CMakeFiles/r3d.dir/r3d/core/constants.cpp.o: ../r3d/core/constants.cpp
 CMakeFiles/r3d.dir/r3d/core/constants.cpp.o: ../r3d/core/constants.hpp
-
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: ../r3d/core/controls.cpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: ../r3d/core/controls.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/GLFW/glfw3.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/common.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/_fixes.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/_swizzle.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/_swizzle_func.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/_vectorize.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_common.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_common.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_common_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_exponential.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_exponential.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_exponential_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_geometric.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_geometric.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_geometric_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_integer.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_integer.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_integer_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_matrix.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_matrix.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_matrix_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_packing.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_packing.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_packing_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_trigonometric.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_trigonometric.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_trigonometric_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_vector_relational.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_vector_relational.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/func_vector_relational_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/precision.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/setup.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_float.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_half.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_half.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_int.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x2.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x3.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat2x4.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x2.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x3.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat3x4.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x2.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x3.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x4.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_mat4x4_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec1.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec1.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec2.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec3.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec4.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/detail/type_vec4_simd.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/exponential.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/fwd.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/geometric.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/glm.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/gtc/constants.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/gtc/constants.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/gtc/matrix_transform.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/gtc/matrix_transform.inl
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/integer.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat2x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat2x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat2x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat3x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat3x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat3x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat4x2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat4x3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/mat4x4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/matrix.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/packing.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/common.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/exponential.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/geometric.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/integer.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/matrix.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/simd/platform.h
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/trigonometric.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/vec2.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/vec3.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/vec4.hpp
-CMakeFiles/r3d.dir/r3d/core/controls.cpp.o: /usr/local/include/glm/vector_relational.hpp
 
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/component/component.hpp
 CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o: ../r3d/component/mesh_renderer.hpp
@@ -755,7 +657,7 @@ CMakeFiles/r3d.dir/r3d/core/material.cpp.o: /usr/local/include/glm/vector_relati
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/core/shader.cpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/core/shader.hpp
-CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/load/load_shaders.hpp
+CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: ../r3d/load/load_shader.hpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/GL/glew.h
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/GLFW/glfw3.h
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/glm/common.hpp
@@ -854,6 +756,9 @@ CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/glm/vec2.hpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/glm/vec3.hpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/glm/vec4.hpp
 CMakeFiles/r3d.dir/r3d/core/shader.cpp.o: /usr/local/include/glm/vector_relational.hpp
+
+CMakeFiles/r3d.dir/r3d/core/time.cpp.o: ../r3d/core/time.cpp
+CMakeFiles/r3d.dir/r3d/core/time.cpp.o: ../r3d/core/time.hpp
 
 CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o: ../r3d/load/load_mesh.cpp
@@ -986,11 +891,12 @@ CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o: /usr/local/include/glm/vec3.hpp
 CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o: /usr/local/include/glm/vec4.hpp
 CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o: /usr/local/include/glm/vector_relational.hpp
 
-CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o: ../r3d/load/load_shaders.cpp
-CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o: ../r3d/load/load_shaders.hpp
-CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o: /usr/local/include/GLFW/glfw3.h
+CMakeFiles/r3d.dir/r3d/load/load_shader.cpp.o: ../r3d/load/load_shader.cpp
+CMakeFiles/r3d.dir/r3d/load/load_shader.cpp.o: ../r3d/load/load_shader.hpp
+CMakeFiles/r3d.dir/r3d/load/load_shader.cpp.o: /usr/local/include/GLFW/glfw3.h
 
 CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o: ../r3d/load/load_texture.cpp
+CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o: ../r3d/load/load_texture.hpp
 CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o: /usr/local/include/GL/glew.h
 CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o: /usr/local/include/GLFW/glfw3.h
 
@@ -999,7 +905,6 @@ CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/component/component.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/component/mesh_renderer.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/camera.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/constants.hpp
-CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/controls.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/game_object.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/gl_includes.hpp
 CMakeFiles/r3d.dir/r3d/scene.cpp.o: ../r3d/core/light.hpp

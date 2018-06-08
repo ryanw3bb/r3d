@@ -22,12 +22,9 @@ namespace r3d
             void add_light(r3d::light *);
             static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
             static void error_callback(int error, const char *description);
-
             GLFWwindow * window;
-            bool shouldUpdate;
-
-        private:
-            r3d::camera main_camera;
+            r3d::camera * main_camera;
+            bool should_update;
     };
 }
 

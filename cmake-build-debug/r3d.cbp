@@ -116,12 +116,6 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp">
-			<Option target="r3d"/>
-		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp">
-			<Option target="r3d"/>
-		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp">
 			<Option target="r3d"/>
 		</Unit>
@@ -149,16 +143,22 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp">
 			<Option target="r3d"/>
 		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/time.cpp">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/core/time.hpp">
+			<Option target="r3d"/>
+		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.cpp">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.cpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.cpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.hpp">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.cpp">
@@ -173,22 +173,22 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/scene.hpp">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/color_frag.fragmentshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/color_frag.fragmentshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/color_vert.vertexshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/color_vert.vertexshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/diffuse_frag.fragmentshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/diffuse_frag.fragmentshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/diffuse_vert.vertexshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/diffuse_vert.vertexshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/texture_frag.fragmentshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/texture_frag.fragmentshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/shaders/texture_vert.vertexshader">
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/texture_vert.vertexshader">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/CMakeLists.txt">

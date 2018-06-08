@@ -16,6 +16,7 @@ namespace r3d
             static const std::string RENDER_OBJECT;
             static const std::string BEHAVIOUR;
             static const std::string COLLIDER;
+            static const float PI;
     };
 }
 

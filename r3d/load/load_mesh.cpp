@@ -7,7 +7,7 @@
 #include <assimp/postprocess.h>
 #include "load_mesh.hpp"
 
-bool load_mesh(const char *path,
+bool r3d::load_mesh(const char *path,
 			   std::vector<unsigned short> &indices,
 			   std::vector<glm::vec3> &vertices,
 			   std::vector<glm::vec2> &uvs,
@@ -32,7 +32,7 @@ bool load_mesh(const char *path,
 
 	// Fill vertices positions
 	vertices.reserve(mesh->mNumVertices);
-	for(unsigned int i=0; i<mesh->mNumVertices; i++)
+	for(unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		aiVector3D pos = mesh->mVertices[i];
 		vertices.push_back(glm::vec3(pos.x, pos.y, pos.z));
@@ -40,7 +40,7 @@ bool load_mesh(const char *path,
 
 	// Fill vertices texture coordinates
 	uvs.reserve(mesh->mNumVertices);
-	for(unsigned int i=0; i<mesh->mNumVertices; i++)
+	for(unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		aiVector3D UVW = mesh->mTextureCoords[0][i]; // Assume only 1 set of UV coords; AssImp supports 8 UV sets.
 		uvs.push_back(glm::vec2(UVW.x, UVW.y));
@@ -48,14 +48,14 @@ bool load_mesh(const char *path,
 
 	// Fill vertices normals
 	normals.reserve(mesh->mNumVertices);
-	for(unsigned int i=0; i<mesh->mNumVertices; i++)
+	for(unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		aiVector3D n = mesh->mNormals[i];
 		normals.push_back(glm::vec3(n.x, n.y, n.z));
 	}
 
-    indices.reserve(3*mesh->mNumFaces);
-    for(unsigned int i=0; i<mesh->mNumFaces; i++)
+    indices.reserve(3 * mesh->mNumFaces);
+    for(unsigned int i = 0; i < mesh->mNumFaces; i++)
     {
         // Assume the model has only triangles.
         indices.push_back(mesh->mFaces[i].mIndices[0]);

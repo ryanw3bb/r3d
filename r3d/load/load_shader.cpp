@@ -6,9 +6,9 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
-#include "load_shaders.hpp"
+#include "load_shader.hpp"
 
-GLuint load_shaders(const char *vertex_file_path, const char *fragment_file_path)
+GLuint r3d::load_shader(const char *vertex_file_path, const char *fragment_file_path)
 {
     // Create the shaders
     GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
@@ -26,7 +26,7 @@ GLuint load_shaders(const char *vertex_file_path, const char *fragment_file_path
     }
     else
     {
-        printf("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n", vertex_file_path);
+        printf("Can't open %s\n", vertex_file_path);
         getchar();
         return 0;
     }

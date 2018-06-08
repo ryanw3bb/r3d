@@ -1,10 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/r3d.dir/main.cpp.o"
   "CMakeFiles/r3d.dir/r3d/scene.cpp.o"
-  "CMakeFiles/r3d.dir/r3d/core/controls.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/game_object.cpp.o"
   "CMakeFiles/r3d.dir/r3d/component/mesh_renderer.cpp.o"
-  "CMakeFiles/r3d.dir/r3d/load/load_shaders.cpp.o"
+  "CMakeFiles/r3d.dir/r3d/load/load_shader.cpp.o"
   "CMakeFiles/r3d.dir/r3d/load/load_texture.cpp.o"
   "CMakeFiles/r3d.dir/r3d/load/load_mesh.cpp.o"
   "CMakeFiles/r3d.dir/r3d/component/component.cpp.o"
@@ -14,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/r3d.dir/r3d/component/behaviour.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/constants.cpp.o"
   "CMakeFiles/r3d.dir/r3d/core/camera.cpp.o"
+  "CMakeFiles/r3d.dir/r3d/core/time.cpp.o"
   "r3d.pdb"
   "r3d"
 )

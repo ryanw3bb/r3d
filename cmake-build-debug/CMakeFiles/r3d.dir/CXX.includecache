@@ -19,6 +19,8 @@ r3d/component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 
 /Users/ryan/Documents/Git/r3d/main.hpp
+r3d/scene.hpp
+/Users/ryan/Documents/Git/r3d/r3d/scene.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/component/behaviour.cpp
 behaviour.hpp
@@ -65,6 +67,8 @@ gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 shader.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
+constants.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/constants.cpp
 constants.hpp
@@ -73,18 +77,6 @@ constants.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/constants.hpp
 iostream
 -
-
-/Users/ryan/Documents/Git/r3d/r3d/core/controls.cpp
-GLFW/glfw3.h
--
-glm/glm.hpp
--
-glm/gtc/matrix_transform.hpp
--
-controls.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
-
-/Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/game_object.cpp
 glm/gtx/quaternion.hpp
@@ -145,14 +137,20 @@ shader.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/shader.cpp
 shader.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
-../load/load_shaders.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp
+../load/load_shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
 iostream
 -
 gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/time.cpp
+time.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
+
+/Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_mesh.cpp
 vector
@@ -176,7 +174,7 @@ load_mesh.hpp
 ../core/gl_includes.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/gl_includes.hpp
 
-/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.cpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.cpp
 GLFW/glfw3.h
 -
 sstream
@@ -185,10 +183,10 @@ fstream
 -
 vector
 -
-load_shaders.hpp
-/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp
+load_shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.hpp
 
-/Users/ryan/Documents/Git/r3d/r3d/load/load_shaders.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_shader.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_texture.cpp
 stdio.h
@@ -201,6 +199,8 @@ GL/glew.h
 -
 GLFW/glfw3.h
 -
+load_texture.hpp
+/Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp
 
 /Users/ryan/Documents/Git/r3d/r3d/load/load_texture.hpp
 
@@ -211,8 +211,6 @@ vector
 -
 scene.hpp
 /Users/ryan/Documents/Git/r3d/r3d/scene.hpp
-core/controls.hpp
-/Users/ryan/Documents/Git/r3d/r3d/core/controls.hpp
 component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 component/behaviour.hpp

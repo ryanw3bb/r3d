@@ -30,7 +30,7 @@ scene::scene(int width, int height)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(width, height, "scene", NULL, NULL);
+    window = glfwCreateWindow(width, height, "r3d", NULL, NULL);
     if(!window)
     {
         fprintf(stderr, "Failed to open GLFW window\n");
@@ -77,7 +77,6 @@ void scene::add_light(r3d::light * light)
 
 void scene::update()
 {
-    // TODO: more elegant solution for shaders
     time->update();
 
     // render scene loop

@@ -14,9 +14,8 @@ namespace r3d
     class material
     {
         public:
-            material(std::string tex_path, r3d::shader * shad);
+            material(std::string, r3d::shader *);
             void bind();
-
             GLuint texture;
             r3d::shader * shader;
     };

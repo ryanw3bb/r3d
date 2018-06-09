@@ -19,7 +19,7 @@ namespace r3d
         public:
             game_object();
             game_object(std::string);
-            game_object(std::string, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale);
+            game_object(std::string, glm::vec3, glm::vec3, glm::vec3);
             void add_component(r3d::component *);
             r3d::component * get_component(std::string);
             glm::mat4 get_transform();

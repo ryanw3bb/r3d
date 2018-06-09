@@ -17,6 +17,8 @@ r3d/core/light.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/light.hpp
 r3d/core/time.hpp
 /Users/ryan/Documents/Git/r3d/r3d/core/time.hpp
+r3d/core/shader.hpp
+/Users/ryan/Documents/Git/r3d/r3d/core/shader.hpp
 r3d/component/mesh_renderer.hpp
 /Users/ryan/Documents/Git/r3d/r3d/component/mesh_renderer.hpp
 

@@ -179,16 +179,16 @@
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/diffuse_texture.vertexshader">
 			<Option target="r3d"/>
 		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_color.fragmentshader">
-			<Option target="r3d"/>
-		</Unit>
-		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_color.vertexshader">
-			<Option target="r3d"/>
-		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_texture.fragmentshader">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_texture.vertexshader">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_vert_color.fragmentshader">
+			<Option target="r3d"/>
+		</Unit>
+		<Unit filename="/Users/ryan/Documents/Git/r3d/r3d/shaders/unlit_vert_color.vertexshader">
 			<Option target="r3d"/>
 		</Unit>
 		<Unit filename="/Users/ryan/Documents/Git/r3d/CMakeLists.txt">

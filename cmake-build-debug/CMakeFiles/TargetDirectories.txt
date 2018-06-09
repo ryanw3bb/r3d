@@ -1,3 +1,0 @@
-/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/ryan/Documents/Git/r3d/cmake-build-debug/CMakeFiles/r3d.dir

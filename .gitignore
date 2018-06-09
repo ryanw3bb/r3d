@@ -1,0 +1,6 @@
+.DS_Store
+profile
+._*
+
+/.idea/*
+/cmake-build-debug/*

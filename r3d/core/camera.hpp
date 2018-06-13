@@ -13,19 +13,22 @@ namespace r3d
 {
     class camera : public game_object
     {
-        public:
-            camera();
-            camera(int w, int h) : width(w), height(h) {};
-            void set_uniforms(r3d::shader *, glm::mat4);
-            float fov = 45;
-            float near = 0.1f;
-            float far = 100.0f;
-            int width = 1024;
-            int height = 768;
+    public:
+        float fov = 45;
+        float near = 0.1f;
+        float far = 100.0f;
+        int width = 1024;
+        int height = 768;
 
-        private:
-            glm::mat4 projection;
-            glm::mat4 view;
+        camera();
+
+        camera(int w, int h) : width(w), height(h) {};
+
+        void set_uniforms(r3d::shader*, glm::mat4);
+
+    private:
+        glm::mat4 projection;
+        glm::mat4 view;
     };
 }
 

@@ -7,7 +7,7 @@
 
 using namespace r3d;
 
-material::material(std::string tex_path, r3d::shader * shad)
+material::material(std::string tex_path, r3d::shader* shad)
 {
     texture = load_dds(tex_path.c_str());
     this->shader = shad;

@@ -7,10 +7,8 @@
 
 using namespace r3d;
 
-mesh_renderer::mesh_renderer(std::string model_path, r3d::material * material)
+mesh_renderer::mesh_renderer(std::string model_path, r3d::material* material)
 {
-    name = "mesh_renderer";
-
     this->material = material;
 
     // Read file

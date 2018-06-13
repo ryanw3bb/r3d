@@ -12,14 +12,16 @@ namespace r3d
 {
     class light
     {
-        public:
-            light();
-            light(glm::vec3, glm::vec3, float);
-            void set_uniforms(r3d::shader *);
+    public:
+        glm::vec3 position;
+        glm::vec3 color;
+        float intensity;
 
-            glm::vec3 position;
-            glm::vec3 color;
-            float intensity;
+        light();
+
+        light(glm::vec3, glm::vec3, float);
+
+        void set_uniforms(r3d::shader*);
     };
 }
 

@@ -11,9 +11,8 @@ namespace r3d
 {
     class component
     {
-        public:
-            component();
-            std::string name;
+    public:
+        component();
     };
 }
 

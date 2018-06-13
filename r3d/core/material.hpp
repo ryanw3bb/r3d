@@ -13,11 +13,13 @@ namespace r3d
 {
     class material
     {
-        public:
-            material(std::string, r3d::shader *);
-            void bind();
-            GLuint texture;
-            r3d::shader * shader;
+    public:
+        GLuint texture;
+        r3d::shader* shader;
+
+        material(std::string, r3d::shader*);
+
+        void bind();
     };
 }
 

@@ -9,16 +9,19 @@ namespace r3d
 {
     class time
     {
-        public:
-            time();
-            void update();
-            float delta_time;
+    public:
+        float delta_time;
 
-        private:
-            double last_time;
-            double current_time;
+        time();
+
+        void update();
+
+    private:
+        double last_time;
+        double current_time;
     };
 }
 
 
 #endif //R3D_TIME_HPP
+

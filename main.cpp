@@ -21,14 +21,16 @@ int main()
     scene->main_camera->set_position(glm::vec3(0, 0, 5));
     scene->main_camera->set_rotation(glm::vec3(0, 180, 0));
 
-    r3d::shader * diffuse = new r3d::shader(r3d::shader::id::DIFFUSE);
-    r3d::mesh_renderer * renderer = new r3d::mesh_renderer("assets/suzanne.obj", new r3d::material("assets/uvmap.dds", diffuse));
+    r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE);
+    r3d::mesh_renderer* renderer = new r3d::mesh_renderer("assets/suzanne.obj",
+                                                          new r3d::material("assets/uvmap.dds", diffuse));
 
-    r3d::game_object * monkey = new r3d::game_object("Monkeh", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
-    monkey->add_component(renderer);
+    r3d::game_object* monkey = new r3d::game_object("Monkeh", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0),
+                                                    glm::vec3(1, 1, 1));
+    monkey->add_renderer(renderer);
     scene->add_object(monkey);
 
-    r3d::light * main_light = new r3d::light(glm::vec3(4, 4, 4), glm::vec3(1, 1, 1), 50.0f);
+    r3d::light* main_light = new r3d::light(glm::vec3(4, 4, 4), glm::vec3(1, 1, 1), 50.0f);
     scene->add_light(main_light);
 
     while(scene->should_update)
@@ -66,7 +68,7 @@ void get_inputs(GLFWwindow* window)
     {
         position += scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
     }
-    if(glfwGetKey(window, GLFW_KEY_LEFT ) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     {
         position -= scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
     }

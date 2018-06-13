@@ -7,7 +7,8 @@
 
 #include "r3d/scene.hpp"
 
-void get_inputs(GLFWwindow *);
-r3d::scene * scene;
+r3d::scene* scene;
+
+void get_inputs(GLFWwindow*);
 
 #endif //R3D_MAIN_HPP

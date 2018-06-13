@@ -6,7 +6,7 @@
 
 using namespace r3d;
 
-void camera::set_uniforms(r3d::shader * shader, glm::mat4 model)
+void camera::set_uniforms(r3d::shader* shader, glm::mat4 model)
 {
     view = glm::lookAt(position, position + forward, up);
 

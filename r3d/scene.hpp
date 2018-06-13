@@ -15,18 +15,25 @@ namespace r3d
 {
     class scene
     {
-        public:
-            scene(int width, int height);
-            void update();
-            void exit();
-            void add_object(r3d::game_object *);
-            void add_light(r3d::light *);
-            static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
-            static void error_callback(int error, const char *description);
-            GLFWwindow * window;
-            r3d::camera * main_camera;
-            r3d::time * time;
-            bool should_update;
+    public:
+        GLFWwindow* window;
+        r3d::camera* main_camera;
+        r3d::time* time;
+        bool should_update;
+
+        scene(int width, int height);
+
+        void update();
+
+        void exit();
+
+        void add_object(r3d::game_object*);
+
+        void add_light(r3d::light*);
+
+        static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+        static void error_callback(int error, const char* description);
     };
 }
 

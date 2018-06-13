@@ -11,15 +11,15 @@
 
 using namespace r3d;
 
-std::vector<r3d::game_object *> game_objects;
-std::vector<r3d::light *> lights;
+std::vector<r3d::game_object*> game_objects;
+std::vector<r3d::light*> lights;
 
 scene::scene(int width, int height)
 {
     // Initialise GLFW
     if(!glfwInit())
     {
-        fprintf( stderr, "Failed to initialize GLFW\n" );
+        fprintf(stderr, "Failed to initialize GLFW\n");
         return;
     }
 
@@ -63,14 +63,14 @@ scene::scene(int width, int height)
     should_update = true;
 }
 
-void scene::add_object(r3d::game_object * obj)
+void scene::add_object(r3d::game_object* obj)
 {
     game_objects.push_back(obj);
 
     printf("Add object to scene: %s\n", obj->name.c_str());
 }
 
-void scene::add_light(r3d::light * light)
+void scene::add_light(r3d::light* light)
 {
     lights.push_back(light);
 }
@@ -82,41 +82,34 @@ void scene::update()
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    behaviour * script;
-
-    for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
+    // update scripts
+    for(const auto& object : game_objects)
     {
-        if(!(*it)->enabled) { continue; }
-
-        script = (behaviour *)(*it)->get_component(constants::BEHAVIOUR);
-        if(script)
+        if(object->enabled)
         {
-            script->update();
+            object->update_behaviours();
         }
     }
 
-    mesh_renderer * render_obj;
-
-    for(auto it = game_objects.begin(); it != game_objects.end(); ++it)
+    // render objects
+    for(const auto& object : game_objects)
     {
-        if(!(*it)->enabled) { continue; }
-
-        render_obj = (mesh_renderer *)(*it)->get_component(constants::RENDER_OBJECT);
+        if(!object->enabled || object->renderer == nullptr) { continue; }
 
         // use our shader
-        render_obj->material->shader->bind();
+        object->renderer->material->shader->bind();
 
         // set camera uniforms
-        main_camera->set_uniforms(render_obj->material->shader, (*it)->get_transform());
+        main_camera->set_uniforms(object->renderer->material->shader, object->get_transform());
 
         // set light uniforms
-        lights.front()->set_uniforms(render_obj->material->shader);
+        lights.front()->set_uniforms(object->renderer->material->shader);
 
         // bind texture
-        render_obj->material->bind();
+        object->renderer->material->bind();
 
         // bind buffers and draw elements
-        render_obj->render();
+        object->renderer->render();
     }
 
     glfwSwapBuffers(window);
@@ -132,16 +125,14 @@ void scene::exit()
 {
     printf("Exit\n");
 
-    for(std::vector<game_object *>::iterator it = game_objects.begin(); it != game_objects.end(); ++it)
+    for(const auto& object : game_objects)
     {
-        r3d::mesh_renderer * renderer = (mesh_renderer *) (*it)->components.at(0);
-
-        glDeleteBuffers(1, &renderer->vertex_buffer);
-        glDeleteBuffers(1, &renderer->uv_buffer);
-        glDeleteBuffers(1, &renderer->normal_buffer);
-        glDeleteTextures(1, &renderer->material->texture);
-        glDeleteVertexArrays(1, &renderer->vertex_array_object);
-        glDeleteProgram(renderer->material->shader->program);
+        glDeleteBuffers(1, &object->renderer->vertex_buffer);
+        glDeleteBuffers(1, &object->renderer->uv_buffer);
+        glDeleteBuffers(1, &object->renderer->normal_buffer);
+        glDeleteTextures(1, &object->renderer->material->texture);
+        glDeleteVertexArrays(1, &object->renderer->vertex_array_object);
+        glDeleteProgram(object->renderer->material->shader->program);
     }
 
     glfwTerminate();

@@ -11,10 +11,12 @@ namespace r3d
 {
     class behaviour : public component
     {
-        public:
-            behaviour();
-            virtual void init();
-            virtual void update();
+    public:
+        behaviour();
+
+        virtual void init();
+
+        virtual void update();
     };
 }
 

@@ -7,6 +7,7 @@
 #include <algorithm>
 #include "game_object.hpp"
 #include "../component/mesh_renderer.hpp"
+#include "../component/behaviour.hpp"
 
 using namespace r3d;
 
@@ -29,26 +30,21 @@ game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_a
     printf("New game_object: %s\n", name.c_str());
 }
 
-void game_object::add_component(r3d::component * component)
+void game_object::add_renderer(r3d::mesh_renderer* renderer)
 {
-    components.push_back(component);
+    this->renderer = renderer;
 }
 
-r3d::component * game_object::get_component(std::string component_name)
+void game_object::add_behaviour(r3d::behaviour* behaviour)
 {
-    std::vector<component *>::iterator it = find_if(components.begin(), components.end(),
-                                                    [component_name](r3d::component * c)
-                                                    {
-                                                        return c->name == component_name;
-                                                    });
+    behaviours.push_back(behaviour);
+}
 
-    if(it != components.end())
+void game_object::update_behaviours()
+{
+    for(const auto& b : behaviours)
     {
-        return (r3d::component *)(*it);
-    }
-    else
-    {
-        return nullptr;
+        b->update();
     }
 }
 

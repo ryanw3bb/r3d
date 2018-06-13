@@ -19,16 +19,16 @@ namespace r3d
     class game_object
     {
     public:
-        std::string name;
+        const char* name;
         std::vector<r3d::behaviour*> behaviours;
         bool enabled;
         r3d::mesh_renderer* renderer;
 
         game_object();
 
-        game_object(std::string);
+        game_object(const char*);
 
-        game_object(std::string, glm::vec3, glm::vec3, glm::vec3);
+        game_object(const char*, glm::vec3, glm::vec3, glm::vec3);
 
         ~game_object(){}
 

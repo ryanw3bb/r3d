@@ -30,7 +30,7 @@ namespace r3d
 
         mesh_renderer();
 
-        mesh_renderer(std::string, r3d::material*);
+        mesh_renderer(const char*, r3d::material*);
 
         void render();
     };

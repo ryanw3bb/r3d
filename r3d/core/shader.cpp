@@ -25,14 +25,14 @@ shader::shader(id i): shader_id(i)
     }
 }
 
-shader::shader(std::string vert, std::string frag)
+shader::shader(const char* vert, const char* frag)
 {
     init(vert, frag);
 }
 
-void shader::init(std::string vert, std::string frag)
+void shader::init(const char* vert, const char* frag)
 {
-    program = load_shader(vert.c_str(), frag.c_str());
+    program = load_shader(vert, frag);
 
     // Get handles for our uniforms
     mvp_matrix = glGetUniformLocation(program, "MVP");

@@ -17,7 +17,7 @@ namespace r3d
         GLuint texture;
         r3d::shader* shader;
 
-        material(std::string, r3d::shader*);
+        material(const char*, r3d::shader*);
 
         void bind();
     };

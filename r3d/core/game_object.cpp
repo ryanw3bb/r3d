@@ -16,18 +16,18 @@ game_object::game_object(): enabled(true), scale(glm::vec3(1, 1, 1))
 
 }
 
-game_object::game_object(std::string name): enabled(true), name(name), scale(glm::vec3(1, 1, 1))
+game_object::game_object(const char* name): enabled(true), name(name), scale(glm::vec3(1, 1, 1))
 {
-    printf("New game_object: %s\n", name.c_str());
+    printf("New game_object: %s\n", name);
 }
 
-game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale): enabled(true),
+game_object::game_object(const char* name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale): enabled(true),
                                                                                                          name(name),
                                                                                                          position(position),
                                                                                                          euler_angles(euler_angles),
                                                                                                          scale(scale)
 {
-    printf("New game_object: %s\n", name.c_str());
+    printf("New game_object: %s\n", name);
 }
 
 void game_object::add_renderer(r3d::mesh_renderer* renderer)

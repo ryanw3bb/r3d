@@ -67,7 +67,7 @@ void scene::add_object(r3d::game_object* obj)
 {
     game_objects.push_back(obj);
 
-    printf("Add object to scene: %s\n", obj->name.c_str());
+    printf("Add object to scene: %s\n", obj->name);
 }
 
 void scene::add_light(r3d::light* light)

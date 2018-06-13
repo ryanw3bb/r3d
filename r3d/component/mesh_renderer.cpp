@@ -7,12 +7,12 @@
 
 using namespace r3d;
 
-mesh_renderer::mesh_renderer(std::string model_path, r3d::material* material)
+mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
 {
     this->material = material;
 
     // Read file
-    load_mesh(model_path.c_str(), indices, vertices, uvs, normals);
+    load_mesh(model_path, indices, vertices, uvs, normals);
 
     // Vertex Array Object (the boss)
     glGenVertexArrays(1, &vertex_array_object);
@@ -42,7 +42,7 @@ mesh_renderer::mesh_renderer(std::string model_path, r3d::material* material)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    printf("Add mesh_renderer: %s [indices: %lu]\n", model_path.c_str(), indices.size());
+    printf("Add mesh_renderer: %s [indices: %lu]\n", model_path, indices.size());
 }
 
 void mesh_renderer::render()

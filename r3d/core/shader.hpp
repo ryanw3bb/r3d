@@ -29,12 +29,12 @@ namespace r3d
 
         shader(id);
 
-        shader(std::string, std::string);
+        shader(const char*, const char*);
 
         void bind();
 
     private:
-        void init(std::string, std::string);
+        void init(const char*, const char*);
     };
 }
 

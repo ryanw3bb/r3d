@@ -6,8 +6,8 @@
 
 using namespace r3d;
 
-const std::string constants::GAME_OBJECT = "game_object";
-const std::string constants::RENDER_OBJECT = "mesh_renderer";
-const std::string constants::BEHAVIOUR = "behaviour";
-const std::string constants::COLLIDER = "collider";
+const char* constants::GAME_OBJECT = "game_object";
+const char* constants::RENDER_OBJECT = "mesh_renderer";
+const char* constants::BEHAVIOUR = "behaviour";
+const char* constants::COLLIDER = "collider";
 const float constants::PI = 3.14159265358979323846;

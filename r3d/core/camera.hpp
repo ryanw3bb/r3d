@@ -6,7 +6,6 @@
 #define R3D_CAMERA_HPP
 
 #include "gl_includes.hpp"
-#include "shader.hpp"
 #include "game_object.hpp"
 
 namespace r3d
@@ -14,21 +13,18 @@ namespace r3d
     class camera : public game_object
     {
     public:
-        float fov = 45;
+        float fov = 0.8f;
         float near = 0.1f;
         float far = 100.0f;
-        int width = 1024;
-        int height = 768;
+        float aspect_ratio = 1.0f;
 
         camera();
 
-        camera(int w, int h) : width(w), height(h) {};
+        camera(float ar) : aspect_ratio(ar) {};
 
-        void set_uniforms(r3d::shader*, glm::mat4);
+        glm::mat4 get_projection();
 
-    private:
-        glm::mat4 projection;
-        glm::mat4 view;
+        glm::mat4 get_view();
     };
 }
 

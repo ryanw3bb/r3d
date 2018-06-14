@@ -47,30 +47,34 @@ mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
 
 void mesh_renderer::render()
 {
+    // use texture
+    material->bind();
+
     // vao
     glBindVertexArray(vertex_array_object);
 
     // vertex buffer
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(material->shader->vertex_identifier);
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->vertex_identifier, sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // uv buffer
-    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(material->shader->uv_identifier);
     glBindBuffer(GL_ARRAY_BUFFER, uv_buffer);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->uv_identifier, sizeof(glm::vec2) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // normal buffer
-    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(material->shader->normal_identifier);
     glBindBuffer(GL_ARRAY_BUFFER, normal_buffer);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->normal_identifier, sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // index buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_SHORT, (void*)0);
 
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(2);
+    glDisableVertexAttribArray(material->shader->vertex_identifier);
+    glDisableVertexAttribArray(material->shader->uv_identifier);
+    glDisableVertexAttribArray(material->shader->normal_identifier);
+
     glBindVertexArray(0);
 }

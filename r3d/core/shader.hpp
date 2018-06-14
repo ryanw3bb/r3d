@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "gl_includes.hpp"
+#include "light.hpp"
 
 namespace r3d
 {
@@ -26,12 +27,17 @@ namespace r3d
         GLuint light_world_pos;
         GLuint light_color;
         GLuint light_intensity;
+        GLuint vertex_identifier;
+        GLuint uv_identifier;
+        GLuint normal_identifier;
 
         shader(id);
 
         shader(const char*, const char*);
 
-        void bind();
+        void set_camera_uniforms(glm::mat4, glm::mat4, glm::mat4);
+
+        void set_light_uniforms(r3d::light*);
 
     private:
         void init(const char*, const char*);

@@ -9,7 +9,6 @@
 #include <vector>
 #include <glm/gtx/quaternion.hpp>
 #include "gl_includes.hpp"
-#include "../component/component.hpp"
 #include "constants.hpp"
 #include "../component/mesh_renderer.hpp"
 #include "../component/behaviour.hpp"

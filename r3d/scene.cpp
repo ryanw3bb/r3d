@@ -56,7 +56,7 @@ scene::scene(int width, int height)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    main_camera = new r3d::camera(width, height);
+    main_camera = new r3d::camera((float)width / (float)height);
 
     time = new r3d::time;
 
@@ -96,17 +96,12 @@ void scene::update()
     {
         if(!object->enabled || object->renderer == nullptr) { continue; }
 
-        // use our shader
-        object->renderer->material->shader->bind();
-
         // set camera uniforms
-        main_camera->set_uniforms(object->renderer->material->shader, object->get_transform());
+        object->renderer->material->shader->set_camera_uniforms(object->get_transform(), main_camera->get_view(),
+                                                                main_camera->get_projection());
 
         // set light uniforms
-        lights.front()->set_uniforms(object->renderer->material->shader);
-
-        // bind texture
-        object->renderer->material->bind();
+        object->renderer->material->shader->set_light_uniforms(lights.front());
 
         // bind buffers and draw elements
         object->renderer->render();

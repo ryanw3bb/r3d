@@ -96,15 +96,8 @@ void scene::update()
     {
         if(!object->enabled || object->renderer == nullptr) { continue; }
 
-        // set camera uniforms
-        object->renderer->material->shader->set_camera_uniforms(object->get_transform(), main_camera->get_view(),
-                                                                main_camera->get_projection());
-
-        // set light uniforms
-        object->renderer->material->shader->set_light_uniforms(lights.front());
-
         // bind buffers and draw elements
-        object->renderer->render();
+        object->renderer->render(object->get_transform(), main_camera->get_view(), main_camera->get_projection(), lights);
     }
 
     glfwSwapBuffers(window);
@@ -122,12 +115,10 @@ void scene::exit()
 
     for(const auto& object : game_objects)
     {
-        glDeleteBuffers(1, &object->renderer->vertex_buffer);
-        glDeleteBuffers(1, &object->renderer->uv_buffer);
-        glDeleteBuffers(1, &object->renderer->normal_buffer);
-        glDeleteTextures(1, &object->renderer->material->texture);
-        glDeleteVertexArrays(1, &object->renderer->vertex_array_object);
-        glDeleteProgram(object->renderer->material->shader->program);
+        if(object->renderer != nullptr)
+        {
+            object->renderer->destroy();
+        }
     }
 
     glfwTerminate();

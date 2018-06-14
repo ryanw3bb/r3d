@@ -14,8 +14,8 @@ material::material(const char* tex_path, r3d::shader* shader) : shader(shader)
 
 void material::bind()
 {
-    glUseProgram(shader->program);
+    glUseProgram(shader->get_program());
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
-    glUniform1i(shader->texture_sampler, 0);
+    glUniform1i(shader->get_texture_sampler(), 0);
 }

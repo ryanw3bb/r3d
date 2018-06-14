@@ -13,11 +13,6 @@ namespace r3d
     class camera : public game_object
     {
     public:
-        float fov = 0.8f;
-        float near = 0.1f;
-        float far = 100.0f;
-        float aspect_ratio = 1.0f;
-
         camera();
 
         camera(float ar) : aspect_ratio(ar) {};
@@ -25,6 +20,16 @@ namespace r3d
         glm::mat4 get_projection();
 
         glm::mat4 get_view();
+
+        void set_fov(float f) { fov = glm::radians(f); }
+
+        void set_aspect(float a) { aspect_ratio = a; }
+
+    private:
+        float fov = 0.8f;
+        float near = 0.1f;
+        float far = 100.0f;
+        float aspect_ratio = 1.0f;
     };
 }
 

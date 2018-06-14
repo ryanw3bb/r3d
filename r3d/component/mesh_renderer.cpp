@@ -45,8 +45,14 @@ mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
     printf("Add mesh_renderer: %s [indices: %lu]\n", model_path, indices.size());
 }
 
-void mesh_renderer::render()
+void mesh_renderer::render(glm::mat4 model, glm::mat4 view, glm::mat4 projection, std::vector<r3d::light*> lights)
 {
+    // set camera uniforms
+    material->shader->set_camera_uniforms(model, view, projection);
+
+    // set light uniforms
+    material->shader->set_light_uniforms(lights.front());
+
     // use texture
     material->bind();
 
@@ -54,27 +60,37 @@ void mesh_renderer::render()
     glBindVertexArray(vertex_array_object);
 
     // vertex buffer
-    glEnableVertexAttribArray(material->shader->vertex_identifier);
+    glEnableVertexAttribArray(material->shader->get_vertex_identifier());
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-    glVertexAttribPointer(material->shader->vertex_identifier, sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->get_vertex_identifier(), sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // uv buffer
-    glEnableVertexAttribArray(material->shader->uv_identifier);
+    glEnableVertexAttribArray(material->shader->get_uv_identifier());
     glBindBuffer(GL_ARRAY_BUFFER, uv_buffer);
-    glVertexAttribPointer(material->shader->uv_identifier, sizeof(glm::vec2) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->get_uv_identifier(), sizeof(glm::vec2) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // normal buffer
-    glEnableVertexAttribArray(material->shader->normal_identifier);
+    glEnableVertexAttribArray(material->shader->get_normal_identifier());
     glBindBuffer(GL_ARRAY_BUFFER, normal_buffer);
-    glVertexAttribPointer(material->shader->normal_identifier, sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(material->shader->get_normal_identifier(), sizeof(glm::vec3) / sizeof(GLfloat), GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // index buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_SHORT, (void*)0);
 
-    glDisableVertexAttribArray(material->shader->vertex_identifier);
-    glDisableVertexAttribArray(material->shader->uv_identifier);
-    glDisableVertexAttribArray(material->shader->normal_identifier);
+    glDisableVertexAttribArray(material->shader->get_vertex_identifier());
+    glDisableVertexAttribArray(material->shader->get_uv_identifier());
+    glDisableVertexAttribArray(material->shader->get_normal_identifier());
 
     glBindVertexArray(0);
 }
+
+void mesh_renderer::destroy()
+{
+    glDeleteBuffers(1, &vertex_buffer);
+    glDeleteBuffers(1, &uv_buffer);
+    glDeleteBuffers(1, &normal_buffer);
+    glDeleteTextures(1, &material->texture);
+    glDeleteVertexArrays(1, &vertex_array_object);
+    glDeleteProgram(material->shader->get_program());
+};

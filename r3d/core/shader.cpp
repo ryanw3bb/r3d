@@ -8,7 +8,7 @@
 
 using namespace r3d;
 
-shader::shader(id i): shader_id(i)
+shader::shader(id shader_id)
 {
     switch(shader_id)
     {

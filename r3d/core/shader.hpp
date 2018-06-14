@@ -18,18 +18,6 @@ namespace r3d
         {
             UNLIT_VERT_COLOR, UNLIT_TEXTURE, DIFFUSE
         };
-        id shader_id;
-        GLuint program;
-        GLuint mvp_matrix;
-        GLuint view_matrix;
-        GLuint model_matrix;
-        GLuint texture_sampler;
-        GLuint light_world_pos;
-        GLuint light_color;
-        GLuint light_intensity;
-        GLuint vertex_identifier;
-        GLuint uv_identifier;
-        GLuint normal_identifier;
 
         shader(id);
 
@@ -39,7 +27,29 @@ namespace r3d
 
         void set_light_uniforms(r3d::light*);
 
+        GLuint get_program() { return program; }
+
+        GLuint get_texture_sampler() { return texture_sampler; }
+
+        GLuint get_vertex_identifier() { return vertex_identifier; }
+
+        GLuint get_uv_identifier() { return uv_identifier; }
+
+        GLuint get_normal_identifier() { return normal_identifier; }
+
     private:
+        GLuint program;
+        GLuint texture_sampler;
+        GLuint vertex_identifier;
+        GLuint uv_identifier;
+        GLuint normal_identifier;
+        GLuint mvp_matrix;
+        GLuint view_matrix;
+        GLuint model_matrix;
+        GLuint light_world_pos;
+        GLuint light_color;
+        GLuint light_intensity;
+
         void init(const char*, const char*);
     };
 }

@@ -16,11 +16,6 @@ namespace r3d
     class scene
     {
     public:
-        GLFWwindow* window;
-        r3d::camera* main_camera;
-        r3d::time* time;
-        bool should_update;
-
         scene(int width, int height);
 
         void update();
@@ -30,6 +25,20 @@ namespace r3d
         void add_object(r3d::game_object*);
 
         void add_light(r3d::light*);
+
+        GLFWwindow* get_window() { return window; }
+
+        r3d::camera* get_camera() { return main_camera; }
+
+        float get_delta_time() { return time->delta_time; }
+
+        bool get_should_update() { return should_update; }
+
+    private:
+        GLFWwindow* window;
+        r3d::camera* main_camera;
+        r3d::time* time;
+        bool should_update;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

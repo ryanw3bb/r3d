@@ -19,8 +19,8 @@ namespace r3d
     {
     public:
         const char* name;
-        std::vector<r3d::behaviour*> behaviours;
         bool enabled;
+        std::vector<r3d::behaviour*> behaviours;
         r3d::mesh_renderer* renderer;
 
         game_object();

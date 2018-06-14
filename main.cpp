@@ -18,8 +18,8 @@ const float TURN_SPEED = 0.003f;
 int main()
 {
     scene = new r3d::scene(WIDTH, HEIGHT);
-    scene->main_camera->set_position(glm::vec3(0, 0, 5));
-    scene->main_camera->set_rotation(glm::vec3(0, 180, 0));
+    scene->get_camera()->set_position(glm::vec3(0, 0, 5));
+    scene->get_camera()->set_rotation(glm::vec3(0, 180, 0));
 
     r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE);
     r3d::mesh_renderer* renderer = new r3d::mesh_renderer("assets/suzanne.obj",
@@ -33,9 +33,9 @@ int main()
     r3d::light* main_light = new r3d::light(glm::vec3(4, 4, 4), glm::vec3(1, 1, 1), 50.0f);
     scene->add_light(main_light);
 
-    while(scene->should_update)
+    while(scene->get_should_update())
     {
-        get_inputs(scene->window);
+        get_inputs(scene->get_window());
         scene->update();
     }
 
@@ -49,29 +49,29 @@ void get_inputs(GLFWwindow* window)
     double xpos, ypos;
     glfwGetCursorPos(window, &xpos, &ypos);
 
-    glm::vec3 rotation = scene->main_camera->get_rotation();
+    glm::vec3 rotation = scene->get_camera()->get_rotation();
     rotation.x += TURN_SPEED * float(HEIGHT / 2 - ypos);
     rotation.y += TURN_SPEED * float(WIDTH / 2 - xpos);
-    scene->main_camera->set_rotation(rotation);
+    scene->get_camera()->set_rotation(rotation);
 
-    glm::vec3 position = scene->main_camera->get_position();
+    glm::vec3 position = scene->get_camera()->get_position();
 
     if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
-        position += scene->main_camera->get_forward() * scene->time->delta_time * MOVE_SPEED;
+        position += scene->get_camera()->get_forward() * scene->get_delta_time() * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
-        position -= scene->main_camera->get_forward() * scene->time->delta_time * MOVE_SPEED;
+        position -= scene->get_camera()->get_forward() * scene->get_delta_time() * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     {
-        position += scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
+        position += scene->get_camera()->get_right() * scene->get_delta_time() * MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     {
-        position -= scene->main_camera->get_right() * scene->time->delta_time * MOVE_SPEED;
+        position -= scene->get_camera()->get_right() * scene->get_delta_time() * MOVE_SPEED;
     }
 
-    scene->main_camera->set_position(position);
+    scene->get_camera()->set_position(position);
 }

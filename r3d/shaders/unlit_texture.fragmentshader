@@ -1,12 +1,12 @@
 #version 330 core
 
-in vec2 UV;
+in vec2 vert_uv_world;
 
 out vec3 color;
 
-uniform sampler2D Sampler;
+uniform sampler2D sampler;
 
 void main()
 {
-    color = texture(Sampler, UV).rgb;
+    color = texture(sampler, vert_uv_world).rgb;
 }

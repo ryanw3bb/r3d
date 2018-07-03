@@ -36,18 +36,18 @@ void shader::init(const char* vert, const char* frag)
     program = load_shader(vert, frag);
 
     // Get handles for our uniforms
-    mvp_matrix = glGetUniformLocation(program, "MVP");
-    view_matrix = glGetUniformLocation(program, "V");
-    model_matrix = glGetUniformLocation(program, "M");
-    texture_sampler = glGetUniformLocation(program, "Sampler");
-    light_world_pos = glGetUniformLocation(program, "LightPosition_worldspace");
-    light_color = glGetUniformLocation(program, "LightColor");
-    light_intensity = glGetUniformLocation(program, "LightPower");
+    mvp_matrix = glGetUniformLocation(program, "mvp");
+    view_matrix = glGetUniformLocation(program, "view");
+    model_matrix = glGetUniformLocation(program, "model");
+    texture_sampler = glGetUniformLocation(program, "sampler");
+    light_world_pos = glGetUniformLocation(program, "light_position_world");
+    light_color = glGetUniformLocation(program, "light_color");
+    light_intensity = glGetUniformLocation(program, "light_power");
 
     // attribute identifiers
-    vertex_identifier = glGetAttribLocation(program, "vertexPosition_modelspace");
-    uv_identifier = glGetAttribLocation(program, "vertexUV");
-    normal_identifier = glGetAttribLocation(program, "vertexNormal_modelspace");
+    vertex_identifier = glGetAttribLocation(program, "vert_position_model");
+    uv_identifier = glGetAttribLocation(program, "vert_uv_model");
+    normal_identifier = glGetAttribLocation(program, "vert_normal_model");
 
     glUseProgram(program);
 }

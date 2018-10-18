@@ -45,7 +45,7 @@ std::string get_running_dir()
         }
 
 #else
-        print("Error: can't find the executeable on this platform");
+        print("Error: can't find the executable path on this platform");
 
 #endif
         directory = std::string(&buffer[0]);

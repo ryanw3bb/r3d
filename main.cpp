@@ -23,7 +23,8 @@ int main()
 
     r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE);
     r3d::mesh_renderer* renderer = new r3d::mesh_renderer("assets/suzanne.obj",
-                                                          new r3d::material("assets/uvmap.dds", diffuse));
+                                                          new r3d::material("assets/uvmap.dds", 
+                                                          diffuse));
 
     r3d::game_object* monkey = new r3d::game_object("Monkeh", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0),
                                                     glm::vec3(1, 1, 1));

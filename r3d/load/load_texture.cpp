@@ -4,10 +4,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "load_texture.hpp"
+#include "../core/utils.hpp"
 
-GLuint r3d::load_bmp(const char* image_path)
+GLuint r3d::load_bmp(std::string image_path)
 {
-    printf("Reading image %s\n", image_path);
+    image_path.insert(0, get_running_dir());
+
+    printf("Reading image %s\n", image_path.c_str());
 
     // Data read from the header of the BMP file
     unsigned char header[54];
@@ -18,10 +21,10 @@ GLuint r3d::load_bmp(const char* image_path)
     unsigned char* data;
 
     // Open the file
-    FILE* file = fopen(image_path, "rb");
+    FILE* file = fopen(image_path.c_str(), "rb");
     if(!file)
     {
-        printf("%s could not be opened\n", image_path);
+        printf("%s could not be opened\n", image_path.c_str());
         getchar();
         return 0;
     }
@@ -109,17 +112,19 @@ GLuint r3d::load_bmp(const char* image_path)
 #define FOURCC_DXT3 0x33545844 // Equivalent to "DXT3" in ASCII
 #define FOURCC_DXT5 0x35545844 // Equivalent to "DXT5" in ASCII
 
-GLuint r3d::load_dds(const char* image_path)
+GLuint r3d::load_dds(std::string image_path)
 {
+    image_path.insert(0, get_running_dir());
+
     unsigned char header[124];
 
     FILE* fp;
 
     /* try to open the file */
-    fp = fopen(image_path, "rb");
+    fp = fopen(image_path.c_str(), "rb");
     if(fp == NULL)
     {
-        printf("%s could not be opened.\n", image_path);
+        printf("%s could not be opened.\n", image_path.c_str());
         getchar();
         return 0;
     }

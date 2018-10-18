@@ -7,13 +7,18 @@
 #include <fstream>
 #include <vector>
 #include "load_shader.hpp"
+#include "../core/utils.hpp"
 
-GLuint r3d::load_shader(const char* vertex_file_path, const char* fragment_file_path)
+GLuint r3d::load_shader(std::string vertex_file_path, std::string fragment_file_path)
 {
+    // prepend to shader paths
+    vertex_file_path.insert(0, get_running_dir());
+    fragment_file_path.insert(0, get_running_dir());
+
     // Create the shaders
     GLuint vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
     GLuint fragment_shader_id = glCreateShader(GL_FRAGMENT_SHADER);
-
+    
     // Read the Vertex Shader code from the file
     std::string vertex_shader_code;
     std::ifstream vertex_shader_stream(vertex_file_path, std::ios::in);
@@ -26,7 +31,7 @@ GLuint r3d::load_shader(const char* vertex_file_path, const char* fragment_file_
     }
     else
     {
-        printf("Can't open %s\n", vertex_file_path);
+        printf("Can't open %s\n", vertex_file_path.c_str());
         getchar();
         return 0;
     }
@@ -46,7 +51,7 @@ GLuint r3d::load_shader(const char* vertex_file_path, const char* fragment_file_
     int info_log_length;
 
     // Compile Vertex Shader
-    printf("Compiling shader: %s\n", vertex_file_path);
+    printf("Compiling shader: %s\n", vertex_file_path.c_str());
     char const* vertex_source_pointer = vertex_shader_code.c_str();
     glShaderSource(vertex_shader_id, 1, &vertex_source_pointer, NULL);
     glCompileShader(vertex_shader_id);
@@ -62,7 +67,7 @@ GLuint r3d::load_shader(const char* vertex_file_path, const char* fragment_file_
     }
 
     // Compile Fragment Shader
-    printf("Compiling shader: %s\n", fragment_file_path);
+    printf("Compiling shader: %s\n", fragment_file_path.c_str());
     char const* fragment_source_pointer = fragment_shader_code.c_str();
     glShaderSource(fragment_shader_id, 1, &fragment_source_pointer, NULL);
     glCompileShader(fragment_shader_id);

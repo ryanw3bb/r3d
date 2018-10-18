@@ -26,6 +26,23 @@ add_executable(r3d
         r3d/component/behaviour.cpp r3d/component/behaviour.hpp
         r3d/core/constants.hpp r3d/core/constants.cpp
         r3d/core/camera.cpp r3d/core/camera.hpp
-        r3d/core/time.cpp r3d/core/time.hpp)
+        r3d/core/time.cpp r3d/core/time.hpp
+        r3d/core/utils.cpp r3d/core/utils.hpp)
 
 target_link_libraries(${PROJECT_NAME} glew glfw assimp ${OPENGL_gl_LIBRARY})
+
+set_target_properties(
+    r3d 
+    PROPERTIES 
+        OUTPUT_NAME "r3d_demo"
+)
+
+add_custom_command(TARGET r3d POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/r3d/shaders
+        $<TARGET_FILE_DIR:r3d>/r3d/shaders)
+
+add_custom_command(TARGET r3d POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets
+        $<TARGET_FILE_DIR:r3d>/assets)

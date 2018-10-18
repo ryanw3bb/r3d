@@ -6,14 +6,17 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "load_mesh.hpp"
+#include "../core/utils.hpp"
 
-bool r3d::load_mesh(const char* path,
+bool r3d::load_mesh(std::string path,
                     std::vector<unsigned short> &indices,
                     std::vector<glm::vec3> &vertices,
                     std::vector<glm::vec2> &uvs,
                     std::vector<glm::vec3> &normals
 )
 {
+    path.insert(0, get_running_dir());
+
     std::vector<glm::vec3> temp_vertices;
     std::vector<glm::vec2> temp_uvs;
     std::vector<glm::vec3> temp_normals;

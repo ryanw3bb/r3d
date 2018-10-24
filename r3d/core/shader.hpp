@@ -16,7 +16,7 @@ namespace r3d
     public:
         enum id
         {
-            UNLIT_VERT_COLOR, UNLIT_TEXTURE, DIFFUSE
+            UNLIT_VERT_COLOR, UNLIT_TEXTURE, DIFFUSE_TEXTURE, DIFFUSE_COLOR
         };
 
         shader(id);

@@ -13,15 +13,19 @@ shader::shader(id shader_id)
     switch(shader_id)
     {
         case id::UNLIT_VERT_COLOR:
-            init("r3d/shaders/unlit_vert_color.vertexshader", "r3d/shaders/unlit_vert_color.fragmentshader");
+            init("r3d/shaders/unlit_vert_color.vs", "r3d/shaders/unlit_vert_color.fs");
             break;
 
         case id::UNLIT_TEXTURE:
-            init("r3d/shaders/unlit_texture.vertexshader", "r3d/shaders/unlit_texture.fragmentshader");
+            init("r3d/shaders/unlit_texture.vs", "r3d/shaders/unlit_texture.fs");
             break;
 
-        case id::DIFFUSE:
-            init("r3d/shaders/diffuse_texture.vertexshader", "r3d/shaders/diffuse_texture.fragmentshader");
+        case id::DIFFUSE_TEXTURE:
+            init("r3d/shaders/diffuse_texture.vs", "r3d/shaders/diffuse_texture.fs");
+            break;
+
+        case id::DIFFUSE_COLOR:
+            init("r3d/shaders/diffuse_color.vs", "r3d/shaders/diffuse_color.fs");
             break;
     }
 }

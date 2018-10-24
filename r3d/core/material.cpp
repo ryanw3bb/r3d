@@ -7,6 +7,11 @@
 
 using namespace r3d;
 
+material::material(r3d::shader* shader) : shader(shader)
+{
+    
+}
+
 material::material(const char* tex_path, r3d::shader* shader) : shader(shader)
 {
     texture = load_dds(tex_path);

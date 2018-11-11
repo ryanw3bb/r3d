@@ -12,31 +12,41 @@
 
 const int WIDTH = 1024;
 const int HEIGHT = 768;
-const float MOVE_SPEED = 3.0f;
-const float TURN_SPEED = 0.003f;
+const float CAMERA_MOVE_SPEED = 3.0f;
+const float CAMERA_ROTATE_SPEED = 0.05f;
+const float CRATE_ROTATE_SPEED = 0.5f;
+
+double last_x, last_y;
+r3d::game_object* crate;
+r3d::game_object* crate_bump;
 
 int main()
 {
     scene = new r3d::scene(WIDTH, HEIGHT);
-    scene->get_camera()->set_position(glm::vec3(0, 0, 5));
+    scene->get_camera()->set_position(glm::vec3(0, 0, 8));
     scene->get_camera()->set_rotation(glm::vec3(0, 180, 0));
 
-    r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE);
-    r3d::mesh_renderer* renderer = new r3d::mesh_renderer("assets/suzanne.obj",
-                                                          new r3d::material("assets/uvmap.dds", 
-                                                          diffuse));
-
-    r3d::game_object* monkey = new r3d::game_object("Monkeh", glm::vec3(0, 0, 0), glm::vec3(0, 0, 0),
-                                                    glm::vec3(1, 1, 1));
-    monkey->add_renderer(renderer);
-    scene->add_object(monkey);
-
-    r3d::light* main_light = new r3d::light(glm::vec3(4, 4, 4), glm::vec3(1, 1, 1), 50.0f);
+    r3d::light* main_light = new r3d::light(glm::vec3(0, 7, 0), glm::vec3(0.9, 0.9, 0.9), 45.0f);
     scene->add_light(main_light);
+
+    r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE_TEXTURE);
+    r3d::material* crate_diffuse_mat = new r3d::material("assets/crate_color.png", diffuse);
+    r3d::mesh_renderer* crate_renderer = new r3d::mesh_renderer("assets/crate.obj", crate_diffuse_mat);
+    crate_bump = new r3d::game_object("crate", glm::vec3(-2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
+    crate_bump->add_renderer(crate_renderer);
+    scene->add_object(crate_bump);
+
+    r3d::shader* diffuse_bump = new r3d::shader(r3d::shader::id::DIFFUSE_TEXTURE_BUMP);
+    r3d::material* crate_bump_mat = new r3d::material("assets/crate_color.png", "assets/crate_normal.png", diffuse_bump);
+    r3d::mesh_renderer* crate_bump_renderer = new r3d::mesh_renderer("assets/crate.obj", crate_bump_mat);
+    crate = new r3d::game_object("crate_bump", glm::vec3(2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
+    crate->add_renderer(crate_bump_renderer);
+    scene->add_object(crate);
 
     while(scene->get_should_update())
     {
-        get_inputs(scene->get_window());
+        move_camera(scene->get_window());
+        rotate_crates();
         scene->update();
     }
 
@@ -45,34 +55,57 @@ int main()
     return 0;
 }
 
-void get_inputs(GLFWwindow* window)
+void move_camera(GLFWwindow* window)
 {
-    double xpos, ypos;
-    glfwGetCursorPos(window, &xpos, &ypos);
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT))
+    {
+        double x, y;
+        glfwGetCursorPos(window, &x, &y);
 
-    glm::vec3 rotation = scene->get_camera()->get_rotation();
-    rotation.x += TURN_SPEED * float(HEIGHT / 2 - ypos);
-    rotation.y += TURN_SPEED * float(WIDTH / 2 - xpos);
-    scene->get_camera()->set_rotation(rotation);
+        if(last_x != 0)
+        {
+            glm::vec3 rotation = scene->get_camera()->get_rotation();
+            rotation.x -= CAMERA_ROTATE_SPEED * (last_y - y);
+            rotation.y -= CAMERA_ROTATE_SPEED * (last_x - x);
+            scene->get_camera()->set_rotation(rotation);
+        }
+
+        last_x = x;
+        last_y = y;
+    }
+    else
+    {
+        last_x = last_y = 0;
+    }
 
     glm::vec3 position = scene->get_camera()->get_position();
 
-    if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        position += scene->get_camera()->get_forward() * scene->get_delta_time() * MOVE_SPEED;
+        position += scene->get_camera()->get_forward() * scene->get_delta_time() * CAMERA_MOVE_SPEED;
     }
-    if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        position -= scene->get_camera()->get_forward() * scene->get_delta_time() * MOVE_SPEED;
+        position -= scene->get_camera()->get_forward() * scene->get_delta_time() * CAMERA_MOVE_SPEED;
     }
-    if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        position += scene->get_camera()->get_right() * scene->get_delta_time() * MOVE_SPEED;
+        position += scene->get_camera()->get_right() * scene->get_delta_time() * CAMERA_MOVE_SPEED;
     }
-    if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        position -= scene->get_camera()->get_right() * scene->get_delta_time() * MOVE_SPEED;
+        position -= scene->get_camera()->get_right() * scene->get_delta_time() * CAMERA_MOVE_SPEED;
     }
 
     scene->get_camera()->set_position(position);
+}
+
+void rotate_crates()
+{
+    glm::vec3 rotation = crate->get_rotation();
+    rotation.x -= CRATE_ROTATE_SPEED;
+    rotation.z -= CRATE_ROTATE_SPEED;
+
+    crate->set_rotation(rotation);
+    crate_bump->set_rotation(rotation);
 }

@@ -25,9 +25,9 @@ namespace r3d
 
         game_object();
 
-        game_object(const char*);
+        game_object(const char* name);
 
-        game_object(const char*, glm::vec3, glm::vec3, glm::vec3);
+        game_object(const char* name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale);
 
         ~game_object(){}
 

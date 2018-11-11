@@ -27,6 +27,8 @@ game_object::game_object(const char* name, glm::vec3 position, glm::vec3 euler_a
                                                                                                          euler_angles(euler_angles),
                                                                                                          scale(scale)
 {
+    set_rotation(euler_angles);
+
     printf("New game_object: %s\n", name);
 }
 

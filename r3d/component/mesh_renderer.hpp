@@ -19,9 +19,9 @@ namespace r3d
     public:
         mesh_renderer();
 
-        mesh_renderer(const char*, r3d::material*);
+        mesh_renderer(const char* model_path, r3d::material* material);
 
-        void render(glm::mat4, glm::mat4, glm::mat4, std::vector<r3d::light*>);
+        void render(glm::mat4 model, glm::mat4 view, glm::mat4 projection, std::vector<r3d::light*> lights);
 
         void destroy();
 
@@ -30,11 +30,16 @@ namespace r3d
         std::vector<glm::vec3> vertices;
         std::vector<glm::vec2> uvs;
         std::vector<glm::vec3> normals;
+        std::vector<glm::vec3> tangents;
+        std::vector<glm::vec3> bitangents;
         GLuint vertex_array_object;
+        GLuint vertex_buffer_object;
         GLuint vertex_buffer;
         GLuint uv_buffer;
         GLuint normal_buffer;
         GLuint indices_buffer;
+        GLuint tangent_buffer;
+        GLuint bitangent_buffer;
         r3d::material *material;
     };
 }

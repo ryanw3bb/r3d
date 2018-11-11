@@ -18,7 +18,7 @@ namespace r3d
 
         light();
 
-        light(glm::vec3, glm::vec3, float);
+        light(glm::vec3 position, glm::vec3 color, float intensity): position(position), color(color), intensity(intensity) {}
     };
 }
 

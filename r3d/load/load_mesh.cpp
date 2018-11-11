@@ -12,18 +12,30 @@ bool r3d::load_mesh(std::string path,
                     std::vector<unsigned short> &indices,
                     std::vector<glm::vec3> &vertices,
                     std::vector<glm::vec2> &uvs,
-                    std::vector<glm::vec3> &normals
-)
+                    std::vector<glm::vec3> &normals,
+                    std::vector<glm::vec3> &tangents,
+                    std::vector<glm::vec3> &bitangents,
+                    bool flip_uvs,
+                    bool calculate_tangents)
 {
     path.insert(0, get_running_dir());
 
-    std::vector<glm::vec3> temp_vertices;
-    std::vector<glm::vec2> temp_uvs;
-    std::vector<glm::vec3> temp_normals;
+    unsigned int p_flags = aiProcess_Triangulate | aiProcess_GenSmoothNormals;
+
+    if(flip_uvs)
+    {
+        p_flags = p_flags | aiProcess_FlipUVs;
+    }
 
     Assimp::Importer importer;
 
-    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenSmoothNormals);
+    const aiScene* scene = importer.ReadFile(path, p_flags);
+
+    if(calculate_tangents)
+    {
+        unsigned int pp_flags = aiProcess_CalcTangentSpace;
+        scene = importer.ApplyPostProcessing(pp_flags);
+    }
 
     if(!scene)
     {
@@ -35,36 +47,65 @@ bool r3d::load_mesh(std::string path,
     const aiMesh* mesh = scene->mMeshes[0]; // 1st mesh
 
     // Fill vertices positions
-    vertices.reserve(mesh->mNumVertices);
-    for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+    if(mesh->HasPositions())
     {
-        aiVector3D pos = mesh->mVertices[i];
-        vertices.push_back(glm::vec3(pos.x, pos.y, pos.z));
+        vertices.reserve(mesh->mNumVertices);
+        for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+        {
+            aiVector3D pos = mesh->mVertices[i];
+            vertices.push_back(glm::vec3(pos.x, pos.y, pos.z));
+        }
     }
 
     // Fill vertices texture coordinates
-    uvs.reserve(mesh->mNumVertices);
-    for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+    if(mesh->HasTextureCoords(0))
     {
-        aiVector3D UVW = mesh->mTextureCoords[0][i]; // Assume only 1 set of UV coords; AssImp supports 8 UV sets.
-        uvs.push_back(glm::vec2(UVW.x, UVW.y));
+        uvs.reserve(mesh->mNumVertices);
+        for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+        {
+            aiVector3D UVW = mesh->mTextureCoords[0][i]; // Assume only 1 set of UV coords; AssImp supports 8 UV sets.
+            uvs.push_back(glm::vec2(UVW.x, UVW.y));
+        }
     }
 
     // Fill vertices normals
-    normals.reserve(mesh->mNumVertices);
-    for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+    if(mesh->HasNormals())
     {
-        aiVector3D n = mesh->mNormals[i];
-        normals.push_back(glm::vec3(n.x, n.y, n.z));
+        normals.reserve(mesh->mNumVertices);
+        for(unsigned int i = 0; i < mesh->mNumVertices; i++)
+        {
+            aiVector3D n = mesh->mNormals[i];
+            normals.push_back(glm::vec3(n.x, n.y, n.z));
+        }
     }
 
-    indices.reserve(3 * mesh->mNumFaces);
-    for(unsigned int i = 0; i < mesh->mNumFaces; i++)
+    if(mesh->HasFaces())
     {
-        // Assume the model has only triangles.
-        indices.push_back(mesh->mFaces[i].mIndices[0]);
-        indices.push_back(mesh->mFaces[i].mIndices[1]);
-        indices.push_back(mesh->mFaces[i].mIndices[2]);
+        indices.reserve(3 * mesh->mNumFaces);
+        for(unsigned int i = 0; i < mesh->mNumFaces; i++)
+        {
+            // Assume the model has only triangles.
+            indices.push_back(mesh->mFaces[i].mIndices[0]);
+            indices.push_back(mesh->mFaces[i].mIndices[1]);
+            indices.push_back(mesh->mFaces[i].mIndices[2]);
+        }
+    }
+
+    if(mesh->HasTangentsAndBitangents())
+    {
+        tangents.reserve(mesh->mNumVertices);
+        for(int i = 0; i < mesh->mNumVertices; i++)
+        {
+            aiVector3D t = mesh->mTangents[i];
+            tangents.push_back(glm::vec3(t.x, t.y, t.z));
+        }
+
+        bitangents.reserve(mesh->mNumVertices);
+        for(int i = 0; i < mesh->mNumVertices; i++)
+        {
+            aiVector3D b = mesh->mBitangents[i];
+            bitangents.push_back(glm::vec3(b.x, b.y, b.z));
+        }
     }
 
     return true;

@@ -15,20 +15,22 @@ add_executable(r3d
         r3d/load/load_shader.cpp r3d/load/load_shader.hpp
         r3d/load/load_texture.cpp r3d/load/load_texture.hpp
         r3d/load/load_mesh.cpp r3d/load/load_mesh.hpp
-        r3d/shaders/diffuse_color.fs r3d/shaders/diffuse_color.vs
-        r3d/shaders/diffuse_texture.fs r3d/shaders/diffuse_texture.vs
-        r3d/shaders/unlit_vert_color.fs r3d/shaders/unlit_vert_color.vs
-        r3d/shaders/unlit_texture.fs r3d/shaders/unlit_texture.vs
+        r3d/shaders/diffuse_color.frag r3d/shaders/diffuse_color.vert
+        r3d/shaders/diffuse_texture.frag r3d/shaders/diffuse_texture.vert
+        r3d/shaders/diffuse_texture_bump.frag r3d/shaders/diffuse_texture_bump.vert
+        r3d/shaders/unlit_vert_color.frag r3d/shaders/unlit_vert_color.vert
+        r3d/shaders/unlit_texture.frag r3d/shaders/unlit_texture.vert
         r3d/component/component.cpp r3d/component/component.hpp
         r3d/core/gl_includes.hpp
         r3d/core/material.cpp r3d/core/material.hpp
         r3d/core/shader.cpp r3d/core/shader.hpp
-        r3d/core/light.cpp r3d/core/light.hpp
+        r3d/core/light.hpp
         r3d/component/behaviour.cpp r3d/component/behaviour.hpp
         r3d/core/constants.hpp r3d/core/constants.cpp
         r3d/core/camera.cpp r3d/core/camera.hpp
         r3d/core/time.cpp r3d/core/time.hpp
-        r3d/core/utils.cpp r3d/core/utils.hpp)
+        r3d/core/utils.cpp r3d/core/utils.hpp
+        r3d/libs/stb_image.h)
 
 target_link_libraries(${PROJECT_NAME} glew glfw assimp ${OPENGL_gl_LIBRARY})
 

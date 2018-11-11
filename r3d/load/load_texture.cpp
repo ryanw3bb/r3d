@@ -6,78 +6,18 @@
 #include "load_texture.hpp"
 #include "../core/utils.hpp"
 
-GLuint r3d::load_bmp(std::string image_path)
+#define STB_IMAGE_IMPLEMENTATION
+#include "../libs/stb_image.h"
+
+GLuint r3d::load_texture(std::string image_path)
 {
     image_path.insert(0, get_running_dir());
 
     printf("Reading image %s\n", image_path.c_str());
 
-    // Data read from the header of the BMP file
-    unsigned char header[54];
-    unsigned int data_pos;
-    unsigned int image_size;
-    unsigned int width, height;
-    // Actual RGB data
-    unsigned char* data;
+    int width, height, bpp;
 
-    // Open the file
-    FILE* file = fopen(image_path.c_str(), "rb");
-    if(!file)
-    {
-        printf("%s could not be opened\n", image_path.c_str());
-        getchar();
-        return 0;
-    }
-
-    // Read the header, i.e. the 54 first bytes
-
-    // If less than 54 bytes are read, problem
-    if(fread(header, 1, 54, file) != 54)
-    {
-        printf("Not a correct BMP file\n");
-        fclose(file);
-        return 0;
-    }
-    // A BMP files always begins with "BM"
-    if(header[0] != 'B' || header[1] != 'M')
-    {
-        printf("Not a correct BMP file\n");
-        fclose(file);
-        return 0;
-    }
-    // Make sure this is a 24bpp file
-    if(*(int*) &(header[0x1E]) != 0)
-    {
-        printf("Not a correct BMP file\n");
-        fclose(file);
-        return 0;
-    }
-    if(*(int*) &(header[0x1C]) != 24)
-    {
-        printf("Not a correct BMP file\n");
-        fclose(file);
-        return 0;
-    }
-
-    // Read the information about the image
-    data_pos = *(int*) &(header[0x0A]);
-    image_size = *(int*) &(header[0x22]);
-    width = *(int*) &(header[0x12]);
-    height = *(int*) &(header[0x16]);
-
-    // Some BMP files are misformatted, guess missing information
-    if(image_size == 0)
-    { image_size = width * height * 3; } // 3 : one byte for each Red, Green and Blue component
-    if(data_pos == 0) data_pos = 54; // The BMP header is done that way
-
-    // Create a buffer
-    data = new unsigned char[image_size];
-
-    // Read the actual data from the file into the buffer
-    fread(data, 1, image_size, file);
-
-    // Everything is in memory now, the file can be closed.
-    fclose(file);
+    unsigned char* rgb_image = stbi_load(image_path.c_str(), &width, &height, &bpp, STBI_rgb_alpha);
 
     // Create one OpenGL texture
     GLuint textureID;
@@ -87,10 +27,10 @@ GLuint r3d::load_bmp(std::string image_path)
     glBindTexture(GL_TEXTURE_2D, textureID);
 
     // Give the image to OpenGL
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, rgb_image);
 
     // OpenGL has now copied the data. Free our own version
-    delete[] data;
+    stbi_image_free(rgb_image);
 
     // Poor filtering, or ...
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -101,6 +41,7 @@ GLuint r3d::load_bmp(std::string image_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    
     // ... which requires mipmaps. Generate them automatically.
     glGenerateMipmap(GL_TEXTURE_2D);
 

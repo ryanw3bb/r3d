@@ -32,16 +32,16 @@ int main()
     r3d::shader* diffuse = new r3d::shader(r3d::shader::id::DIFFUSE_TEXTURE);
     r3d::material* crate_diffuse_mat = new r3d::material("assets/crate_color.png", diffuse);
     r3d::mesh_renderer* crate_renderer = new r3d::mesh_renderer("assets/crate.obj", crate_diffuse_mat);
-    crate_bump = new r3d::game_object("crate", glm::vec3(-2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
-    crate_bump->add_renderer(crate_renderer);
-    scene->add_object(crate_bump);
+    crate = new r3d::game_object("crate", glm::vec3(-2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
+    crate->add_renderer(crate_renderer);
+    scene->add_object(crate);
 
     r3d::shader* diffuse_bump = new r3d::shader(r3d::shader::id::DIFFUSE_TEXTURE_BUMP);
     r3d::material* crate_bump_mat = new r3d::material("assets/crate_color.png", "assets/crate_normal.png", diffuse_bump);
     r3d::mesh_renderer* crate_bump_renderer = new r3d::mesh_renderer("assets/crate.obj", crate_bump_mat);
-    crate = new r3d::game_object("crate_bump", glm::vec3(2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
-    crate->add_renderer(crate_bump_renderer);
-    scene->add_object(crate);
+    crate_bump = new r3d::game_object("crate_bump", glm::vec3(2, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(0.01, 0.01, 0.01));
+    crate_bump->add_renderer(crate_bump_renderer);
+    scene->add_object(crate_bump);
 
     while(scene->get_should_update())
     {

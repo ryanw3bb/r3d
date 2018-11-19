@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "load_texture.hpp"
-#include "../core/utils.hpp"
+#include "../utils/file.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "../libs/stb_image.h"

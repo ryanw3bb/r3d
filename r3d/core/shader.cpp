@@ -51,52 +51,48 @@ void shader::init(const char* vert, const char* frag)
     mvp_matrix = glGetUniformLocation(program, "mvp");
     view_matrix = glGetUniformLocation(program, "view");
     model_matrix = glGetUniformLocation(program, "model");
-    texture_sampler = glGetUniformLocation(program, "sampler");
+    texture_sampler = glGetUniformLocation(program, "diffuseSampler");
+    camera_world_pos = glGetUniformLocation(program, "viewPos");
 
     if(uses_lighting)
     {
-        light_world_pos = glGetUniformLocation(program, "light_position_world");
-        light_color = glGetUniformLocation(program, "light_color");
-        light_intensity = glGetUniformLocation(program, "light_power");
+        light_world_pos = glGetUniformLocation(program, "lightPos");
+        light_color = glGetUniformLocation(program, "lightColor");
+        light_intensity = glGetUniformLocation(program, "lightPower");
     }
 
     if(uses_normal_map)
     {
-        model_view_3x3_matrix = glGetUniformLocation(program, "model_view_3x3");
-        normal_sampler = glGetUniformLocation(program, "normal_sampler");
+        normal_sampler = glGetUniformLocation(program, "normalSampler");
     }
 
     // attribute identifiers
-    vertex_identifier = glGetAttribLocation(program, "vert_position_model");
-    uv_identifier = glGetAttribLocation(program, "vert_uv_model");
+    vertex_identifier = glGetAttribLocation(program, "position");
+    uv_identifier = glGetAttribLocation(program, "texCoords");
 
     if(uses_lighting)
     {
-        normal_identifier = glGetAttribLocation(program, "vert_normal_model");
+        normal_identifier = glGetAttribLocation(program, "normal");
     }
 
     if(uses_normal_map)
     {
-        tangent_identifier = glGetAttribLocation(program, "vert_tangent_model");
-        bitangent_identifier = glGetAttribLocation(program, "vert_bitangent_model");
+        tangent_identifier = glGetAttribLocation(program, "tangent");
+        bitangent_identifier = glGetAttribLocation(program, "bitangent");
     }
 
     glUseProgram(program);
 }
 
-void shader::set_camera_uniforms(glm::mat4 model, glm::mat4 view, glm::mat4 projection)
+void shader::set_camera_uniforms(glm::mat4 model, glm::mat4 view, glm::mat4 projection, glm::vec3 camera_pos)
 {
     glm::mat4 mvp = projection * view * model;
-    glm::mat3 mv3x3 = glm::mat3(view * model);
 
     glUniformMatrix4fv(mvp_matrix, 1, GL_FALSE, &mvp[0][0]);
     glUniformMatrix4fv(model_matrix, 1, GL_FALSE, &model[0][0]);
     glUniformMatrix4fv(view_matrix, 1, GL_FALSE, &view[0][0]);
 
-    if(uses_normal_map)
-    {
-        glUniformMatrix3fv(model_view_3x3_matrix, 1, GL_FALSE, &mv3x3[0][0]);
-    }
+    glUniform3f(camera_world_pos, camera_pos.x, camera_pos.y, camera_pos.z);
 }
 
 void shader::set_light_uniforms(r3d::light* light1)

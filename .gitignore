@@ -2,5 +2,6 @@
 profile
 ._*
 
-/.vscode
-/build
+.vscode/
+build/
+temp/

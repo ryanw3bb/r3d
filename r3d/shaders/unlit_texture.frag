@@ -1,12 +1,14 @@
 #version 330 core
 
-in vec2 vert_uv_world;
-
 out vec3 color;
 
-uniform sampler2D sampler;
+in VS_OUT {
+    vec2 TexCoords;
+} fs_in;
+
+uniform sampler2D diffuseSampler;
 
 void main()
 {
-    color = texture(sampler, vert_uv_world).rgb;
+    color = texture(sampler, fs_in.TexCoords).rgb;
 }

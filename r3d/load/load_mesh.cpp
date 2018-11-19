@@ -6,7 +6,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "load_mesh.hpp"
-#include "../core/utils.hpp"
+#include "../utils/file.hpp"
 
 bool r3d::load_mesh(std::string path,
                     std::vector<unsigned short> &indices,
@@ -20,22 +20,33 @@ bool r3d::load_mesh(std::string path,
 {
     path.insert(0, get_running_dir());
 
-    unsigned int p_flags = aiProcess_Triangulate | aiProcess_GenSmoothNormals;
+    unsigned int p_flags =  aiProcess_GenSmoothNormals |
+                            aiProcess_JoinIdenticalVertices |
+                            aiProcess_ImproveCacheLocality |
+                            aiProcess_LimitBoneWeights |
+                            aiProcess_RemoveRedundantMaterials |
+                            aiProcess_SplitLargeMeshes |
+                            aiProcess_Triangulate |
+                            aiProcess_GenUVCoords |
+                            aiProcess_TransformUVCoords |
+                            aiProcess_SortByPType |
+                            aiProcess_FindDegenerates |
+                            aiProcess_FindInvalidData | 
+                            0;
 
     if(flip_uvs)
     {
-        p_flags = p_flags | aiProcess_FlipUVs;
+        p_flags |= aiProcess_FlipUVs;
+    }
+
+    if(calculate_tangents)
+    {
+        p_flags |= aiProcess_CalcTangentSpace;
     }
 
     Assimp::Importer importer;
 
     const aiScene* scene = importer.ReadFile(path, p_flags);
-
-    if(calculate_tangents)
-    {
-        unsigned int pp_flags = aiProcess_CalcTangentSpace;
-        scene = importer.ApplyPostProcessing(pp_flags);
-    }
 
     if(!scene)
     {

@@ -31,7 +31,7 @@ namespace r3d
 
         shader(const char*, const char*);
 
-        void set_camera_uniforms(glm::mat4, glm::mat4, glm::mat4);
+        void set_camera_uniforms(glm::mat4, glm::mat4, glm::mat4, glm::vec3);
 
         void set_light_uniforms(r3d::light*);
 
@@ -63,10 +63,10 @@ namespace r3d
         GLuint mvp_matrix;
         GLuint view_matrix;
         GLuint model_matrix;
-        GLuint model_view_3x3_matrix;
         GLuint light_world_pos;
         GLuint light_color;
         GLuint light_intensity;
+        GLuint camera_world_pos;
 
         void init(const char*, const char*);
     };

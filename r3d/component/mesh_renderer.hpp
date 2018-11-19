@@ -14,14 +14,16 @@
 
 namespace r3d
 {
+    class camera;
+
     class mesh_renderer : public component
     {
     public:
         mesh_renderer();
 
-        mesh_renderer(const char* model_path, r3d::material* material);
+        mesh_renderer(const char* model_path, r3d::material* material, bool debug = false);
 
-        void render(glm::mat4 model, glm::mat4 view, glm::mat4 projection, std::vector<r3d::light*> lights);
+        void render(glm::mat4 model, r3d::camera* main_camera, std::vector<r3d::light*> lights);
 
         void destroy();
 

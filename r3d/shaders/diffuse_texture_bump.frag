@@ -1,74 +1,46 @@
 #version 330 core
 
-// Interpolated values from the vertex shaders
-in vec3 vert_position_world;
-in vec2 vert_uv;
-in vec3 eye_direction_camera;
-in vec3 light_direction_camera;
+out vec4 FragColor;
 
-// tangent space used for normal mapping
-in vec3 eye_direction_tangent;
-in vec3 light_direction_tangent;
+in VS_OUT {
+    vec3 FragPos;
+    vec2 TexCoords;
+    vec3 TangentLightPos;
+    vec3 TangentViewPos;
+    vec3 TangentFragPos;
+} fs_in;
 
-// Ouput data
-out vec3 color;
+uniform sampler2D diffuseSampler;
+uniform sampler2D normalSampler;
 
-// Values that stay constant for the whole mesh.
-uniform sampler2D sampler;
-uniform sampler2D normal_sampler;
-uniform vec3 light_position_world;
-uniform vec3 light_color;
-uniform float light_power;
-uniform vec3 ambient = vec3(0.1, 0.1, 0.1);
-uniform vec3 specular = vec3(0.01, 0.01, 0.01);
-uniform float shininess = 1;
-
-bool directional = false;
+uniform vec3 lightPos;
+uniform vec3 viewPos;
 
 void main()
-{
-	// Material properties
-	vec3 material_diffuse_color = texture(sampler, vert_uv).rgb;
-	vec3 material_ambient_color = ambient * material_diffuse_color;
+{           
+     // obtain normal from normal map in range [0,1]
+    vec3 normal = texture(normalSampler, fs_in.TexCoords).rgb;
 
-	vec3 normal = normalize(texture(normal_sampler, vert_uv).rgb * 2 - 1.0);
+    // transform normal vector to range [-1,1]
+    normal = normalize(normal * 2.0 - 1.0);  // this normal is in tangent space
+   
+    // get diffuse color
+    vec3 color = texture(diffuseSampler, fs_in.TexCoords).rgb;
 
-    float attenuation = 1.0;
-    vec3 surface_to_light;
+    // ambient
+    vec3 ambient = 0.1 * color;
 
-    if(directional)
-    {
-        surface_to_light = normalize(light_position_world);
-        attenuation = 1.0;
-    }
-    else
-    {
-        // Direction of the light (from the fragment to the light)
-        surface_to_light = normalize(light_direction_tangent);
+    // diffuse
+    vec3 lightDir = normalize(fs_in.TangentLightPos - fs_in.TangentFragPos);
+    float diff = max(dot(lightDir, normal), 0.0);
+    vec3 diffuse = diff * color;
+    
+    // specular
+    vec3 viewDir = normalize(fs_in.TangentViewPos - fs_in.TangentFragPos);
+    vec3 reflectDir = reflect(-lightDir, normal);
+    vec3 halfwayDir = normalize(lightDir + viewDir);  
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
 
-        float distance_to_light = length(light_position_world - vert_position_world);
-
-        attenuation = 1.0 / (1.0 + pow(distance_to_light, 2));
-    }
-
-	// Diffuse Strength
-	// 1 - light position is directly vertical to triangle (or light direction is perpendicular)
-	// 0 - light position is perpendicular to the triangle (or light direction is parallel)
-	float diffuse_strength = clamp(dot(normal, surface_to_light), 0, 1);
-
-	vec3 diffuse = material_diffuse_color * light_color * light_power * diffuse_strength;
-
-	// Look vector (towards the camera)
-	vec3 surface_to_camera = normalize(eye_direction_tangent);
-
-	// Direction in which the triangle reflects the light
-	vec3 reflect_direction = reflect(-surface_to_light, normal);
-
-	// Specular Strength
-	// Looking into the reflection = 1, otherwise < 1
-	float specular_strength = clamp(dot(surface_to_camera, reflect_direction), 0, 1);
-
-	vec3 specular = specular * light_color * light_power * pow(specular_strength, shininess);
-
-	color = material_ambient_color + attenuation * (diffuse + specular);
+    vec3 specular = vec3(0.2) * spec;
+    FragColor = vec4(ambient + diffuse + specular, 1.0);
 }

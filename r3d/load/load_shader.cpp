@@ -7,7 +7,7 @@
 #include <fstream>
 #include <vector>
 #include "load_shader.hpp"
-#include "../core/utils.hpp"
+#include "../utils/file.hpp"
 
 GLuint r3d::load_shader(std::string vertex_file_path, std::string fragment_file_path)
 {

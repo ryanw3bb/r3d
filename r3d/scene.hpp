@@ -10,6 +10,7 @@
 #include "core/light.hpp"
 #include "core/camera.hpp"
 #include "core/time.hpp"
+#include "utils/debug.hpp"
 
 namespace r3d
 {
@@ -39,6 +40,9 @@ namespace r3d
         r3d::camera* main_camera;
         r3d::time* time;
         bool should_update;
+        std::vector<r3d::game_object*> game_objects;
+        std::vector<r3d::light*> lights;
+        r3d::debug* debug_view;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

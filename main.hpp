@@ -11,6 +11,6 @@ r3d::scene* scene;
 
 void move_camera(GLFWwindow*);
 
-void rotate_crates();
+void rotate_crate();
 
 #endif //R3D_MAIN_HPP

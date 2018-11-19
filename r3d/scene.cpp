@@ -11,9 +11,6 @@
 
 using namespace r3d;
 
-std::vector<r3d::game_object*> game_objects;
-std::vector<r3d::light*> lights;
-
 scene::scene(int width, int height)
 {
     // Initialise GLFW
@@ -47,6 +44,9 @@ scene::scene(int width, int height)
         fprintf(stderr, "Failed to initialize GLEW\n");
         return;
     }
+
+    // grey background
+	glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
 
     // setting callbacks
     glfwSetKeyCallback(window, key_callback);
@@ -97,7 +97,13 @@ void scene::update()
         if(!object->enabled || object->renderer == nullptr) { continue; }
 
         // bind buffers and draw elements
-        object->renderer->render(object->get_transform(), main_camera->get_view(), main_camera->get_projection(), lights);
+        object->renderer->render(object->get_transform(), main_camera, lights);
+    }
+
+    // render debug if enabled
+    if(debug_view->get_enabled())
+    {
+        debug_view->get_instance()->render(main_camera->get_view(), main_camera->get_projection());
     }
 
     glfwSwapBuffers(window);

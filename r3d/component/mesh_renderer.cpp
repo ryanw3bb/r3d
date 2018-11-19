@@ -4,10 +4,12 @@
 
 #include "mesh_renderer.hpp"
 #include "../load/load_mesh.hpp"
+#include "../utils/debug.hpp"
+#include "../core/camera.hpp"
 
 using namespace r3d;
 
-mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
+mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material, bool debug)
 {
     this->material = material;
 
@@ -36,8 +38,8 @@ mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
     glBufferSubData(GL_ARRAY_BUFFER, 0, v_size, &vertices[0]);
     glBufferSubData(GL_ARRAY_BUFFER, v_size, n_size, &normals[0]);
     glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size), uv_size, &uvs[0]);
-    glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + t_size), t_size, &tangents[0]);
-    glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + t_size + b_size), b_size, &bitangents[0]);
+    glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + uv_size), t_size, &tangents[0]);
+    glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + uv_size + t_size), b_size, &bitangents[0]);
     //glBufferSubData(GL_ARRAY_BUFFER, (vtx + nrm + txc + tng + btng), vtx_col, &verticesColor[0]); 
 
     // create element buffer object to hold our indices
@@ -64,16 +66,31 @@ mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material)
         glEnableVertexAttribArray(material->shader->get_bitangent_identifier());
     }
 
+    if(debug)
+    {
+        r3d::debug* debug_view;
+
+        for(unsigned int i = 0; i < vertices.size(); i++)
+        {
+            glm::vec3 p = vertices[i];
+            glm::vec3 n = p + glm::normalize(normals[i]) * 0.1f;
+
+            debug_view->get_instance()->add_line(p, n, glm::vec3(1, 0, 0));
+
+            //printf("%s | %s\n", glm::to_string(p).c_str(), glm::to_string(n).c_str());
+        }
+    }
+
     printf("Add mesh_renderer: %s [vertices: %lu]\n", model_path, vertices.size());
 }
 
-void mesh_renderer::render(glm::mat4 model, glm::mat4 view, glm::mat4 projection, std::vector<r3d::light*> lights)
+void mesh_renderer::render(glm::mat4 model, r3d::camera* main_camera, std::vector<r3d::light*> lights)
 {
     // use texture
     material->bind();
 
     // set camera uniforms
-    material->shader->set_camera_uniforms(model, view, projection);
+    material->shader->set_camera_uniforms(model, main_camera->get_view(), main_camera->get_projection(), main_camera->get_position());
 
     // set light uniforms
     material->shader->set_light_uniforms(lights.front());

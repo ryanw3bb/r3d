@@ -23,9 +23,8 @@ const float CRATE_ROTATE_SPEED = 0.5f;
 
 double last_x, last_y;
 unique_ptr<scene> main_scene;
-game_object* crate;
-game_object* crate_bump;
-light* main_light;
+shared_ptr<game_object> crate;
+shared_ptr<light> main_light;
 
 int main()
 {
@@ -33,19 +32,20 @@ int main()
     main_scene->get_camera()->set_position(vec3(0, 0, 1.5f));
     main_scene->get_camera()->set_rotation(vec3(0, 180, 0));
 
-    main_light = new light(vec3(0, 8, 1), vec3(0.9, 0.9, 0.9), 45.0f);
+    main_light = make_shared<light>(vec3(0, 8, 1), vec3(0.9, 0.9, 0.9), 45.0f);
     main_scene->add_light(main_light);
 
-    shader* diffuse_bump = new shader(shader::id::DIFFUSE_TEXTURE_BUMP);
-    material* crate_mat = new material("assets/crate_diffuse.jpg", "assets/crate_normal.jpg", diffuse_bump);
-    mesh_renderer* crate_renderer = new mesh_renderer("assets/crate.obj", crate_mat);
-    crate = new game_object("crate", vec3(0, 0, 0), vec3(-90, 0, -90), vec3(1, 1, 1));
+    shared_ptr<shader> diffuse_shader = make_shared<shader>(shader::id::DIFFUSE_TEXTURE_BUMP);
+    shared_ptr<material> crate_mat = make_shared<material>("assets/crate_diffuse.jpg", "assets/crate_normal.jpg", diffuse_shader);
+    shared_ptr<mesh_renderer> crate_renderer = make_shared<mesh_renderer>("assets/crate.obj", crate_mat);
+    crate = make_shared<game_object>("crate", vec3(0, 0, 0), vec3(-90, 0, -90), vec3(1, 1, 1));
     crate->add_renderer(crate_renderer);
+    
     main_scene->add_object(crate);
 
-    while(main_scene->get_should_update())
+    while(main_scene->should_update)
     {
-        move_camera(main_scene->get_window());
+        move_camera(main_scene->window);
         rotate_crate();
         main_scene->update();
     }

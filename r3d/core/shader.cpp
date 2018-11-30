@@ -95,7 +95,7 @@ void shader::set_camera_uniforms(glm::mat4 model, glm::mat4 view, glm::mat4 proj
     glUniform3f(camera_world_pos, camera_pos.x, camera_pos.y, camera_pos.z);
 }
 
-void shader::set_light_uniforms(r3d::light* light1)
+void shader::set_light_uniforms(std::shared_ptr<r3d::light> light1)
 {
     if(uses_lighting)
     {

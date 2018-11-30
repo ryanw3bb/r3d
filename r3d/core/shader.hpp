@@ -33,7 +33,7 @@ namespace r3d
 
         void set_camera_uniforms(glm::mat4, glm::mat4, glm::mat4, glm::vec3);
 
-        void set_light_uniforms(r3d::light*);
+        void set_light_uniforms(std::shared_ptr<r3d::light>);
 
         GLuint get_program() { return program; }
 

@@ -21,9 +21,9 @@ namespace r3d
     public:
         mesh_renderer();
 
-        mesh_renderer(const char* model_path, r3d::material* material, bool debug = false);
+        mesh_renderer(const char* model_path, std::shared_ptr<r3d::material> material, bool debug = false);
 
-        void render(glm::mat4 model, r3d::camera* main_camera, std::vector<r3d::light*> lights);
+        void render(glm::mat4 model, std::shared_ptr<r3d::camera> main_camera, std::vector<std::shared_ptr<r3d::light>> lights);
 
         void destroy();
 
@@ -42,7 +42,7 @@ namespace r3d
         GLuint indices_buffer;
         GLuint tangent_buffer;
         GLuint bitangent_buffer;
-        r3d::material *material;
+        std::shared_ptr<r3d::material> material;
     };
 }
 

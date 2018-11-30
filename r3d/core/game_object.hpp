@@ -20,8 +20,8 @@ namespace r3d
     public:
         const char* name;
         bool enabled;
-        std::vector<r3d::behaviour*> behaviours;
-        r3d::mesh_renderer* renderer;
+        std::vector<std::shared_ptr<r3d::behaviour>> behaviours;
+        std::shared_ptr<r3d::mesh_renderer> renderer;
 
         game_object();
 
@@ -33,9 +33,9 @@ namespace r3d
 
         game_object(const game_object& other) {}
 
-        void add_renderer(r3d::mesh_renderer*);
+        void add_renderer(const std::shared_ptr<r3d::mesh_renderer>&);
 
-        void add_behaviour(r3d::behaviour*);
+        void add_behaviour(const std::shared_ptr<r3d::behaviour>&);
 
         void update_behaviours();
 

@@ -5,6 +5,7 @@
 #ifndef R3D_SCENE_HPP
 #define R3D_SCENE_HPP
 
+#include <memory>
 #include "core/gl_includes.hpp"
 #include "core/game_object.hpp"
 #include "core/light.hpp"
@@ -17,32 +18,29 @@ namespace r3d
     class scene
     {
     public:
+        GLFWwindow* window;
+        bool should_update;
+
         scene(int width, int height);
 
         void update();
 
         void exit();
 
-        void add_object(r3d::game_object*);
+        void add_object(const std::shared_ptr<r3d::game_object>&);
 
-        void add_light(r3d::light*);
+        void add_light(const std::shared_ptr<r3d::light>&);
 
-        GLFWwindow* get_window() { return window; }
+        const std::shared_ptr<r3d::camera>& get_camera() { return main_camera; }
 
-        r3d::camera* get_camera() { return main_camera; }
-
-        float get_delta_time() { return time->delta_time; }
-
-        bool get_should_update() { return should_update; }
+        const float get_delta_time() { return timer->delta_time; }
 
     private:
-        GLFWwindow* window;
-        r3d::camera* main_camera;
-        r3d::time* time;
-        bool should_update;
-        std::vector<r3d::game_object*> game_objects;
-        std::vector<r3d::light*> lights;
-        r3d::debug* debug_view;
+        std::vector<std::shared_ptr<r3d::game_object>> game_objects;
+        std::vector<std::shared_ptr<r3d::light>> lights;
+        std::shared_ptr<r3d::camera> main_camera;
+        std::unique_ptr<r3d::time> timer;
+        std::unique_ptr<r3d::debug> debug_view;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

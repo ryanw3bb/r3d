@@ -9,6 +9,7 @@
 #include "component/behaviour.hpp"
 #include "core/constants.hpp"
 
+using namespace std;
 using namespace r3d;
 
 scene::scene(int width, int height)
@@ -56,28 +57,28 @@ scene::scene(int width, int height)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    main_camera = new r3d::camera((float)width / (float)height);
+    main_camera = make_shared<camera>((float)width / (float)height);
 
-    time = new r3d::time;
+    timer = make_unique<time>();
 
     should_update = true;
 }
 
-void scene::add_object(r3d::game_object* obj)
+void scene::add_object(const shared_ptr<game_object>& ptr)
 {
-    game_objects.push_back(obj);
+    game_objects.emplace_back(ptr);
 
-    printf("Add object to scene: %s\n", obj->name);
+    printf("Add object to scene: %s\n", ptr->name);
 }
 
-void scene::add_light(r3d::light* light)
+void scene::add_light(const shared_ptr<light>& ptr)
 {
-    lights.push_back(light);
+    lights.emplace_back(ptr);
 }
 
 void scene::update()
 {
-    time->update();
+    timer->update();
 
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

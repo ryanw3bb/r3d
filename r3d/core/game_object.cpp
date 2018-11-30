@@ -32,14 +32,14 @@ game_object::game_object(const char* name, glm::vec3 position, glm::vec3 euler_a
     printf("New game_object: %s\n", name);
 }
 
-void game_object::add_renderer(r3d::mesh_renderer* renderer)
+void game_object::add_renderer(const std::shared_ptr<r3d::mesh_renderer>& renderer)
 {
     this->renderer = renderer;
 }
 
-void game_object::add_behaviour(r3d::behaviour* behaviour)
+void game_object::add_behaviour(const std::shared_ptr<r3d::behaviour>& behaviour)
 {
-    behaviours.push_back(behaviour);
+    behaviours.emplace_back(behaviour);
 }
 
 void game_object::update_behaviours()

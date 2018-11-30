@@ -9,7 +9,7 @@
 
 using namespace r3d;
 
-mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material, bool debug)
+mesh_renderer::mesh_renderer(const char* model_path, std::shared_ptr<r3d::material> material, bool debug)
 {
     this->material = material;
 
@@ -84,7 +84,7 @@ mesh_renderer::mesh_renderer(const char* model_path, r3d::material* material, bo
     printf("Add mesh_renderer: %s [vertices: %lu]\n", model_path, vertices.size());
 }
 
-void mesh_renderer::render(glm::mat4 model, r3d::camera* main_camera, std::vector<r3d::light*> lights)
+void mesh_renderer::render(glm::mat4 model, std::shared_ptr<r3d::camera> main_camera, std::vector<std::shared_ptr<r3d::light>> lights)
 {
     // use texture
     material->bind();

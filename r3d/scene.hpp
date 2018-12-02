@@ -27,9 +27,9 @@ namespace r3d
 
         void exit();
 
-        void add_object(const std::shared_ptr<r3d::game_object>&);
+        void add_object(std::shared_ptr<r3d::game_object>);
 
-        void add_light(const std::shared_ptr<r3d::light>&);
+        void add_light(std::shared_ptr<r3d::light>);
 
         const std::shared_ptr<r3d::camera>& get_camera() { return main_camera; }
 

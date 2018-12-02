@@ -64,14 +64,14 @@ scene::scene(int width, int height)
     should_update = true;
 }
 
-void scene::add_object(const shared_ptr<game_object>& ptr)
+void scene::add_object(shared_ptr<game_object> ptr)
 {
     game_objects.emplace_back(ptr);
 
     printf("Add object to scene: %s\n", ptr->name);
 }
 
-void scene::add_light(const shared_ptr<light>& ptr)
+void scene::add_light(shared_ptr<light> ptr)
 {
     lights.emplace_back(ptr);
 }

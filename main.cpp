@@ -19,7 +19,7 @@ const int WIDTH = 1024;
 const int HEIGHT = 768;
 const float CAMERA_MOVE_SPEED = 3.0f;
 const float CAMERA_ROTATE_SPEED = 0.05f;
-const float CRATE_ROTATE_SPEED = 0.5f;
+const float CRATE_ROTATE_SPEED = 30;
 
 double last_x, last_y;
 unique_ptr<scene> main_scene;
@@ -102,9 +102,12 @@ void move_camera(GLFWwindow* window)
 
 void rotate_crate()
 {
-    vec3 rotation = crate->get_rotation();
-    rotation.x -= CRATE_ROTATE_SPEED;
-    rotation.z -= CRATE_ROTATE_SPEED;
+    if(crate != nullptr)
+    {
+        vec3 rotation = crate->get_rotation();
+        rotation.x -= CRATE_ROTATE_SPEED * main_scene->get_delta_time();
+        rotation.z -= CRATE_ROTATE_SPEED * main_scene->get_delta_time();
 
-    crate->set_rotation(rotation);
+        crate->set_rotation(rotation);
+    }
 }

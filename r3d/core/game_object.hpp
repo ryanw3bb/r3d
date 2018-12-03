@@ -29,7 +29,10 @@ namespace r3d
 
         game_object(const char* name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale);
 
-        ~game_object(){}
+        ~game_object()
+        {
+            std::cout << "delete game_object\n" << std::endl;
+        }
 
         game_object(const game_object& other) {}
 

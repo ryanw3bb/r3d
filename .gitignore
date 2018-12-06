@@ -3,5 +3,7 @@ profile
 ._*
 
 .vscode/
+.idea/
 build/
 temp/
+cmake-build-debug/

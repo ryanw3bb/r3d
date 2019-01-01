@@ -9,12 +9,12 @@ using namespace std;
 using namespace glm;
 using namespace r3d;
 
-material::material(const char* tex_path, shared_ptr<r3d::shader> shader) : shader(shader)
+material::material(std::string tex_path, shared_ptr<r3d::shader> shader) : shader(shader)
 {
     diffuse_texture = load_texture(tex_path);
 }
 
-material::material(const char* tex_path, const char* normal_tex_path, std::shared_ptr<r3d::shader> shader) : shader(shader)
+material::material(std::string tex_path, std::string normal_tex_path, std::shared_ptr<r3d::shader> shader) : shader(shader)
 {
     diffuse_texture = load_texture(tex_path);
     normal_texture = load_texture(normal_tex_path);

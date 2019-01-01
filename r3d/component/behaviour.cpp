@@ -16,7 +16,7 @@ void behaviour::init()
 
 }
 
-void behaviour::update()
+void behaviour::update() const
 {
 
 }

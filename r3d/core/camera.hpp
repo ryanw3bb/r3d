@@ -13,9 +13,9 @@ namespace r3d
     class camera : public game_object
     {
     public:
-        camera();
+        camera(): game_object("camera") {}
 
-        camera(float ar) : aspect_ratio(ar) {};
+        camera(float ar): game_object("camera") { aspect_ratio = ar; }
 
         glm::mat4 get_projection();
 

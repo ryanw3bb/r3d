@@ -21,26 +21,41 @@ namespace r3d
         GLFWwindow* window;
         bool should_update;
 
-        scene(int width, int height);
+        scene() {}
+
+        void init(int width, int height);
+
+        void update_time();
 
         void update();
 
         void exit();
 
-        void add_object(std::shared_ptr<r3d::game_object>);
+        std::shared_ptr<game_object> create_object(std::string name,
+                glm::vec3 position = glm::vec3(0, 0, 0),
+                glm::vec3 euler_angles = glm::vec3(0, 0, 0),
+                glm::vec3 scale = glm::vec3(1, 1, 1));
 
-        void add_light(std::shared_ptr<r3d::light>);
+        std::shared_ptr<game_object> instantiate_object(std::string name,
+                std::shared_ptr<game_object> object,
+                glm::vec3 position = glm::vec3(0, 0, 0),
+                glm::vec3 euler_angles = glm::vec3(0, 0, 0),
+                glm::vec3 scale = glm::vec3(1, 1, 1));
 
-        const std::shared_ptr<r3d::camera>& get_camera() { return main_camera; }
+        void destroy_object(std::shared_ptr<game_object>& ptr);
 
-        const float get_delta_time() { return timer->delta_time; }
+        void add_light(glm::vec3 position, glm::vec3 color, float intensity);
+
+        r3d::camera& get_camera() { return main_camera; }
+
+        const float get_delta_time() { return timer.delta_time; }
 
     private:
         std::vector<std::shared_ptr<r3d::game_object>> game_objects;
-        std::vector<std::shared_ptr<r3d::light>> lights;
-        std::shared_ptr<r3d::camera> main_camera;
-        std::unique_ptr<r3d::time> timer;
-        std::unique_ptr<r3d::debug> debug_view;
+        std::vector<r3d::light> lights;
+        r3d::camera main_camera;
+        r3d::time timer;
+        r3d::debug debug_view;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

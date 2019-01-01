@@ -95,12 +95,12 @@ void shader::set_camera_uniforms(glm::mat4 model, glm::mat4 view, glm::mat4 proj
     glUniform3f(camera_world_pos, camera_pos.x, camera_pos.y, camera_pos.z);
 }
 
-void shader::set_light_uniforms(std::shared_ptr<r3d::light> light1)
+void shader::set_light_uniforms(std::vector<r3d::light>& lights)
 {
     if(uses_lighting)
     {
-        glUniform3f(light_world_pos, light1->position.x, light1->position.y, light1->position.z);
-        glUniform3f(light_color, light1->color.x, light1->color.y, light1->color.z);
-        glUniform1f(light_intensity, light1->intensity);
+        glUniform3f(light_world_pos, lights.front().position.x, lights.front().position.y, lights.front().position.z);
+        glUniform3f(light_color, lights.front().color.x, lights.front().color.y, lights.front().color.z);
+        glUniform1f(light_intensity, lights.front().intensity);
     }
 }

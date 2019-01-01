@@ -7,9 +7,11 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "../core/light.hpp"
 #include "../core/gl_includes.hpp"
 #include "../core/material.hpp"
+#include "../core/mesh.hpp"
 #include "component.hpp"
 
 namespace r3d
@@ -19,30 +21,33 @@ namespace r3d
     class mesh_renderer : public component
     {
     public:
-        mesh_renderer();
+        std::shared_ptr<r3d::mesh> mesh;
+        std::shared_ptr<r3d::material> material;
+        std::shared_ptr<r3d::shader> shader;
 
-        mesh_renderer(const char* model_path, std::shared_ptr<r3d::material> material, bool debug = false);
+        // default constructor & overloads
+        mesh_renderer() {}
 
-        void render(glm::mat4 model, std::shared_ptr<r3d::camera> main_camera, std::vector<std::shared_ptr<r3d::light>> lights);
+        mesh_renderer(std::string model_path,
+                shader::id shader_type,
+                std::string diffuse_map,
+                std::string normal_map = "",
+                bool debug = false);
 
-        void destroy();
+        // destructor
+        ~mesh_renderer()
+        {
+            printf("Delete mesh_renderer [address: %p]\n", this);
+        }
+
+        void render(glm::mat4 model, r3d::camera& main_camera, std::vector<r3d::light>& lights) const;
+
+        void destroy() const;
 
     private:
-        std::vector<unsigned short> indices;
-        std::vector<glm::vec3> vertices;
-        std::vector<glm::vec2> uvs;
-        std::vector<glm::vec3> normals;
-        std::vector<glm::vec3> tangents;
-        std::vector<glm::vec3> bitangents;
         GLuint vertex_array_object;
         GLuint vertex_buffer_object;
-        GLuint vertex_buffer;
-        GLuint uv_buffer;
-        GLuint normal_buffer;
         GLuint indices_buffer;
-        GLuint tangent_buffer;
-        GLuint bitangent_buffer;
-        std::shared_ptr<r3d::material> material;
     };
 }
 

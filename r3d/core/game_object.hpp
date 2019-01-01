@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include <glm/gtx/quaternion.hpp>
 #include "gl_includes.hpp"
 #include "constants.hpp"
@@ -18,35 +19,35 @@ namespace r3d
     class game_object
     {
     public:
-        const char* name;
         bool enabled;
-        std::vector<std::shared_ptr<r3d::behaviour>> behaviours;
+        std::string name = "new game_object";
+        std::vector<r3d::behaviour> behaviours;
         std::shared_ptr<r3d::mesh_renderer> renderer;
 
-        game_object();
+        // constructors
+        game_object() { init_print(); }
 
-        game_object(const char* name);
+        game_object(std::string name): enabled(true), name(name), scale(glm::vec3(1, 1, 1)) { init_print(); }
 
-        game_object(const char* name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale);
+        game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale);
 
+        // destructor
         ~game_object()
         {
-            std::cout << "delete game_object\n" << std::endl;
+            printf("Delete game_object: %s [address: %p]\n", name.c_str(), this);
         }
 
-        game_object(const game_object& other) {}
+        void add_renderer(std::string mesh_file_path, shader::id shader_type, std::string diffuse_map = "", std::string normal_map = "");
 
-        void add_renderer(const std::shared_ptr<r3d::mesh_renderer>&);
+        void add_behaviour(r3d::behaviour);
 
-        void add_behaviour(const std::shared_ptr<r3d::behaviour>&);
+        void update_behaviours() const;
 
-        void update_behaviours();
-
-        glm::mat4 get_transform();
+        glm::mat4 get_transform() const;
 
         void set_rotation(glm::vec3);
 
-        glm::vec3 get_rotation();
+        glm::vec3 get_rotation() const;
 
         void set_position(glm::vec3 p) { position = p; }
 
@@ -61,6 +62,11 @@ namespace r3d
         void set_scale(glm::vec3 s) { scale = s; }
 
         glm::vec3 get_scale() { return scale; }
+
+        void init_print()
+        {
+            printf("Init game_object: %s [address: %p]\n", name.c_str(), this);
+        }
 
     protected:
         glm::vec3 position;

@@ -5,52 +5,46 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 #include <algorithm>
+#include <memory>
 #include "game_object.hpp"
 #include "../component/mesh_renderer.hpp"
 #include "../component/behaviour.hpp"
 
 using namespace r3d;
 
-game_object::game_object(): enabled(true), scale(glm::vec3(1, 1, 1))
+game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale):
+    enabled { true },
+    name { name },
+    position { position },
+    euler_angles { euler_angles },
+    scale { scale }
 {
-
-}
-
-game_object::game_object(const char* name): enabled(true), name(name), scale(glm::vec3(1, 1, 1))
-{
-    printf("New game_object: %s\n", name);
-}
-
-game_object::game_object(const char* name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale): enabled(true),
-                                                                                                         name(name),
-                                                                                                         position(position),
-                                                                                                         euler_angles(euler_angles),
-                                                                                                         scale(scale)
-{
+    init_print();
     set_rotation(euler_angles);
-
-    printf("New game_object: %s\n", name);
 }
 
-void game_object::add_renderer(const std::shared_ptr<r3d::mesh_renderer>& renderer)
+
+void game_object::add_renderer(std::string mesh_file_path, shader::id shader_type, std::string diffuse_map, std::string normal_map)
 {
-    this->renderer = renderer;
+    renderer = std::make_shared<mesh_renderer>(mesh_file_path, shader_type, diffuse_map, normal_map);
+
+    printf("Add mesh_renderer: %p to %p\n", renderer.get(), this);
 }
 
-void game_object::add_behaviour(const std::shared_ptr<r3d::behaviour>& behaviour)
+void game_object::add_behaviour(r3d::behaviour behaviour)
 {
     behaviours.emplace_back(behaviour);
 }
 
-void game_object::update_behaviours()
+void game_object::update_behaviours() const
 {
     for(const auto& b : behaviours)
     {
-        b->update();
+        b.update();
     }
 }
 
-glm::mat4 game_object::get_transform()
+glm::mat4 game_object::get_transform() const
 {
     glm::mat4 translation_matrix = glm::translate(glm::mat4(1.0f), position);
 
@@ -78,7 +72,7 @@ void game_object::set_rotation(glm::vec3 euler_degrees)
     up = glm::cross(right, forward);
 }
 
-glm::vec3 game_object::get_rotation()
+glm::vec3 game_object::get_rotation() const
 {
     return glm::degrees(euler_angles);
 }

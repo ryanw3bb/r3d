@@ -29,6 +29,7 @@ add_executable(r3d
         r3d/core/constants.hpp r3d/core/constants.cpp
         r3d/core/camera.cpp r3d/core/camera.hpp
         r3d/core/time.cpp r3d/core/time.hpp
+        r3d/core/mesh.hpp
         r3d/utils/file.cpp r3d/utils/file.hpp
         r3d/utils/debug.cpp r3d/utils/debug.hpp
         r3d/utils/fps.cpp r3d/utils/fps.hpp

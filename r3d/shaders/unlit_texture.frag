@@ -10,5 +10,5 @@ uniform sampler2D diffuseSampler;
 
 void main()
 {
-    color = texture(sampler, fs_in.TexCoords).rgb;
+    color = texture(diffuseSampler, fs_in.TexCoords).rgb;
 }

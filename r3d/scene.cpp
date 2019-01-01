@@ -4,15 +4,15 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "scene.hpp"
 #include "component/mesh_renderer.hpp"
 #include "component/behaviour.hpp"
 #include "core/constants.hpp"
 
-using namespace std;
 using namespace r3d;
 
-scene::scene(int width, int height)
+void scene::init(int width, int height)
 {
     // Initialise GLFW
     if(!glfwInit())
@@ -47,7 +47,7 @@ scene::scene(int width, int height)
     }
 
     // grey background
-	glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
 
     // setting callbacks
     glfwSetKeyCallback(window, key_callback);
@@ -57,28 +57,52 @@ scene::scene(int width, int height)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    main_camera = make_shared<camera>((float)width / (float)height);
-
-    timer = make_unique<time>();
-
+    main_camera.set_aspect((float)width / (float)height);
     should_update = true;
 }
 
-void scene::add_object(shared_ptr<game_object> ptr)
+std::shared_ptr<game_object> scene::create_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale)
 {
-    game_objects.emplace_back(ptr);
+    auto ptr = std::make_shared<game_object>( name, position, euler_angles, scale );
 
-    printf("Add object to scene: %s\n", ptr->name);
+    game_objects.emplace_back(std::move(ptr));
+
+    return game_objects.back();
 }
 
-void scene::add_light(shared_ptr<light> ptr)
+std::shared_ptr<game_object> scene::instantiate_object(std::string name,
+        std::shared_ptr<game_object> object,
+        glm::vec3 position,
+        glm::vec3 euler_angles,
+        glm::vec3 scale)
 {
-    lights.emplace_back(ptr);
+    auto ptr = std::make_shared<game_object>( name, position, euler_angles, scale );
+    ptr->renderer = object->renderer;
+
+    game_objects.emplace_back(std::move(ptr));
+
+    return game_objects.back();
+}
+
+void scene::destroy_object(std::shared_ptr<game_object>& ptr)
+{
+    game_objects.erase(std::remove(game_objects.begin(), game_objects.end(), ptr), game_objects.end());
+    ptr.reset();
+}
+
+void scene::add_light(glm::vec3 position, glm::vec3 color, float intensity)
+{
+    lights.emplace_back(light { position, color, intensity });
+}
+
+void scene::update_time()
+{
+    timer.update();
 }
 
 void scene::update()
 {
-    timer->update();
+    update_time();
 
     // render scene loop
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -102,9 +126,9 @@ void scene::update()
     }
 
     // render debug if enabled
-    if(debug_view->get_enabled())
+    if(debug_view.get_enabled())
     {
-        debug_view->get_instance()->render(main_camera->get_view(), main_camera->get_projection());
+        debug_view.get_instance()->render(main_camera.get_view(), main_camera.get_projection());
     }
 
     glfwSwapBuffers(window);
@@ -122,10 +146,7 @@ void scene::exit()
 
     for(const auto& object : game_objects)
     {
-        if(object->renderer != nullptr)
-        {
-            object->renderer->destroy();
-        }
+        object->renderer->destroy();
     }
 
     glfwTerminate();

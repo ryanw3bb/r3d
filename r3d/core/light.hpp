@@ -18,7 +18,25 @@ namespace r3d
 
         light();
 
-        light(glm::vec3 position, glm::vec3 color, float intensity): position(position), color(color), intensity(intensity) {}
+        light(glm::vec3 position, glm::vec3 color, float intensity)
+            : position { position },
+            color { color },
+            intensity { intensity } { }
+
+        // destructor
+        ~light() { }
+
+        // copy constructor
+        light(const light& source)
+            : position { source.position },
+            color { source.color },
+            intensity { source.intensity } { }
+
+        // move constructor
+        light(light&& source)
+            : position { source.position },
+            color { source.color },
+            intensity { source.intensity } { }
     };
 }
 

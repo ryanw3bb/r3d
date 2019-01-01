@@ -19,8 +19,8 @@ namespace r3d
         std::shared_ptr<r3d::shader> shader;
 
         material(std::shared_ptr<r3d::shader> shader) : shader(shader) {}
-        material(const char* tex_path, std::shared_ptr<r3d::shader> shader);
-        material(const char* tex_path, const char* normal_tex_path, std::shared_ptr<r3d::shader> shader);
+        material(std::string tex_path, std::shared_ptr<r3d::shader> shader);
+        material(std::string tex_path, std::string normal_tex_path, std::shared_ptr<r3d::shader> shader);
 
         void bind();
     };

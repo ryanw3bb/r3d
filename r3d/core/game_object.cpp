@@ -13,16 +13,15 @@
 using namespace r3d;
 
 game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale):
-    enabled { true },
-    name { name },
-    position { position },
-    euler_angles { euler_angles },
-    scale { scale }
+        enabled { true },
+        name { name },
+        position { position },
+        euler_angles { euler_angles },
+        scale { scale }
 {
     init_print();
     set_rotation(euler_angles);
 }
-
 
 void game_object::add_renderer(std::string mesh_file_path, shader::id shader_type, std::string diffuse_map, std::string normal_map)
 {
@@ -57,9 +56,17 @@ glm::mat4 game_object::get_transform() const
 
 void game_object::set_rotation(glm::vec3 euler_degrees)
 {
-    this->euler_angles = glm::radians(euler_degrees);
-    this->rotation = glm::quat(euler_angles);
+    euler_angles = glm::radians(euler_degrees);
+    rotation = glm::quat(euler_angles);
+}
 
+glm::vec3 game_object::get_rotation() const
+{
+    return glm::degrees(euler_angles);
+}
+
+void game_object::update_directions()
+{
     // direction : spherical coordinates to cartesian coordinates conversion
     forward = glm::vec3(cos(euler_angles.x) * sin(euler_angles.y),
                         sin(euler_angles.x),
@@ -70,9 +77,4 @@ void game_object::set_rotation(glm::vec3 euler_degrees)
                       cos(euler_angles.y - constants::PI / 2.0f));
 
     up = glm::cross(right, forward);
-}
-
-glm::vec3 game_object::get_rotation() const
-{
-    return glm::degrees(euler_angles);
 }

@@ -99,19 +99,19 @@ void move_camera(GLFWwindow* window)
 
     if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        position += main_scene.get_camera().get_forward() * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
+        position += main_scene.get_camera().forward * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        position -= main_scene.get_camera().get_forward() * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
+        position -= main_scene.get_camera().forward * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        position += main_scene.get_camera().get_right() * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
+        position += main_scene.get_camera().right * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
     }
     if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        position -= main_scene.get_camera().get_right() * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
+        position -= main_scene.get_camera().right * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
     }
 
     main_scene.get_camera().set_position(position);

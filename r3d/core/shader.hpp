@@ -30,9 +30,9 @@ namespace r3d
 
         shader(id);
 
-        shader(const char*, const char*);
+        shader(std::string, std::string);
 
-        void set_camera_uniforms(glm::mat4, glm::mat4, glm::mat4, glm::vec3);
+        void set_camera_uniforms(glm::mat4&, glm::mat4&, glm::mat4&, glm::vec3&);
 
         void set_light_uniforms(std::vector<r3d::light>&);
 
@@ -69,7 +69,7 @@ namespace r3d
         GLuint light_intensity;
         GLuint camera_world_pos;
 
-        void init(const char*, const char*);
+        void init(std::string, std::string);
     };
 }
 

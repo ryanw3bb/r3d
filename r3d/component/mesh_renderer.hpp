@@ -40,9 +40,13 @@ namespace r3d
             printf("Delete mesh_renderer [address: %p]\n", this);
         }
 
-        void render(glm::mat4 model, r3d::camera& main_camera, std::vector<r3d::light>& lights) const;
+        void render(glm::mat4 model,
+                r3d::camera& main_camera,
+                std::vector<r3d::light>& lights,
+                bool bind_vao = true,
+                bool bind_textures = true);
 
-        void destroy() const;
+        void destroy();
 
     private:
         GLuint vertex_array_object;

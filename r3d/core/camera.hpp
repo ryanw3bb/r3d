@@ -13,17 +13,22 @@ namespace r3d
     class camera : public game_object
     {
     public:
-        camera(): game_object("camera") {}
+        glm::mat4 view;
+        glm::mat4 projection;
+
+        camera(): game_object("camera") { }
 
         camera(float ar): game_object("camera") { aspect_ratio = ar; }
-
-        glm::mat4 get_projection();
-
-        glm::mat4 get_view();
 
         void set_fov(float f) { fov = glm::radians(f); }
 
         void set_aspect(float a) { aspect_ratio = a; }
+
+        void set_rotation(glm::vec3);
+
+        void set_position(glm::vec3);
+
+        void update_matrices();
 
     private:
         float fov = 0.8f;

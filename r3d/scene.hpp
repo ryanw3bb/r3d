@@ -53,6 +53,7 @@ namespace r3d
     private:
         std::vector<std::shared_ptr<r3d::game_object>> game_objects;
         std::vector<r3d::light> lights;
+        std::shared_ptr<game_object> last_render_object;
         r3d::camera main_camera;
         r3d::time timer;
         r3d::debug debug_view;

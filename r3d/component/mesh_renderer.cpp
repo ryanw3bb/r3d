@@ -91,36 +91,42 @@ mesh_renderer::mesh_renderer(std::string model_path,
             glm::vec3 n = p + glm::normalize(mesh->normals[i]) * 0.1f;
 
             debug_view->get_instance()->add_line(p, n, glm::vec3(1, 0, 0));
-
-            //printf("%s | %s\n", glm::to_string(p).c_str(), glm::to_string(n).c_str());
         }
     }
 
     printf("Add mesh_renderer: %s [vertices: %lu]\n", model_path.c_str(), mesh->vertices.size());
 }
 
-void mesh_renderer::render(glm::mat4 model, r3d::camera& main_camera, std::vector<r3d::light>& lights) const
+void mesh_renderer::render(glm::mat4 model,
+        r3d::camera& main_camera,
+        std::vector<r3d::light>& lights,
+        bool bind_vao,
+        bool bind_textures)
 {
-    // use texture
-    material->bind();
+    if(bind_textures)
+    {
+        material->bind();
+    }
 
     // set camera uniforms
-    material->shader->set_camera_uniforms(model, main_camera.get_view(), main_camera.get_projection(), main_camera.get_position());
+    material->shader->set_camera_uniforms(model, main_camera.view, main_camera.projection, main_camera.position);
 
     // set light uniforms
     material->shader->set_light_uniforms(lights);
 
-    // vao
-    glBindVertexArray(vertex_array_object);
+    if(bind_vao)
+    {
+        glBindVertexArray(vertex_array_object);
+    }
 
     // draw our object
     glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_SHORT, (void*)0);
 }
 
-void mesh_renderer::destroy() const
+void mesh_renderer::destroy()
 {
     glDeleteTextures(1, &material->diffuse_texture);
     glDeleteTextures(1, &material->normal_texture);
     glDeleteVertexArrays(1, &vertex_array_object);
     glDeleteProgram(material->shader->get_program());
-};
+}

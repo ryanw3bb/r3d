@@ -108,7 +108,7 @@ void scene::update()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // update scripts
-    for(const auto& object : game_objects)
+    for(auto& object : game_objects)
     {
         if(object->enabled)
         {
@@ -116,19 +116,26 @@ void scene::update()
         }
     }
 
+    bool bind_vao, bind_textures;
+
     // render objects
-    for(const auto& object : game_objects)
+    for(auto& object : game_objects)
     {
         if(!object->enabled || object->renderer == nullptr) { continue; }
 
+        bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
+        bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
+
         // bind buffers and draw elements
-        object->renderer->render(object->get_transform(), main_camera, lights);
+        object->renderer->render(object->get_transform(), main_camera, lights, bind_vao, bind_textures);
+
+        last_render_object = object;
     }
 
     // render debug if enabled
     if(debug_view.get_enabled())
     {
-        debug_view.get_instance()->render(main_camera.get_view(), main_camera.get_projection());
+        debug_view.get_instance()->render(main_camera.view, main_camera.projection);
     }
 
     glfwSwapBuffers(window);
@@ -144,7 +151,7 @@ void scene::exit()
 {
     printf("Exit\n");
 
-    for(const auto& object : game_objects)
+    for(auto& object : game_objects)
     {
         object->renderer->destroy();
     }

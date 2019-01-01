@@ -38,12 +38,12 @@ shader::shader(id shader_id)
     }
 }
 
-shader::shader(const char* vert, const char* frag)
+shader::shader(std::string vert, std::string frag)
 {
     init(vert, frag);
 }
 
-void shader::init(const char* vert, const char* frag)
+void shader::init(std::string vert, std::string frag)
 {
     program = load_shader(vert, frag);
 
@@ -84,7 +84,7 @@ void shader::init(const char* vert, const char* frag)
     glUseProgram(program);
 }
 
-void shader::set_camera_uniforms(glm::mat4 model, glm::mat4 view, glm::mat4 projection, glm::vec3 camera_pos)
+void shader::set_camera_uniforms(glm::mat4& model, glm::mat4& view, glm::mat4& projection, glm::vec3& camera_pos)
 {
     glm::mat4 mvp = projection * view * model;
 

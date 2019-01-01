@@ -21,6 +21,12 @@ namespace r3d
     public:
         bool enabled;
         std::string name = "new game_object";
+        glm::vec3 position;
+        glm::vec3 euler_angles;
+        glm::vec3 scale;
+        glm::vec3 forward;
+        glm::vec3 right;
+        glm::vec3 up;
         std::vector<r3d::behaviour> behaviours;
         std::shared_ptr<r3d::mesh_renderer> renderer;
 
@@ -45,23 +51,19 @@ namespace r3d
 
         glm::mat4 get_transform() const;
 
-        void set_rotation(glm::vec3);
+        virtual void set_rotation(glm::vec3);
 
         glm::vec3 get_rotation() const;
 
-        void set_position(glm::vec3 p) { position = p; }
+        virtual void set_position(glm::vec3 p) { position = p; }
 
         glm::vec3 get_position() { return position; }
-
-        glm::vec3 get_forward() { return forward; }
-
-        glm::vec3 get_up() { return up; }
-
-        glm::vec3 get_right() { return right; }
 
         void set_scale(glm::vec3 s) { scale = s; }
 
         glm::vec3 get_scale() { return scale; }
+
+        void update_directions();
 
         void init_print()
         {
@@ -69,13 +71,7 @@ namespace r3d
         }
 
     protected:
-        glm::vec3 position;
-        glm::vec3 euler_angles;
         glm::quat rotation;
-        glm::vec3 forward;
-        glm::vec3 right;
-        glm::vec3 up;
-        glm::vec3 scale;
     };
 }
 

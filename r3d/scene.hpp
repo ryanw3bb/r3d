@@ -11,7 +11,9 @@
 #include "core/light.hpp"
 #include "core/camera.hpp"
 #include "core/time.hpp"
+#include "ui/canvas.hpp"
 #include "utils/debug.hpp"
+#include "utils/stats.hpp"
 
 namespace r3d
 {
@@ -50,6 +52,8 @@ namespace r3d
 
         const float get_delta_time() { return timer.delta_time; }
 
+        r3d::canvas& get_canvas() { return canvas; }
+
     private:
         std::vector<std::shared_ptr<r3d::game_object>> game_objects;
         std::vector<r3d::light> lights;
@@ -57,6 +61,7 @@ namespace r3d
         r3d::camera main_camera;
         r3d::time timer;
         r3d::debug debug_view;
+        r3d::canvas canvas;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

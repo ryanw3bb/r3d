@@ -20,7 +20,7 @@ const int HEIGHT = 768;
 const float CAMERA_MOVE_SPEED = 3.0f;
 const float CAMERA_ROTATE_SPEED = 0.05f;
 const float CRATE_ROTATE_SPEED = 30;
-const int NUM_ROWS = 10;
+const int NUM_ROWS = 5;
 
 double last_x, last_y;
 r3d::scene main_scene;

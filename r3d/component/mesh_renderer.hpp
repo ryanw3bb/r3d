@@ -12,13 +12,12 @@
 #include "../core/gl_includes.hpp"
 #include "../core/material.hpp"
 #include "../core/mesh.hpp"
-#include "component.hpp"
 
 namespace r3d
 {
     class camera;
 
-    class mesh_renderer : public component
+    class mesh_renderer
     {
     public:
         std::shared_ptr<r3d::mesh> mesh;
@@ -43,6 +42,7 @@ namespace r3d
         void render(glm::mat4 model,
                 r3d::camera& main_camera,
                 std::vector<r3d::light>& lights,
+                bool change_shader = true,
                 bool bind_vao = true,
                 bool bind_textures = true);
 

@@ -10,7 +10,7 @@ in VS_OUT {
     vec3 TangentFragPos;
 } fs_in;
 
-uniform sampler2D diffuseSampler;
+uniform sampler2D albedoSampler;
 uniform sampler2D normalSampler;
 
 uniform vec3 lightPos;
@@ -25,7 +25,7 @@ void main()
     normal = normalize(normal * 2.0 - 1.0);  // this normal is in tangent space
    
     // get diffuse color
-    vec3 color = texture(diffuseSampler, fs_in.TexCoords).rgb;
+    vec3 color = texture(albedoSampler, fs_in.TexCoords).rgb;
 
     // ambient
     vec3 ambient = 0.1 * color;

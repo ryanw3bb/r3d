@@ -57,7 +57,18 @@ void scene::init(int width, int height)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
+    // enable blending (needed for text)
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Disable byte-alignment restriction (needed for text)
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
     main_camera.set_aspect((float)width / (float)height);
+
+    canvas.init(width, height);
+    canvas.enable_stats(true);
+
     should_update = true;
 }
 
@@ -116,27 +127,33 @@ void scene::update()
         }
     }
 
-    bool bind_vao, bind_textures;
+    bool change_shader, bind_vao, bind_textures;
 
     // render objects
     for(auto& object : game_objects)
     {
         if(!object->enabled || object->renderer == nullptr) { continue; }
 
+        change_shader = (last_render_object == nullptr) || (object->renderer->shader != last_render_object->renderer->shader);
         bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
         bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
 
         // bind buffers and draw elements
-        object->renderer->render(object->get_transform(), main_camera, lights, bind_vao, bind_textures);
+        object->renderer->render(object->get_transform(), main_camera, lights, change_shader, bind_vao, bind_textures);
 
         last_render_object = object;
     }
+
+    last_render_object.reset();
 
     // render debug if enabled
     if(debug_view.get_enabled())
     {
         debug_view.get_instance()->render(main_camera.view, main_camera.projection);
     }
+
+    // render ui
+    canvas.render();
 
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -153,7 +170,10 @@ void scene::exit()
 
     for(auto& object : game_objects)
     {
-        object->renderer->destroy();
+        if(object->renderer != nullptr)
+        {
+            object->renderer->destroy();
+        }
     }
 
     glfwTerminate();

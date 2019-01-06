@@ -22,8 +22,6 @@ material::material(std::string tex_path, std::string normal_tex_path, std::share
 
 void material::bind()
 {
-    glUseProgram(shader->get_program());
-
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, diffuse_texture);
     glUniform1i(shader->get_texture_sampler(), 0);

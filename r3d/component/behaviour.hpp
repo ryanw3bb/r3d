@@ -5,11 +5,9 @@
 #ifndef R3D_BEHAVIOUR_HPP
 #define R3D_BEHAVIOUR_HPP
 
-#include "component.hpp"
-
 namespace r3d
 {
-    class behaviour : public component
+    class behaviour
     {
     public:
         behaviour();

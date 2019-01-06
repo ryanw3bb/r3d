@@ -100,13 +100,13 @@ mesh_renderer::mesh_renderer(std::string model_path,
 void mesh_renderer::render(glm::mat4 model,
         r3d::camera& main_camera,
         std::vector<r3d::light>& lights,
+        bool change_shader,
         bool bind_vao,
         bool bind_textures)
 {
-    if(bind_textures)
-    {
-        material->bind();
-    }
+    if(change_shader) { shader->use(); }
+
+    if(bind_textures) { material->bind(); }
 
     // set camera uniforms
     material->shader->set_camera_uniforms(model, main_camera.view, main_camera.projection, main_camera.position);
@@ -114,10 +114,7 @@ void mesh_renderer::render(glm::mat4 model,
     // set light uniforms
     material->shader->set_light_uniforms(lights);
 
-    if(bind_vao)
-    {
-        glBindVertexArray(vertex_array_object);
-    }
+    if(bind_vao) { glBindVertexArray(vertex_array_object); }
 
     // draw our object
     glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_SHORT, (void*)0);

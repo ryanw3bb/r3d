@@ -6,9 +6,9 @@ in VS_OUT {
     vec2 TexCoords;
 } fs_in;
 
-uniform sampler2D diffuseSampler;
+uniform sampler2D albedoSampler;
 
 void main()
 {
-    color = texture(diffuseSampler, fs_in.TexCoords).rgb;
+    color = texture(albedoSampler, fs_in.TexCoords).rgb;
 }

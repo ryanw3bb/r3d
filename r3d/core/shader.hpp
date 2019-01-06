@@ -25,16 +25,21 @@ namespace r3d
             DIFFUSE_TEXTURE, 
             DIFFUSE_TEXTURE_BUMP, 
             DIFFUSE_COLOR, 
-            VERTEX_COLOR
+            VERTEX_COLOR,
+            UI
         };
 
         shader(id);
 
-        shader(std::string, std::string);
+        void bind_uniforms();
+
+        void set_camera_uniforms(glm::mat4&);
 
         void set_camera_uniforms(glm::mat4&, glm::mat4&, glm::mat4&, glm::vec3&);
 
         void set_light_uniforms(std::vector<r3d::light>&);
+
+        void use();
 
         GLuint get_program() { return program; }
 
@@ -52,7 +57,7 @@ namespace r3d
 
         GLuint get_bitangent_identifier() { return bitangent_identifier; }
 
-    private:
+    protected:
         GLuint program;
         GLuint texture_sampler;
         GLuint normal_sampler;
@@ -62,14 +67,16 @@ namespace r3d
         GLuint tangent_identifier;
         GLuint bitangent_identifier;
         GLuint mvp_matrix;
+        GLuint projection_matrix;
         GLuint view_matrix;
         GLuint model_matrix;
+        GLuint tint;
         GLuint light_world_pos;
         GLuint light_color;
         GLuint light_intensity;
         GLuint camera_world_pos;
 
-        void init(std::string, std::string);
+        void load(std::string vert, std::string frag);
     };
 }
 

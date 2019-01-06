@@ -4,4 +4,4 @@
 A lightweight C++/OpenGL game engine, work in progress.
 
 ## dependencies
-glew, glfw, assimp, stb_image
+glew, glfw, assimp, stb_image, freetype

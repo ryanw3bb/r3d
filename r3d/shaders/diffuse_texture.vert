@@ -11,7 +11,7 @@ out VS_OUT {
 
 uniform mat4 model;
 uniform mat4 view;
-uniform mat4 mvp;
+uniform mat4 projection;
 
 void main()
 {
@@ -19,5 +19,5 @@ void main()
     vs_out.Normal = mat3(transpose(inverse(model))) * normal;  
     vs_out.TexCoords = texCoords;
     
-    gl_Position = mvp * vec4(position, 1.0);
+    gl_Position = projection * view * model * vec4(position, 1.0);
 }

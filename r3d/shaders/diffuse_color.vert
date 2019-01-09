@@ -9,12 +9,12 @@ out VS_OUT {
 
 uniform mat4 model;
 uniform mat4 view;
-uniform mat4 mvp;
+uniform mat4 projection;
 
 void main()
 {
     vs_out.FragPos = vec3(model * vec4(position, 1.0));
     vs_out.Normal = mat3(transpose(inverse(model))) * normal;
     
-    gl_Position = mvp * vec4(position, 1.0);
+    gl_Position =  projection * view * model * vec4(position, 1.0);
 }

@@ -69,7 +69,7 @@ void canvas::render()
     glClear(GL_DEPTH_BUFFER_BIT);
 
     shader->use();
-    shader->set_camera_uniforms(projection);
+    shader->set_scene_uniforms(projection);
 
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(vertex_array_object);

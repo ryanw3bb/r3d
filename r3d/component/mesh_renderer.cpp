@@ -27,7 +27,6 @@ mesh_renderer::mesh_renderer(std::string model_path,
             mesh->uvs,
             mesh->normals,
             mesh->tangents,
-            mesh->bitangents,
             true,
             material->shader->uses_normal_map);
 
@@ -35,10 +34,9 @@ mesh_renderer::mesh_renderer(std::string model_path,
     size_t n_size = mesh->normals.size() * sizeof(glm::vec3);
     size_t uv_size = mesh->uvs.size() * sizeof(glm::vec2);
     size_t t_size = mesh->tangents.size() * sizeof(glm::vec3);
-    size_t b_size = mesh->bitangents.size() * sizeof(glm::vec3);
     //size_t vertices_col_size = vertices_color.size() * sizeof(glm::vec4);
 
-    size_t total = v_size + n_size + uv_size + t_size + b_size;
+    size_t total = v_size + n_size + uv_size + t_size;
 
     // create and bind vertex array object
     // saves info about which vbo is connected to each attribute in shader
@@ -54,7 +52,6 @@ mesh_renderer::mesh_renderer(std::string model_path,
     glBufferSubData(GL_ARRAY_BUFFER, v_size, n_size, &mesh->normals[0]);
     glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size), uv_size, &mesh->uvs[0]);
     glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + uv_size), t_size, &mesh->tangents[0]);
-    glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + uv_size + t_size), b_size, &mesh->bitangents[0]);
     //glBufferSubData(GL_ARRAY_BUFFER, (vtx + nrm + txc + tng + btng), vtx_col, &verticesColor[0]); 
 
     // create element buffer object to hold our indices
@@ -76,9 +73,7 @@ mesh_renderer::mesh_renderer(std::string model_path,
     if(material->shader->uses_normal_map)
     {
         glVertexAttribPointer(material->shader->get_tangent_identifier(), 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*) (v_size + n_size + uv_size));
-        glVertexAttribPointer(material->shader->get_bitangent_identifier(), 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid*) (v_size + n_size + uv_size + t_size));
         glEnableVertexAttribArray(material->shader->get_tangent_identifier());
-        glEnableVertexAttribArray(material->shader->get_bitangent_identifier());
     }
 
     if(debug)
@@ -104,15 +99,16 @@ void mesh_renderer::render(glm::mat4 model,
         bool bind_vao,
         bool bind_textures)
 {
-    if(change_shader) { shader->use(); }
+    if(change_shader)
+    {
+        shader->use();
+        material->shader->set_scene_uniforms(main_camera, lights);
+    }
 
     if(bind_textures) { material->bind(); }
 
     // set camera uniforms
-    material->shader->set_camera_uniforms(model, main_camera.view, main_camera.projection, main_camera.position);
-
-    // set light uniforms
-    material->shader->set_light_uniforms(lights);
+    material->shader->set_model_uniforms(model);
 
     if(bind_vao) { glBindVertexArray(vertex_array_object); }
 

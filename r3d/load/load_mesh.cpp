@@ -14,7 +14,6 @@ bool r3d::load_mesh(std::string path,
                     std::vector<glm::vec2> &uvs,
                     std::vector<glm::vec3> &normals,
                     std::vector<glm::vec3> &tangents,
-                    std::vector<glm::vec3> &bitangents,
                     bool flip_uvs,
                     bool calculate_tangents)
 {
@@ -109,13 +108,6 @@ bool r3d::load_mesh(std::string path,
         {
             aiVector3D t = mesh->mTangents[i];
             tangents.push_back(glm::vec3(t.x, t.y, t.z));
-        }
-
-        bitangents.reserve(mesh->mNumVertices);
-        for(int i = 0; i < mesh->mNumVertices; i++)
-        {
-            aiVector3D b = mesh->mBitangents[i];
-            bitangents.push_back(glm::vec3(b.x, b.y, b.z));
         }
     }
 

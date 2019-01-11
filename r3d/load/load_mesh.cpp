@@ -6,7 +6,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include "load_mesh.hpp"
-#include "../utils/file.hpp"
+#include "../util/file.hpp"
 
 bool r3d::load_mesh(std::string path,
                     std::vector<unsigned short> &indices,

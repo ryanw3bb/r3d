@@ -4,10 +4,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "load_texture.hpp"
-#include "../utils/file.hpp"
+#include "../util/file.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../libs/stb_image.h"
+#include "../lib/stb_image.h"
 
 GLuint r3d::load_texture(std::string image_path)
 {

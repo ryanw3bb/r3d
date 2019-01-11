@@ -12,8 +12,8 @@
 #include "core/camera.hpp"
 #include "core/time.hpp"
 #include "ui/canvas.hpp"
-#include "utils/debug.hpp"
-#include "utils/stats.hpp"
+#include "util/debug.hpp"
+#include "util/stats.hpp"
 
 namespace r3d
 {
@@ -21,6 +21,7 @@ namespace r3d
     {
     public:
         GLFWwindow* window;
+
         bool should_update;
 
         scene() {}
@@ -47,6 +48,8 @@ namespace r3d
         void destroy_object(std::shared_ptr<game_object>& ptr);
 
         void add_light(glm::vec3 position, glm::vec3 color, float intensity);
+
+        void add_skybox();
 
         r3d::camera& get_camera() { return main_camera; }
 

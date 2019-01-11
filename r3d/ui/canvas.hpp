@@ -8,7 +8,7 @@
 #include <memory>
 #include "../core/gl_includes.hpp"
 #include "../core/shader.hpp"
-#include "../utils/stats.hpp"
+#include "../util/stats.hpp"
 #include "canvas_object.hpp"
 #include "font.hpp"
 #include "text.hpp"

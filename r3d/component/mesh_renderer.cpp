@@ -5,7 +5,7 @@
 #include <memory>
 #include "mesh_renderer.hpp"
 #include "../load/load_mesh.hpp"
-#include "../utils/debug.hpp"
+#include "../util/debug.hpp"
 #include "../core/camera.hpp"
 
 using namespace r3d;

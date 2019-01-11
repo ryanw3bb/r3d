@@ -14,23 +14,23 @@ shader::shader(id shader_id)
     switch(shader_id)
     {
         case id::UNLIT_TEXTURE:
-            load("r3d/shaders/unlit_texture.vert", "r3d/shaders/unlit_texture.frag");
+            load("resources/shaders/unlit_texture.vert", "resources/shaders/unlit_texture.frag");
             break;
 
         case id::DIFFUSE_COLOR:
             uses_lighting = true;
-            load("r3d/shaders/diffuse_color.vert", "r3d/shaders/diffuse_color.frag");
+            load("resources/shaders/diffuse_color.vert", "resources/shaders/diffuse_color.frag");
             break;
 
         case id::DIFFUSE_TEXTURE:
             uses_lighting = true;
-            load("r3d/shaders/diffuse_texture.vert", "r3d/shaders/diffuse_texture.frag");
+            load("resources/shaders/diffuse_texture.vert", "resources/shaders/diffuse_texture.frag");
             break;
 
         case id::DIFFUSE_TEXTURE_BUMP:
             uses_lighting = true;
             uses_normal_map = true;
-            load("r3d/shaders/diffuse_texture_bump.vert", "r3d/shaders/diffuse_texture_bump.frag");
+            load("resources/shaders/diffuse_texture_bump.vert", "resources/shaders/diffuse_texture_bump.frag");
             break;
 
         case id::VERTEX_COLOR:
@@ -38,7 +38,7 @@ shader::shader(id shader_id)
             break;
 
         case id::UI:
-            load("r3d/shaders/ui_text.vert", "r3d/shaders/ui_text.frag");
+            load("resources/shaders/ui_text.vert", "resources/shaders/ui_text.frag");
             break;
     }
 

@@ -9,7 +9,7 @@ using namespace r3d;
 void canvas::init(int width, int height)
 {
     shader = std::make_shared<r3d::shader>(shader::id::UI);
-    font = std::make_shared<r3d::font>("assets/fonts/LiberationSans.ttf", 12);
+    font = std::make_shared<r3d::font>("resources/fonts/LiberationSans.ttf", 12);
     projection = glm::ortho(0.0f, static_cast<GLfloat>(width), 0.0f, static_cast<GLfloat>(height));
 
     // create and bind vertex array object

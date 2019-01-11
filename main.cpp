@@ -34,7 +34,10 @@ int main()
     main_scene.add_light(glm::vec3(0, 8, 1), glm::vec3(0.9, 0.9, 0.9), 45.0f);
 
     auto crate { main_scene.create_object("crate", glm::vec3(0, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(1, 1, 1)) };
-    crate->add_renderer("assets/crate.obj", shader::id::DIFFUSE_TEXTURE_BUMP, "assets/crate_diffuse.jpg", "assets/crate_normal.jpg");
+    crate->add_renderer("resources/models/crate.obj",
+            shader::id::DIFFUSE_TEXTURE_BUMP,
+            "resources/textures/crate_diffuse.jpg",
+            "resources/textures/crate_normal.jpg");
 
     for(int x = 0; x < NUM_ROWS; x++)
     {

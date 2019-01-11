@@ -16,11 +16,11 @@ add_executable(r3d
         r3d/load/load_shader.cpp r3d/load/load_shader.hpp
         r3d/load/load_texture.cpp r3d/load/load_texture.hpp
         r3d/load/load_mesh.cpp r3d/load/load_mesh.hpp
-        r3d/shaders/diffuse_color.frag r3d/shaders/diffuse_color.vert
-        r3d/shaders/diffuse_texture.frag r3d/shaders/diffuse_texture.vert
-        r3d/shaders/diffuse_texture_bump.frag r3d/shaders/diffuse_texture_bump.vert
-        r3d/shaders/unlit_texture.frag r3d/shaders/unlit_texture.vert
-        r3d/shaders/unlit_color.frag r3d/shaders/unlit_color.vert
+        resources/shaders/diffuse_color.frag resources/shaders/diffuse_color.vert
+        resources/shaders/diffuse_texture.frag resources/shaders/diffuse_texture.vert
+        resources/shaders/diffuse_texture_bump.frag resources/shaders/diffuse_texture_bump.vert
+        resources/shaders/unlit_texture.frag resources/shaders/unlit_texture.vert
+        resources/shaders/unlit_color.frag resources/shaders/unlit_color.vert
         r3d/core/gl_includes.hpp
         r3d/core/material.cpp r3d/core/material.hpp
         r3d/core/shader.cpp r3d/core/shader.hpp
@@ -30,16 +30,16 @@ add_executable(r3d
         r3d/core/camera.cpp r3d/core/camera.hpp
         r3d/core/time.cpp r3d/core/time.hpp
         r3d/core/mesh.hpp
-        r3d/utils/file.cpp r3d/utils/file.hpp
-        r3d/utils/debug.cpp r3d/utils/debug.hpp
-        r3d/utils/stats.cpp r3d/utils/stats.hpp
-        r3d/libs/stb_image.h
+        r3d/util/file.cpp r3d/util/file.hpp
+        r3d/util/debug.cpp r3d/util/debug.hpp
+        r3d/util/stats.cpp r3d/util/stats.hpp
+        r3d/lib/stb_image.h
         r3d/ui/canvas_object.hpp
         r3d/ui/text.cpp r3d/ui/text.hpp
         r3d/ui/canvas.cpp r3d/ui/canvas.hpp
-        r3d/ui/font.cpp r3d/ui/font.hpp)
+        r3d/ui/font.cpp r3d/ui/font.hpp r3d/primitive/skybox.cpp r3d/primitive/skybox.hpp)
 
-target_link_libraries(${PROJECT_NAME} glew glfw assimp freetype ${OPENGL_gl_LIBRARY})
+target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew glfw assimp freetype)
 
 set_target_properties(
     r3d 
@@ -49,10 +49,5 @@ set_target_properties(
 
 add_custom_command(TARGET r3d POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/r3d/shaders
-        $<TARGET_FILE_DIR:r3d>/r3d/shaders)
-
-add_custom_command(TARGET r3d POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/assets
-        $<TARGET_FILE_DIR:r3d>/assets)
+        ${CMAKE_SOURCE_DIR}/resources
+        $<TARGET_FILE_DIR:r3d>/resources)

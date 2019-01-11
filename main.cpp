@@ -38,7 +38,7 @@ int main()
                                                      "resources/textures/skybox/bottom.jpg",
                                                      "resources/textures/skybox/front.jpg",
                                                      "resources/textures/skybox/back.jpg" });
-    
+
     auto crate { main_scene.create_object("crate", glm::vec3(0, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(1, 1, 1)) };
     crate->add_renderer("resources/models/crate.obj",
             shader::id::DIFFUSE_TEXTURE_BUMP,

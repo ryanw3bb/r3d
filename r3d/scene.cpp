@@ -106,6 +106,11 @@ void scene::add_light(glm::vec3 position, glm::vec3 color, float intensity)
     lights.emplace_back(light { position, color, intensity });
 }
 
+void scene::add_skybox(std::vector<std::string> faces)
+{
+    skybox.init(faces, main_camera);
+}
+
 void scene::update_time()
 {
     timer.update();
@@ -129,7 +134,7 @@ void scene::update()
 
     bool change_shader, bind_vao, bind_textures;
 
-    // render objects
+    // render scene objects
     for(auto& object : game_objects)
     {
         if(!object->enabled || object->renderer == nullptr) { continue; }
@@ -150,6 +155,12 @@ void scene::update()
     if(debug_view.get_enabled())
     {
         debug_view.get_instance()->render(main_camera.view, main_camera.projection);
+    }
+
+    // render skybox if enabled
+    if(skybox.enabled)
+    {
+        skybox.render(main_camera);
     }
 
     // render ui

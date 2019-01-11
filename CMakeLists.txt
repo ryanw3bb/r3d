@@ -21,6 +21,7 @@ add_executable(r3d
         resources/shaders/diffuse_texture_bump.frag resources/shaders/diffuse_texture_bump.vert
         resources/shaders/unlit_texture.frag resources/shaders/unlit_texture.vert
         resources/shaders/unlit_color.frag resources/shaders/unlit_color.vert
+        resources/shaders/unlit_skybox.frag resources/shaders/unlit_skybox.vert
         r3d/core/gl_includes.hpp
         r3d/core/material.cpp r3d/core/material.hpp
         r3d/core/shader.cpp r3d/core/shader.hpp
@@ -37,7 +38,8 @@ add_executable(r3d
         r3d/ui/canvas_object.hpp
         r3d/ui/text.cpp r3d/ui/text.hpp
         r3d/ui/canvas.cpp r3d/ui/canvas.hpp
-        r3d/ui/font.cpp r3d/ui/font.hpp r3d/primitive/skybox.cpp r3d/primitive/skybox.hpp)
+        r3d/ui/font.cpp r3d/ui/font.hpp
+        r3d/primitive/skybox.cpp r3d/primitive/skybox.hpp)
 
 target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew glfw assimp freetype)
 

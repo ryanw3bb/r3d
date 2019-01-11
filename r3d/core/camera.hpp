@@ -15,6 +15,10 @@ namespace r3d
     public:
         glm::mat4 view;
         glm::mat4 projection;
+        float fov = 0.8f;
+        float near = 0.1f;
+        float far = 100.0f;
+        float aspect_ratio = 1.0f;
 
         camera(): game_object("camera") { }
 
@@ -29,12 +33,6 @@ namespace r3d
         void set_position(glm::vec3);
 
         void update_matrices();
-
-    private:
-        float fov = 0.8f;
-        float near = 0.1f;
-        float far = 100.0f;
-        float aspect_ratio = 1.0f;
     };
 }
 

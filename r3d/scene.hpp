@@ -11,6 +11,7 @@
 #include "core/light.hpp"
 #include "core/camera.hpp"
 #include "core/time.hpp"
+#include "primitive/skybox.hpp"
 #include "ui/canvas.hpp"
 #include "util/debug.hpp"
 #include "util/stats.hpp"
@@ -49,7 +50,7 @@ namespace r3d
 
         void add_light(glm::vec3 position, glm::vec3 color, float intensity);
 
-        void add_skybox();
+        void add_skybox(std::vector<std::string>);
 
         r3d::camera& get_camera() { return main_camera; }
 
@@ -65,6 +66,7 @@ namespace r3d
         r3d::time timer;
         r3d::debug debug_view;
         r3d::canvas canvas;
+        r3d::skybox skybox;
 
         static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

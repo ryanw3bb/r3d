@@ -32,20 +32,53 @@ GLuint r3d::load_texture(std::string image_path)
     // OpenGL has now copied the data. Free our own version
     stbi_image_free(rgb_image);
 
-    // Poor filtering, or ...
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-    // ... nice trilinear filtering ...
+    // trilinear filtering
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     
-    // ... which requires mipmaps. Generate them automatically.
+    // which requires mipmaps. Generate them automatically.
     glGenerateMipmap(GL_TEXTURE_2D);
 
-    // Return the ID of the texture we just created
+    return textureID;
+}
+
+GLuint r3d::load_cubemap(std::vector<std::string> faces)
+{
+    unsigned int textureID;
+
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+    int width, height, bpp;
+
+    for(unsigned int i = 0; i < faces.size(); i++)
+    {
+        // use full directory
+        faces[i].insert(0, get_running_dir());
+
+        unsigned char* image = stbi_load(faces[i].c_str(), &width, &height, &bpp, 0);
+        if(image)
+        {
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+                         0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+
+            stbi_image_free(image);
+        }
+        else
+        {
+            printf("Cubemap texture failed to load: %s\n", faces[i].c_str());
+            stbi_image_free(image);
+        }
+    }
+
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
     return textureID;
 }
 

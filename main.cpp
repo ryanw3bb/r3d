@@ -15,8 +15,8 @@
 
 using namespace r3d;
 
-const int WIDTH = 1024;
-const int HEIGHT = 768;
+const int WIDTH = 1280;
+const int HEIGHT = 720;
 const float CAMERA_MOVE_SPEED = 3.0f;
 const float CAMERA_ROTATE_SPEED = 0.05f;
 const float CRATE_ROTATE_SPEED = 30;

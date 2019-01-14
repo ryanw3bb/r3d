@@ -3,8 +3,7 @@ project(r3d)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(/usr/local/include
-        /usr/local/include/freetype2)
+include_directories(/usr/local/include /usr/local/include/freetype2)
 link_directories(/usr/local/lib)
 find_package(OpenGL)
 

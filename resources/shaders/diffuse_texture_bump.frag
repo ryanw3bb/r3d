@@ -28,7 +28,7 @@ void main()
     vec3 color = texture(albedoSampler, fs_in.TexCoords).rgb;
 
     // ambient
-    vec3 ambient = 0.1 * color;
+    vec3 ambient = 0.3 * color;
 
     // diffuse
     vec3 lightDir = normalize(fs_in.TangentLightPos - fs_in.TangentFragPos);
@@ -41,6 +41,6 @@ void main()
     vec3 halfwayDir = normalize(lightDir + viewDir);  
     float spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
 
-    vec3 specular = vec3(0.2) * spec;
+    vec3 specular = vec3(0.3) * spec;
     FragColor = vec4(ambient + diffuse + specular, 1.0);
 }

@@ -29,9 +29,9 @@ std::vector<std::shared_ptr<game_object>> crates;
 int main()
 {
     main_scene.init(WIDTH, HEIGHT);
-    main_scene.get_camera().set_position(glm::vec3(0, 0, 1.5f));
-    main_scene.get_camera().set_rotation(glm::vec3(0, 180, 0));
-    main_scene.add_light(glm::vec3(0, 8, 1), glm::vec3(0.9, 0.9, 0.9), 45.0f);
+    main_scene.get_camera().set_position(glm::vec3(1, 1, -6));
+    main_scene.get_camera().set_rotation(glm::vec3(344, 322, 0));
+    main_scene.add_light(glm::vec3(4, 8, 6), glm::vec3(0.9, 0.9, 0.9), 45.0f);
     main_scene.add_skybox(std::vector<std::string> { "resources/textures/skybox/right.jpg",
                                                      "resources/textures/skybox/left.jpg",
                                                      "resources/textures/skybox/top.jpg",
@@ -39,7 +39,7 @@ int main()
                                                      "resources/textures/skybox/front.jpg",
                                                      "resources/textures/skybox/back.jpg" });
 
-    auto crate { main_scene.create_object("crate", glm::vec3(0, 0, 0), glm::vec3(-90, 0, -90), glm::vec3(1, 1, 1)) };
+    auto crate { main_scene.create_object("crate") };
     crate->add_renderer("resources/models/crate.obj",
             shader::id::DIFFUSE_TEXTURE_BUMP,
             "resources/textures/crate_diffuse.jpg",
@@ -50,7 +50,7 @@ int main()
         for(int y = 0; y < NUM_ROWS; y++)
         {
             std::string name = "crate " + std::to_string(x * NUM_ROWS + y);
-            crates.emplace_back(main_scene.instantiate_object(name, crate, glm::vec3(-x, 0, -y)));
+            crates.emplace_back(main_scene.instantiate_object(name, crate, glm::vec3(-x, 0, -y), glm::vec3(0, 0, -90)));
         }
     }
 

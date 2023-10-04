@@ -37,6 +37,7 @@ void scene::init(int width, int height)
         return;
     }
     glfwMakeContextCurrent(window); // Initialize GLFW
+    glfwSwapInterval(1); // Enable vsync
 
     printf("OpenGL version: %s\n", glGetString(GL_VERSION));
 

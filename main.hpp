@@ -5,7 +5,7 @@
 #ifndef R3D_MAIN_HPP
 #define R3D_MAIN_HPP
 
-#include "r3d/scene.hpp"
+#include "r3d/core/scene.hpp"
 
 void move_camera(GLFWwindow*);
 

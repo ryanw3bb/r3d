@@ -6,7 +6,6 @@
 #include <vector>
 #include <string>
 #include "main.hpp"
-#include "r3d/scene.hpp"
 #include "r3d/core/game_object.hpp"
 #include "r3d/core/light.hpp"
 #include "r3d/core/time.hpp"
@@ -32,12 +31,12 @@ int main()
     main_scene.get_camera().set_position(glm::vec3(1, 1, -6));
     main_scene.get_camera().set_rotation(glm::vec3(344, 322, 0));
     main_scene.add_light(glm::vec3(4, 8, 6), glm::vec3(0.9, 0.9, 0.9), 45.0f);
-    main_scene.add_skybox(std::vector<std::string> { "resources/textures/skybox/right.jpg",
-                                                     "resources/textures/skybox/left.jpg",
-                                                     "resources/textures/skybox/top.jpg",
-                                                     "resources/textures/skybox/bottom.jpg",
-                                                     "resources/textures/skybox/front.jpg",
-                                                     "resources/textures/skybox/back.jpg" });
+    main_scene.add_skybox(std::vector<std::string> { "resources/textures/skybox/left.png",
+                                                     "resources/textures/skybox/right.png",
+                                                     "resources/textures/skybox/top.png",
+                                                     "resources/textures/skybox/bottom.png",
+                                                     "resources/textures/skybox/front.png",
+                                                     "resources/textures/skybox/back.png" });
 
     auto crate { main_scene.create_object("crate") };
     crate->add_renderer("resources/models/crate.obj",

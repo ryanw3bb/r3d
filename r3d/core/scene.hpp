@@ -6,15 +6,15 @@
 #define R3D_SCENE_HPP
 
 #include <memory>
-#include "core/gl_includes.hpp"
-#include "core/game_object.hpp"
-#include "core/light.hpp"
-#include "core/camera.hpp"
-#include "core/time.hpp"
-#include "primitive/skybox.hpp"
-#include "ui/canvas.hpp"
-#include "util/debug.hpp"
-#include "util/stats.hpp"
+#include "gl_includes.hpp"
+#include "game_object.hpp"
+#include "light.hpp"
+#include "camera.hpp"
+#include "time.hpp"
+#include "../primitive/skybox.hpp"
+#include "../ui/canvas.hpp"
+#include "../util/debug.hpp"
+#include "../util/stats.hpp"
 
 namespace r3d
 {

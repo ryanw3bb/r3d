@@ -5,10 +5,10 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "constants.hpp"
 #include "scene.hpp"
-#include "component/mesh_renderer.hpp"
-#include "component/behaviour.hpp"
-#include "core/constants.hpp"
+#include "../component/mesh_renderer.hpp"
+#include "../component/behaviour.hpp"
 
 using namespace r3d;
 
@@ -22,10 +22,11 @@ void scene::init(int width, int height)
     }
 
     glfwWindowHint(GLFW_SAMPLES, 4); // antialiasing
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Open a window and create its OpenGL context
     window = glfwCreateWindow(width, height, "r3d", NULL, NULL);
@@ -56,13 +57,6 @@ void scene::init(int width, int height)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
-
-    // enable blending (needed for text)
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    // Disable byte-alignment restriction (needed for text)
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     main_camera.set_aspect((float)width / (float)height);
 

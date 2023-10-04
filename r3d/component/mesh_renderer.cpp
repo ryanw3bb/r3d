@@ -20,7 +20,8 @@ mesh_renderer::mesh_renderer(std::string model_path,
     material = std::make_shared<r3d::material>(diffuse_map, normal_map, shader);
     mesh = std::make_shared<r3d::mesh>();
 
-    // Read file
+#ifndef USE_TINY_OBJ
+    // Read file using assimp
     load_mesh(model_path,
             mesh->indices,
             mesh->vertices,
@@ -29,6 +30,13 @@ mesh_renderer::mesh_renderer(std::string model_path,
             mesh->tangents,
             true,
             material->shader->uses_normal_map);
+#else
+    // Read file using tinyobjloader
+    load_mesh(model_path,
+            mesh->vertices,
+            mesh->uvs,
+            mesh->normals);
+#endif
 
     size_t v_size = mesh->vertices.size() * sizeof(glm::vec3);
     size_t n_size = mesh->normals.size() * sizeof(glm::vec3);
@@ -46,13 +54,13 @@ mesh_renderer::mesh_renderer(std::string model_path,
     // create vertex buffer object and bind our mesh data
     // we use only 1 vbo to hold our data and offset for each attribute
     glGenBuffers(1, &vertex_buffer_object);
-    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object); 
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object);
     glBufferData(GL_ARRAY_BUFFER, total, NULL, GL_STATIC_DRAW);
     glBufferSubData(GL_ARRAY_BUFFER, 0, v_size, &mesh->vertices[0]);
     glBufferSubData(GL_ARRAY_BUFFER, v_size, n_size, &mesh->normals[0]);
     glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size), uv_size, &mesh->uvs[0]);
     glBufferSubData(GL_ARRAY_BUFFER, (v_size + n_size + uv_size), t_size, &mesh->tangents[0]);
-    //glBufferSubData(GL_ARRAY_BUFFER, (vtx + nrm + txc + tng + btng), vtx_col, &verticesColor[0]); 
+    //glBufferSubData(GL_ARRAY_BUFFER, (vtx + nrm + txc + tng + btng), vtx_col, &verticesColor[0]);
 
     // create element buffer object to hold our indices
     glGenBuffers(1, &indices_buffer);
@@ -89,7 +97,7 @@ mesh_renderer::mesh_renderer(std::string model_path,
         }
     }
 
-    printf("Add mesh_renderer: %s [vertices: %lu]\n", model_path.c_str(), mesh->vertices.size());
+    printf("Add mesh_renderer: %s [vertices: %zu]\n", model_path.c_str(), mesh->vertices.size());
 }
 
 void mesh_renderer::render(glm::mat4 model,
@@ -112,8 +120,12 @@ void mesh_renderer::render(glm::mat4 model,
 
     if(bind_vao) { glBindVertexArray(vertex_array_object); }
 
-    // draw our object
+    // draw the triangles
+#ifndef USE_TINY_OBJ
     glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_SHORT, (void*)0);
+#else
+    glDrawArrays(GL_TRIANGLES, 0, mesh->vertices.size());
+#endif
 }
 
 void mesh_renderer::destroy()

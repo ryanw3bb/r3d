@@ -2,18 +2,20 @@
 #include <cstdio>
 #include <string>
 #include <cstring>
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
 #include "load_mesh.hpp"
 #include "../util/file.hpp"
 
+#ifndef USE_TINY_OBJ
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 bool r3d::load_mesh(std::string path,
-                    std::vector<unsigned short> &indices,
-                    std::vector<glm::vec3> &vertices,
-                    std::vector<glm::vec2> &uvs,
-                    std::vector<glm::vec3> &normals,
-                    std::vector<glm::vec3> &tangents,
+                    std::vector<unsigned short>& indices,
+                    std::vector<glm::vec3>& vertices,
+                    std::vector<glm::vec2>& uvs,
+                    std::vector<glm::vec3>& normals,
+                    std::vector<glm::vec3>& tangents,
                     bool flip_uvs,
                     bool calculate_tangents)
 {
@@ -30,7 +32,7 @@ bool r3d::load_mesh(std::string path,
                             aiProcess_TransformUVCoords |
                             aiProcess_SortByPType |
                             aiProcess_FindDegenerates |
-                            aiProcess_FindInvalidData | 
+                            aiProcess_FindInvalidData |
                             0;
 
     if(flip_uvs)
@@ -104,7 +106,7 @@ bool r3d::load_mesh(std::string path,
     if(mesh->HasTangentsAndBitangents())
     {
         tangents.reserve(mesh->mNumVertices);
-        for(int i = 0; i < mesh->mNumVertices; i++)
+        for(unsigned int i = 0; i < mesh->mNumVertices; i++)
         {
             aiVector3D t = mesh->mTangents[i];
             tangents.push_back(glm::vec3(t.x, t.y, t.z));
@@ -113,3 +115,69 @@ bool r3d::load_mesh(std::string path,
 
     return true;
 }
+
+#else
+
+#define TINYOBJLOADER_IMPLEMENTATION
+#include "../../external/include/tiny_obj_loader.h"
+
+bool r3d::load_mesh(std::string path,
+                    std::vector<glm::vec3>& vertices,
+                    std::vector<glm::vec2>& uvs,
+                    std::vector<glm::vec3>& normals)
+{
+    path.insert(0, get_running_dir());
+
+    tinyobj::attrib_t attrib;
+    std::vector<tinyobj::shape_t> shapes;
+    std::vector<tinyobj::material_t> materials;
+
+    std::string warn;
+    std::string err;
+    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, path.c_str());
+
+    if(!err.empty())
+    {
+        printf("OBJ Error: %s\n", err.c_str());
+    }
+
+    if(!ret)
+    {
+        return false;
+    }
+
+    // Loop over shapes
+    for(size_t s = 0; s < shapes.size(); s++)
+    {
+        // Loop over faces(polygon)
+        size_t index_offset = 0;
+        for(size_t f = 0; f < shapes[s].mesh.num_face_vertices.size(); f++)
+        {
+            int fv = shapes[s].mesh.num_face_vertices[f];
+
+            // Loop over vertices in the face.
+            for(size_t v = 0; v < fv; v++)
+            {
+                tinyobj::index_t idx = shapes[s].mesh.indices[index_offset + v];
+                tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index+0];
+                tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index+1];
+                tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index+2];
+                tinyobj::real_t nx = attrib.normals[3*idx.normal_index+0];
+                tinyobj::real_t ny = attrib.normals[3*idx.normal_index+1];
+                tinyobj::real_t nz = attrib.normals[3*idx.normal_index+2];
+                tinyobj::real_t tx = attrib.texcoords[2*idx.texcoord_index+0];
+                tinyobj::real_t ty = attrib.texcoords[2*idx.texcoord_index+1];
+
+                vertices.push_back(glm::vec3(vx, vy, vz));
+                normals.push_back(glm::vec3(nx, ny, nz));
+                uvs.push_back(glm::vec2(tx, -ty));
+            }
+
+            index_offset += fv;
+        }
+    }
+
+    return true;
+}
+
+#endif

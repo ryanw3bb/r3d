@@ -13,11 +13,11 @@ namespace r3d
 {
     class debug
     {
-        struct line 
+        struct line
         {
-            line(uint index, glm::vec3 color):index(index), color(color) { }
+            line(int index, glm::vec3 color):index(index), color(color) { }
 
-            uint index;
+            int index;
             glm::vec3 color = glm::vec3(1, 1, 1);
         };
 

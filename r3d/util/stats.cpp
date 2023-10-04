@@ -27,7 +27,7 @@ void fps::render(GLuint& vertex_buffer_object)
 
     if(frame_times.size() >= REFRESH_RATE)
     {
-        double sum_of_frame_times;
+        double sum_of_frame_times = 0;
 
         for(auto& n : frame_times)
         {

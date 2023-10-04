@@ -2,7 +2,6 @@
 // Created by Ryan on 26/03/2018.
 //
 
-#include <GLFW/glfw3.h>
 #include <sstream>
 #include <fstream>
 #include <vector>
@@ -18,7 +17,7 @@ GLuint r3d::load_shader(std::string vertex_file_path, std::string fragment_file_
     // Create the shaders
     GLuint vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
     GLuint fragment_shader_id = glCreateShader(GL_FRAGMENT_SHADER);
-    
+
     // Read the Vertex Shader code from the file
     std::string vertex_shader_code;
     std::ifstream vertex_shader_stream(vertex_file_path, std::ios::in);

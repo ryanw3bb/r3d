@@ -55,7 +55,7 @@ void debug::add_line(glm::vec3 start_vec, glm::vec3 end_vec, glm::vec3 color)
     // line data
     vertices.push_back(start_vec);
     vertices.push_back(end_vec);
-    
+
     indices.push_back(0);
     indices.push_back(1);
 
@@ -70,7 +70,7 @@ void debug::update()
     // add vertices and indices data
 	glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
-    
+
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indices_buffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * indices.size(), &indices[0], GL_STATIC_DRAW);
 
@@ -96,7 +96,7 @@ void debug::render(glm::mat4 view, glm::mat4 projection)
     for(const auto& line : lines)
     {
         glUniform3f(tint_color, line->color.x, line->color.y, line->color.z);
-        glDrawElementsBaseVertex(GL_LINES, 2, GL_UNSIGNED_INT, 0, line->index);   
+        glDrawElementsBaseVertex(GL_LINES, 2, GL_UNSIGNED_INT, 0, line->index);
     }
 }
 

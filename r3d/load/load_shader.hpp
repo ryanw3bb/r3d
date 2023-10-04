@@ -6,6 +6,7 @@
 #define R3D_LOADSHADER_H
 
 #include <string>
+#include "../core/gl_includes.hpp"
 
 namespace r3d
 {

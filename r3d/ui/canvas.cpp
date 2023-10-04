@@ -8,6 +8,13 @@ using namespace r3d;
 
 void canvas::init(int width, int height)
 {
+    // enable blending (needed for text)
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Disable byte-alignment restriction (needed for text)
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
     shader = std::make_shared<r3d::shader>(shader::id::UI);
     font = std::make_shared<r3d::font>("resources/fonts/LiberationSans.ttf", 12);
     projection = glm::ortho(0.0f, static_cast<GLfloat>(width), 0.0f, static_cast<GLfloat>(height));
@@ -66,7 +73,7 @@ void canvas::enable_stats(bool state)
 
 void canvas::render()
 {
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_BLEND);
 
     shader->use();
     shader->set_scene_uniforms(projection);
@@ -78,4 +85,6 @@ void canvas::render()
     {
         object->render(vertex_buffer_object);
     }
+
+    glDisable(GL_BLEND);
 }

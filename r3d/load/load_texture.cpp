@@ -7,7 +7,7 @@
 #include "../util/file.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../lib/stb_image.h"
+#include "../../external/include/stb_image.h"
 
 GLuint r3d::load_texture(std::string image_path)
 {
@@ -37,7 +37,7 @@ GLuint r3d::load_texture(std::string image_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    
+
     // which requires mipmaps. Generate them automatically.
     glGenerateMipmap(GL_TEXTURE_2D);
 

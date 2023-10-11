@@ -71,8 +71,8 @@ int main()
 void rotate_crates()
 {
     glm::vec3 rotation = crates[0]->get_rotation();
-    rotation.x -= CRATE_ROTATE_SPEED * main_scene.get_delta_time();
-    rotation.z -= CRATE_ROTATE_SPEED * main_scene.get_delta_time();
+    rotation.x = fmod(rotation.x - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), 360.0f);
+    rotation.z = fmod(rotation.z - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), 360.0f);
 
     for(auto& crate : crates)
     {
@@ -90,8 +90,8 @@ void move_camera(GLFWwindow* window)
         if(last_x != 0)
         {
             glm::vec3 rotation = main_scene.get_camera().get_rotation();
-            rotation.x -= CAMERA_ROTATE_SPEED * (last_y - y);
-            rotation.y -= CAMERA_ROTATE_SPEED * (last_x - x);
+            rotation.x = (float)fmod(rotation.x - (CAMERA_ROTATE_SPEED * (last_y - y)), 360.0);
+            rotation.y = (float)fmod(rotation.y - (CAMERA_ROTATE_SPEED * (last_x - x)), 360.0);
             main_scene.get_camera().set_rotation(rotation);
         }
 

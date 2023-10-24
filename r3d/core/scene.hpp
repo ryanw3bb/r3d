@@ -7,6 +7,7 @@
 
 #include <memory>
 #include "gl_includes.hpp"
+#include "gl_window.hpp"
 #include "game_object.hpp"
 #include "light.hpp"
 #include "camera.hpp"
@@ -21,7 +22,7 @@ namespace r3d
     class scene
     {
     public:
-        GLFWwindow* window;
+        r3d::gl_window window;
 
         bool should_update;
 
@@ -58,6 +59,8 @@ namespace r3d
 
         r3d::canvas& get_canvas() { return canvas; }
 
+        GLFWwindow* get_window() { return window.window; }
+
     private:
         std::vector<std::shared_ptr<r3d::game_object>> game_objects;
         std::vector<r3d::light> lights;
@@ -67,10 +70,6 @@ namespace r3d
         r3d::debug debug_view;
         r3d::canvas canvas;
         r3d::skybox skybox;
-
-        static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-
-        static void error_callback(int error, const char* description);
     };
 }
 

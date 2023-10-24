@@ -16,9 +16,10 @@ using namespace r3d;
 
 const int WIDTH = 1280;
 const int HEIGHT = 720;
-const float CAMERA_MOVE_SPEED = 3.0f;
+const float CAMERA_MOVE_SPEED = 3;
 const float CAMERA_ROTATE_SPEED = 0.05f;
 const float CRATE_ROTATE_SPEED = 30;
+const float FULL_ROTATION = 360;
 const int NUM_ROWS = 5;
 
 double last_x, last_y;
@@ -58,7 +59,7 @@ int main()
 
     while(main_scene.should_update)
     {
-        move_camera(main_scene.window);
+        move_camera(main_scene.get_window());
         rotate_crates();
         main_scene.update();
     }
@@ -71,8 +72,8 @@ int main()
 void rotate_crates()
 {
     glm::vec3 rotation = crates[0]->get_rotation();
-    rotation.x = fmod(rotation.x - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), 360.0f);
-    rotation.z = fmod(rotation.z - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), 360.0f);
+    rotation.x = fmod(rotation.x - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), FULL_ROTATION);
+    rotation.z = fmod(rotation.z - (CRATE_ROTATE_SPEED * main_scene.get_delta_time()), FULL_ROTATION);
 
     for(auto& crate : crates)
     {
@@ -90,8 +91,8 @@ void move_camera(GLFWwindow* window)
         if(last_x != 0)
         {
             glm::vec3 rotation = main_scene.get_camera().get_rotation();
-            rotation.x = (float)fmod(rotation.x - (CAMERA_ROTATE_SPEED * (last_y - y)), 360.0);
-            rotation.y = (float)fmod(rotation.y - (CAMERA_ROTATE_SPEED * (last_x - x)), 360.0);
+            rotation.x = fmod(rotation.x + (CAMERA_ROTATE_SPEED * (float)(last_y - y)), FULL_ROTATION);
+            rotation.y = fmod(rotation.y + (CAMERA_ROTATE_SPEED * (float)(last_x - x)), FULL_ROTATION);
             main_scene.get_camera().set_rotation(rotation);
         }
 

@@ -14,50 +14,7 @@ using namespace r3d;
 
 void scene::init(int width, int height)
 {
-    // Initialise GLFW
-    if(!glfwInit())
-    {
-        fprintf(stderr, "Failed to initialize GLFW\n");
-        return;
-    }
-
-    glfwWindowHint(GLFW_SAMPLES, 4); // antialiasing
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-    // Open a window and create its OpenGL context
-    window = glfwCreateWindow(width, height, "r3d", NULL, NULL);
-    if(!window)
-    {
-        fprintf(stderr, "Failed to open GLFW window\n");
-        glfwTerminate();
-        return;
-    }
-    glfwMakeContextCurrent(window); // Initialize GLFW
-    glfwSwapInterval(1); // Enable vsync
-
-    printf("OpenGL version: %s\n", glGetString(GL_VERSION));
-
-    glewExperimental = true;
-    if(glewInit() != GLEW_OK)
-    {
-        fprintf(stderr, "Failed to initialize GLEW\n");
-        return;
-    }
-
-    // grey background
-    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
-
-    // setting callbacks
-    glfwSetKeyCallback(window, key_callback);
-    glfwSetErrorCallback(error_callback);
-
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_CULL_FACE);
+    window.init(width, height);
 
     main_camera.set_aspect((float)width / (float)height);
 
@@ -113,10 +70,10 @@ void scene::update_time()
 
 void scene::update()
 {
+    // render scene loop
     update_time();
 
-    // render scene loop
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    window.pre_render();
 
     // update scripts
     for(auto& object : game_objects)
@@ -161,13 +118,7 @@ void scene::update()
     // render ui
     canvas.render();
 
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-
-    if(glfwWindowShouldClose(window) != 0)
-    {
-        should_update = false;
-    }
+    should_update = window.post_render();
 }
 
 void scene::exit()
@@ -182,21 +133,5 @@ void scene::exit()
         }
     }
 
-    glfwTerminate();
-}
-
-void scene::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if(action == GLFW_PRESS)
-    {
-        if(key == GLFW_KEY_ESCAPE)
-        {
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
-        }
-    }
-}
-
-void scene::error_callback(int error, const char* description)
-{
-    fprintf(stderr, "Error: %s\n", description);
+    window.exit();
 }

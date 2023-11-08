@@ -16,6 +16,7 @@ bool r3d::load_mesh(std::string path,
                     std::vector<glm::vec2>& uvs,
                     std::vector<glm::vec3>& normals,
                     std::vector<glm::vec3>& tangents,
+                    std::shared_ptr<r3d::bounds> bounds,
                     bool flip_uvs,
                     bool calculate_tangents)
 {
@@ -33,6 +34,7 @@ bool r3d::load_mesh(std::string path,
                             aiProcess_SortByPType |
                             aiProcess_FindDegenerates |
                             aiProcess_FindInvalidData |
+                            aiProcess_GenBoundingBoxes |
                             0;
 
     if(flip_uvs)
@@ -112,6 +114,16 @@ bool r3d::load_mesh(std::string path,
             tangents.push_back(glm::vec3(t.x, t.y, t.z));
         }
     }
+
+    // Fill bounding box data
+    const aiAABB& aabb = mesh->mAABB;
+    bounds->min = glm::vec3(aabb.mMin.x, aabb.mMin.y, aabb.mMin.z);
+    bounds->max = glm::vec3(aabb.mMax.x, aabb.mMax.y, aabb.mMax.z);
+    bounds->centre = (bounds->min + bounds->max) / 2.0f;
+    bounds->extents = bounds->max - bounds->min;
+    bounds->update();
+
+    printf("bounds min: %s  max: %s\n", glm::to_string(bounds->min).c_str(), glm::to_string(bounds->max).c_str());
 
     return true;
 }

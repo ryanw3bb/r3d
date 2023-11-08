@@ -4,6 +4,8 @@
 // uncomment to use tinyobjloader instead of assimp to load meshes
 //#define USE_TINY_OBJ
 
+#include <memory>
+#include "../core/bounds.hpp"
 #include "../core/gl_includes.hpp"
 
 namespace r3d
@@ -23,6 +25,7 @@ namespace r3d
 		std::vector<glm::vec2> &uvs,
 		std::vector<glm::vec3> &normals,
 		std::vector<glm::vec3> &tangents,
+		std::shared_ptr<r3d::bounds> bounds,
 		bool flip_uvs = false,
 		bool calculate_tangents = false
 	);

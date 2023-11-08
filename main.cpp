@@ -44,17 +44,19 @@ int main()
             shader::id::DIFFUSE_TEXTURE_BUMP,
             "resources/textures/crate_diffuse.jpg",
             "resources/textures/crate_normal.jpg");
+    crates.emplace_back(crate);
 
     for(int x = 0; x < NUM_ROWS; x++)
     {
         for(int y = 0; y < NUM_ROWS; y++)
         {
+            if (x == 0 && y == 0) continue;
+
             std::string name = "crate " + std::to_string(x * NUM_ROWS + y);
-            crates.emplace_back(main_scene.instantiate_object(name, crate, glm::vec3(-x, 0, -y), glm::vec3(0, 0, -90)));
+            crates.emplace_back(main_scene.instantiate_object(name, crate, glm::vec3(-x, 0, -y), glm::vec3(0, 0, 0)));
         }
     }
 
-    main_scene.destroy_object(crate);
     main_scene.update_time();
 
     while(main_scene.should_update)

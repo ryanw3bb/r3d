@@ -2,11 +2,10 @@
 // Created by Ryan on 19/05/2018.
 //
 
-#include <memory>
 #include "mesh_renderer.hpp"
-#include "../load/load_mesh.hpp"
-#include "../util/debug.hpp"
+// following classes are forward declared in header
 #include "../core/camera.hpp"
+#include "../core/game_object.hpp"
 
 using namespace r3d;
 
@@ -19,6 +18,7 @@ mesh_renderer::mesh_renderer(std::string model_path,
     shader = std::make_shared<r3d::shader>(shader_type);
     material = std::make_shared<r3d::material>(diffuse_map, normal_map, shader);
     mesh = std::make_shared<r3d::mesh>();
+    bounds = std::make_shared<r3d::bounds>();
 
 #ifndef USE_TINY_OBJ
     // Read file using assimp
@@ -28,6 +28,7 @@ mesh_renderer::mesh_renderer(std::string model_path,
             mesh->uvs,
             mesh->normals,
             mesh->tangents,
+            bounds,
             true,
             material->shader->uses_normal_map);
 #else
@@ -100,13 +101,20 @@ mesh_renderer::mesh_renderer(std::string model_path,
     printf("Add mesh_renderer: %s [vertices: %zu]\n", model_path.c_str(), mesh->vertices.size());
 }
 
-void mesh_renderer::render(glm::mat4 model,
+bool mesh_renderer::render(std::shared_ptr<r3d::game_object>& object,
         r3d::camera& main_camera,
         std::vector<r3d::light>& lights,
         bool change_shader,
         bool bind_vao,
         bool bind_textures)
 {
+    glm::mat4& model = object->get_transform();
+
+    if (!main_camera.check_frustum_cull(model, bounds))
+    {
+        return false;
+    }
+
     if(change_shader)
     {
         shader->use();
@@ -126,6 +134,8 @@ void mesh_renderer::render(glm::mat4 model,
 #else
     glDrawArrays(GL_TRIANGLES, 0, mesh->vertices.size());
 #endif
+
+    return true;
 }
 
 void mesh_renderer::destroy()

@@ -5,10 +5,10 @@
 #ifndef R3D_GAME_OBJECT_HPP
 #define R3D_GAME_OBJECT_HPP
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <memory>
-#include <glm/gtx/quaternion.hpp>
 #include "gl_includes.hpp"
 #include "constants.hpp"
 #include "../component/mesh_renderer.hpp"
@@ -40,12 +40,12 @@ namespace r3d
         // destructor
         ~game_object()
         {
-            //printf("Delete game_object: %s [address: %p]\n", name.c_str(), this);
+            printf("Delete game_object: %s [address: %p]\n", name.c_str(), this);
         }
 
         void init_print()
         {
-            //printf("Init game_object: %s [address: %p]\n", name.c_str(), this);
+            printf("Init game_object: %s [address: %p]\n", name.c_str(), this);
         }
 
         void add_renderer(std::string mesh_file_path, shader::id shader_type, std::string diffuse_map = "", std::string normal_map = "");

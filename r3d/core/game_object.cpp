@@ -2,13 +2,7 @@
 // Created by Ryan on 16/05/2018.
 //
 
-#include <glm/gtx/quaternion.hpp>
-#include <glm/gtx/transform.hpp>
-#include <algorithm>
-#include <memory>
 #include "game_object.hpp"
-#include "../component/mesh_renderer.hpp"
-#include "../component/behaviour.hpp"
 
 using namespace r3d;
 
@@ -68,13 +62,14 @@ glm::vec3 game_object::get_rotation() const
 void game_object::update_directions()
 {
     // direction : spherical coordinates to cartesian coordinates conversion
-    forward = glm::vec3(cos(euler_angles.x) * sin(euler_angles.y),
+    forward = glm::normalize(
+                        glm::vec3(cos(euler_angles.x) * sin(euler_angles.y),
                         sin(euler_angles.x),
-                        cos(euler_angles.x) * cos(euler_angles.y));
+                        cos(euler_angles.x) * cos(euler_angles.y)));
 
-    right = glm::vec3(sin(euler_angles.y - constants::PI / 2.0f),
-                      0,
-                      cos(euler_angles.y - constants::PI / 2.0f));
+    right = glm::normalize(glm::vec3(sin(euler_angles.y - constants::PI / 2.0f),
+                        0,
+                        cos(euler_angles.y - constants::PI / 2.0f)));
 
-    up = glm::cross(right, forward);
+    up = glm::normalize(glm::cross(right, forward));
 }

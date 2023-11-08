@@ -5,6 +5,7 @@
 #ifndef R3D_CAMERA_HPP
 #define R3D_CAMERA_HPP
 
+#include "bounds.hpp"
 #include "gl_includes.hpp"
 #include "game_object.hpp"
 
@@ -17,12 +18,15 @@ namespace r3d
         glm::mat4 projection;
         float fov = 0.8f;
         float near = 0.1f;
-        float far = 100.0f;
+        float far = 10000.0f;
         float aspect_ratio = 1.0f;
+        int width;
+        int height;
+        glm::vec4 frustum_planes[6];
 
         camera(): game_object("camera") { }
 
-        camera(float ar): game_object("camera") { aspect_ratio = ar; }
+        void init(int w, int h);
 
         void set_fov(float f) { fov = glm::radians(f); }
 
@@ -32,7 +36,16 @@ namespace r3d
 
         void set_position(glm::vec3);
 
+        void update();
+
+        bool check_frustum_cull(glm::mat4& transform, std::shared_ptr<bounds>& bounds);
+
+        bool check_frustum_cull(glm::vec3 point);
+
+    private:
         void update_matrices();
+
+        void update_frustum();
     };
 }
 

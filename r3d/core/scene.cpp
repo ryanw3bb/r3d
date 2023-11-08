@@ -16,7 +16,7 @@ void scene::init(int width, int height)
 {
     window.init(width, height);
 
-    main_camera.set_aspect((float)width / (float)height);
+    main_camera.init(width, height);
 
     canvas.init(width, height);
     canvas.enable_stats(true);
@@ -75,6 +75,8 @@ void scene::update()
 
     window.pre_render();
 
+    main_camera.update();
+
     // update scripts
     for(auto& object : game_objects)
     {
@@ -95,10 +97,11 @@ void scene::update()
         bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
         bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
 
-        // bind buffers and draw elements
-        object->renderer->render(object->get_transform(), main_camera, lights, change_shader, bind_vao, bind_textures);
-
-        last_render_object = object;
+        // bind buffers and render elements
+        if (object->renderer->render(object, main_camera, lights, change_shader, bind_vao, bind_textures))
+        {
+            last_render_object = object;
+        }
     }
 
     last_render_object.reset();

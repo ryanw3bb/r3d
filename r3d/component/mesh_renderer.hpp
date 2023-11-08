@@ -8,21 +8,27 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include "../core/bounds.hpp"
 #include "../core/light.hpp"
 #include "../core/gl_includes.hpp"
 #include "../core/material.hpp"
 #include "../core/mesh.hpp"
+#include "../load/load_mesh.hpp"
+#include "../util/debug.hpp"
 
 namespace r3d
 {
+    // forward declarations
     class camera;
+    class game_object;
 
     class mesh_renderer
     {
     public:
-        std::shared_ptr<r3d::mesh> mesh;
+        std::shared_ptr<r3d::mesh> mesh; // TODO: should these be unique_ptrs?
         std::shared_ptr<r3d::material> material;
         std::shared_ptr<r3d::shader> shader;
+        std::shared_ptr<r3d::bounds> bounds;
 
         // default constructor & overloads
         mesh_renderer() {}
@@ -39,7 +45,7 @@ namespace r3d
             printf("Delete mesh_renderer [address: %p]\n", this);
         }
 
-        void render(glm::mat4 model,
+        bool render(std::shared_ptr<r3d::game_object>&,
                 r3d::camera& main_camera,
                 std::vector<r3d::light>& lights,
                 bool change_shader = true,

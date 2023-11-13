@@ -2,6 +2,7 @@
 profile
 ._*
 
+.vs/
 .vscode/
 .idea/
 build/

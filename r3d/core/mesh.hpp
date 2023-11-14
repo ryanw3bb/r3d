@@ -6,7 +6,7 @@
 #define R3D_MESH_HPP
 
 #include <vector>
-#include "../core/gl_includes.hpp"
+#include "../render/gl_includes.hpp"
 
 namespace r3d
 {

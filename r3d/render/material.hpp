@@ -6,8 +6,8 @@
 #define R3D_MATERIAL_HPP
 
 #include <memory>
-#include "../core/gl_includes.hpp"
 #include "shader.hpp"
+#include "../render/gl_includes.hpp"
 
 namespace r3d
 {

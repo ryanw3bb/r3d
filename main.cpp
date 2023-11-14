@@ -9,8 +9,8 @@
 #include "r3d/core/game_object.hpp"
 #include "r3d/core/light.hpp"
 #include "r3d/core/time.hpp"
-#include "r3d/core/shader.hpp"
-#include "r3d/component/mesh_renderer.hpp"
+#include "r3d/render/shader.hpp"
+#include "r3d/render/mesh_renderer.hpp"
 
 using namespace r3d;
 

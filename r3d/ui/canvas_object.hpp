@@ -5,7 +5,7 @@
 #ifndef R3D_UI_RENDERER_HPP
 #define R3D_UI_RENDERER_HPP
 
-#include "../core/shader.hpp"
+#include "../render/shader.hpp"
 
 namespace r3d
 {

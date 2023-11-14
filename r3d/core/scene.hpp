@@ -6,14 +6,14 @@
 #define R3D_SCENE_HPP
 
 #include <memory>
-#include "gl_includes.hpp"
-#include "gl_window.hpp"
 #include "game_object.hpp"
 #include "light.hpp"
 #include "camera.hpp"
 #include "time.hpp"
 #include "../primitive/skybox.hpp"
 #include "../ui/canvas.hpp"
+#include "../render/gl_includes.hpp"
+#include "../render/gl_window.hpp"
 #include "../util/debug.hpp"
 #include "../util/stats.hpp"
 
@@ -24,7 +24,7 @@ namespace r3d
     public:
         r3d::gl_window window;
 
-        bool should_update;
+        bool should_update = true;
 
         scene() {}
 

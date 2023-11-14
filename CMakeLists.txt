@@ -17,10 +17,10 @@ include_directories(external/include)
 link_directories(external/lib)
 
 file(GLOB r3d_src
-        r3d/component/*.hpp r3d/component/*.cpp
         r3d/core/*.hpp r3d/core/*.cpp
         r3d/load/*.hpp r3d/load/*.cpp
         r3d/primitive/*.hpp r3d/primitive/*.cpp
+        r3d/render/*.hpp r3d/render/*.cpp
         r3d/ui/*.hpp r3d/ui/*.cpp
         r3d/util/*.hpp r3d/util/*.cpp)
 

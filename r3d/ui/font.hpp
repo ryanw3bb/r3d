@@ -8,7 +8,7 @@
 #include <map>
 #include <ft2build.h>
 #include FT_FREETYPE_H
-#include "../core/gl_includes.hpp"
+#include "../render/gl_includes.hpp"
 
 namespace r3d
 {

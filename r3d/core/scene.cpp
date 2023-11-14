@@ -7,8 +7,8 @@
 #include <algorithm>
 #include "constants.hpp"
 #include "scene.hpp"
-#include "../component/mesh_renderer.hpp"
-#include "../component/behaviour.hpp"
+#include "../core/behaviour.hpp"
+#include "../render/mesh_renderer.hpp"
 
 using namespace r3d;
 

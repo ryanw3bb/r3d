@@ -8,7 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "gl_includes.hpp"
-#include "light.hpp"
+#include "../core/light.hpp"
 
 namespace r3d
 {

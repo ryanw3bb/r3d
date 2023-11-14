@@ -7,15 +7,15 @@
 
 namespace r3d
 {
-    class behaviour
-    {
-    public:
-        behaviour();
+	class behaviour
+	{
+	public:
+		behaviour();
 
-        virtual void init();
+		virtual void init();
 
-        virtual void update() const;
-    };
+		virtual void update() const;
+	};
 }
 
 #endif //R3D_BEHAVIOUR_HPP

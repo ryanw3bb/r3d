@@ -6,10 +6,10 @@
 #define R3D_SKYBOX_HPP
 
 #include <vector>
-#include "../core/gl_includes.hpp"
 #include "../core/camera.hpp"
 #include "../load/load_texture.hpp"
 #include "../load/load_shader.hpp"
+#include "../render/gl_includes.hpp"
 
 namespace r3d
 {

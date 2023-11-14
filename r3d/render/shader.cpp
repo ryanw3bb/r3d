@@ -3,8 +3,8 @@
 //
 
 #include "shader.hpp"
-#include "light.hpp"
-#include "camera.hpp"
+#include "../core/light.hpp"
+#include "../core/camera.hpp"
 #include "../load/load_shader.hpp"
 
 using namespace r3d;

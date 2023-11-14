@@ -6,8 +6,8 @@
 #define R3D_CAMERA_HPP
 
 #include "bounds.hpp"
-#include "gl_includes.hpp"
 #include "game_object.hpp"
+#include "../render/shader.hpp"
 
 namespace r3d
 {

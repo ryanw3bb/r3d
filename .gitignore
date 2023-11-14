@@ -9,3 +9,4 @@ build/
 temp/
 cmake-build-debug/
 toolchain/
+out/

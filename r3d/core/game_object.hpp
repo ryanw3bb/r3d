@@ -9,10 +9,10 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "gl_includes.hpp"
+#include "behaviour.hpp"
 #include "constants.hpp"
-#include "../component/mesh_renderer.hpp"
-#include "../component/behaviour.hpp"
+#include "../render/gl_includes.hpp"
+#include "../render/mesh_renderer.hpp"
 
 namespace r3d
 {

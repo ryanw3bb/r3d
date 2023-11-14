@@ -6,8 +6,8 @@
 #define R3D_CANVAS_HPP
 
 #include <memory>
-#include "../core/gl_includes.hpp"
-#include "../core/shader.hpp"
+#include "../render/gl_includes.hpp"
+#include "../render/shader.hpp"
 #include "../util/stats.hpp"
 #include "canvas_object.hpp"
 #include "font.hpp"

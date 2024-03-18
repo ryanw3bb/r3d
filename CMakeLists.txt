@@ -14,7 +14,6 @@ ELSE()
 ENDIF()
 
 include_directories(external/include)
-link_directories(external/lib)
 
 file(GLOB r3d_src
         r3d/core/*.hpp r3d/core/*.cpp
@@ -24,14 +23,18 @@ file(GLOB r3d_src
         r3d/ui/*.hpp r3d/ui/*.cpp
         r3d/util/*.hpp r3d/util/*.cpp)
 
+file(GLOB imgui
+        external/include/imgui/*.hpp external/include/imgui/*.cpp)
+
 add_executable(${PROJECT_NAME}
         main.cpp main.hpp
-        ${r3d_src})
+        ${r3d_src}
+        ${imgui})
 
 IF(WIN32)
-    target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew32 glu32 glfw3 assimp freetype)
+    target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew32 glfw3 assimp)
 ELSE()
-    target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew glfw assimp freetype)
+    target_link_libraries(${PROJECT_NAME} ${OPENGL_gl_LIBRARY} glew glfw assimp)
 ENDIF()
 
 set_target_properties(

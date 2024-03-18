@@ -5,24 +5,24 @@
 #ifndef R3D_FPS_HPP
 #define R3D_FPS_HPP
 
-#include "../ui/text.hpp"
+#include <string>
+#include <vector>
+#include "../render/gl_includes.hpp"
 
 namespace r3d
 {
-    class fps: public text
-    {
-    public:
-        fps(std::shared_ptr<r3d::font> font, GLfloat x, GLfloat y);
+	class fps
+	{
+	public:
+		void render();
 
-        void render(GLuint& vertex_buffer_object);
-        
-    private:
-        const int REFRESH_RATE = 30;
+	private:
+		const int REFRESH_RATE = 30;
 
-        double last_time;
-        std::vector<double> frame_times;
-        double frame_time = 0.01;
-    };
+		double last_time;
+		std::vector<double> frame_times;
+		double frame_time = 0.01;
+	};
 }
 
 #endif //R3D_FPS_HPP

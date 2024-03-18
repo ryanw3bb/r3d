@@ -14,127 +14,132 @@ using namespace r3d;
 
 void scene::init(int width, int height)
 {
-    window.init(width, height);
+	window.init(width, height);
 
-    main_camera.init(width, height);
+	main_camera.init(width, height);
 
-    canvas.init(width, height);
-    canvas.enable_stats(true);
+	canvas.init(get_window());
 
-    should_update = true;
+	should_update = true;
 }
 
+// TODO: this could return std::unique_ptr<game_object>&
+// game_objects can be an array of unique_ptrs (this class manages life cycle)
 std::shared_ptr<game_object> scene::create_object(std::string name, glm::vec3 position, glm::vec3 euler_angles, glm::vec3 scale)
 {
-    auto ptr = std::make_shared<game_object>( name, position, euler_angles, scale );
+	auto ptr = std::make_shared<game_object>(name, position, euler_angles, scale);
 
-    game_objects.emplace_back(std::move(ptr));
+	game_objects.emplace_back(std::move(ptr));
 
-    return game_objects.back();
+	return game_objects.back();
 }
 
 std::shared_ptr<game_object> scene::instantiate_object(std::string name,
-        std::shared_ptr<game_object> object,
-        glm::vec3 position,
-        glm::vec3 euler_angles,
-        glm::vec3 scale)
+	std::shared_ptr<game_object> object,
+	glm::vec3 position,
+	glm::vec3 euler_angles,
+	glm::vec3 scale)
 {
-    auto ptr = std::make_shared<game_object>( name, position, euler_angles, scale );
-    ptr->renderer = object->renderer;
+	auto ptr = std::make_shared<game_object>(name, position, euler_angles, scale);
+	ptr->renderer = object->renderer;
 
-    game_objects.emplace_back(std::move(ptr));
+	game_objects.emplace_back(std::move(ptr));
 
-    return game_objects.back();
+	return game_objects.back();
 }
 
 void scene::destroy_object(std::shared_ptr<game_object>& ptr)
 {
-    game_objects.erase(std::remove(game_objects.begin(), game_objects.end(), ptr), game_objects.end());
-    ptr.reset();
+	game_objects.erase(std::remove(game_objects.begin(), game_objects.end(), ptr), game_objects.end());
+	ptr.reset();
 }
 
 void scene::add_light(glm::vec3 position, glm::vec3 color, float intensity)
 {
-    lights.emplace_back(light { position, color, intensity });
+	lights.emplace_back(light{ position, color, intensity });
 }
 
 void scene::add_skybox(std::vector<std::string> faces)
 {
-    skybox.init(faces, main_camera);
+	skybox.init(faces, main_camera);
 }
 
 void scene::update_time()
 {
-    timer.update();
+	timer.update();
 }
 
 void scene::update()
 {
-    // render scene loop
-    update_time();
+	// render scene loop
+	update_time();
 
-    window.pre_render();
+	window.pre_render();
 
-    main_camera.update();
+	canvas.pre_render();
 
-    // update scripts
-    for(auto& object : game_objects)
-    {
-        if(object->enabled)
-        {
-            object->update_behaviours();
-        }
-    }
+	main_camera.update();
 
-    bool change_shader, bind_vao, bind_textures;
+	// update scripts
+	for (auto& object : game_objects)
+	{
+		if (object->enabled)
+		{
+			object->update_behaviours();
+		}
+	}
 
-    // render scene objects
-    for(auto& object : game_objects)
-    {
-        if(!object->enabled || object->renderer == nullptr) { continue; }
+	bool change_shader, bind_vao, bind_textures;
 
-        change_shader = (last_render_object == nullptr) || (object->renderer->shader != last_render_object->renderer->shader);
-        bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
-        bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
+	// render scene objects
+	for (auto& object : game_objects)
+	{
+		if (!object->enabled || object->renderer == nullptr) { continue; }
 
-        // bind buffers and render elements
-        if (object->renderer->render(object, main_camera, lights, change_shader, bind_vao, bind_textures))
-        {
-            last_render_object = object;
-        }
-    }
+		change_shader = (last_render_object == nullptr) || (object->renderer->shader != last_render_object->renderer->shader);
+		bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
+		bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
 
-    last_render_object.reset();
+		// bind buffers and render elements
+		if (object->renderer->render(object, main_camera, lights, change_shader, bind_vao, bind_textures))
+		{
+			last_render_object = object;
+		}
+	}
 
-    // render debug if enabled
-    if(debug_view.get_enabled())
-    {
-        debug_view.get_instance()->render(main_camera.view, main_camera.projection);
-    }
+	last_render_object.reset();
 
-    // render skybox if enabled
-    if(skybox.enabled)
-    {
-        skybox.render(main_camera);
-    }
+	// render debug if enabled
+	if (debug_view.get_enabled())
+	{
+		debug_view.get_instance()->render(main_camera.view, main_camera.projection);
+	}
 
-    // render ui
-    canvas.render();
+	// render skybox if enabled
+	if (skybox.enabled)
+	{
+		skybox.render(main_camera);
+	}
 
-    should_update = window.post_render();
+	// render ui
+	canvas.post_render();
+
+	should_update = window.post_render();
 }
 
 void scene::exit()
 {
-    printf("Exit\n");
+	printf("Exit\n");
 
-    for(auto& object : game_objects)
-    {
-        if(object->renderer != nullptr)
-        {
-            object->renderer->destroy();
-        }
-    }
+	for (auto& object : game_objects)
+	{
+		if (object->renderer != nullptr)
+		{
+			object->renderer->destroy();
+		}
+	}
 
-    window.exit();
+	canvas.shutdown();
+
+	window.exit();
 }

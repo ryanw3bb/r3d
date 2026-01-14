@@ -1,4 +1,4 @@
-![img](http://ryanwebb.com/images/r3d.jpg)
+![img](http://ryanwebb.com/img/store/github/r3d.jpg)
 
 ## r3d
 C++/OpenGL game engine, work in progress.

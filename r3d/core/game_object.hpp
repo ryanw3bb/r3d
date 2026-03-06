@@ -54,17 +54,17 @@ namespace r3d
 
         void update_behaviours() const;
 
-        glm::mat4 get_transform() const;
+        glm::mat4& get_transform();
 
         virtual void set_rotation(glm::vec3);
 
         glm::vec3 get_rotation() const;
 
-        virtual void set_position(glm::vec3 p) { position = p; }
+        virtual void set_position(glm::vec3 p) { position = p; transform_dirty = true; }
 
         glm::vec3 get_position() { return position; }
 
-        void set_scale(glm::vec3 s) { scale = s; }
+        void set_scale(glm::vec3 s) { scale = s; transform_dirty = true; }
 
         glm::vec3 get_scale() { return scale; }
 
@@ -72,6 +72,8 @@ namespace r3d
 
     protected:
         glm::quat rotation;
+        glm::mat4 cached_transform;
+        bool transform_dirty = true;
     };
 }
 

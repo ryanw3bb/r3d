@@ -37,21 +37,25 @@ void game_object::update_behaviours() const
     }
 }
 
-glm::mat4 game_object::get_transform() const
+glm::mat4& game_object::get_transform()
 {
-    glm::mat4 translation_matrix = glm::translate(glm::mat4(1.0f), position);
+    if (transform_dirty)
+    {
+        glm::mat4 translation_matrix = glm::translate(glm::mat4(1.0f), position);
+        glm::mat4 rotation_matrix = glm::toMat4(rotation);
+        glm::mat4 scale_matrix = glm::scale(glm::mat4(1.0f), scale);
+        cached_transform = translation_matrix * rotation_matrix * scale_matrix;
+        transform_dirty = false;
+    }
 
-    glm::mat4 rotation_matrix = glm::toMat4(rotation);
-
-    glm::mat4 scale_matrix = glm::scale(scale);
-
-    return translation_matrix * rotation_matrix * scale_matrix;
+    return cached_transform;
 }
 
 void game_object::set_rotation(glm::vec3 euler_degrees)
 {
     euler_angles = glm::radians(euler_degrees);
     rotation = glm::quat(euler_angles);
+    transform_dirty = true;
 }
 
 glm::vec3 game_object::get_rotation() const

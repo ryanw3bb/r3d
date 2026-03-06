@@ -85,6 +85,17 @@ mesh_renderer::mesh_renderer(std::string model_path,
 		glEnableVertexAttribArray(material->shader->get_tangent_identifier());
 	}
 
+	// create instance buffer for per-instance model matrices
+	glGenBuffers(1, &instance_buffer);
+	glBindBuffer(GL_ARRAY_BUFFER, instance_buffer);
+	for (int i = 0; i < 4; i++)
+	{
+		GLuint loc = 4 + i;
+		glEnableVertexAttribArray(loc);
+		glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(i * sizeof(glm::vec4)));
+		glVertexAttribDivisor(loc, 1);
+	}
+
 	if (debug)
 	{
 		r3d::debug* debug_view;
@@ -103,10 +114,7 @@ mesh_renderer::mesh_renderer(std::string model_path,
 
 bool mesh_renderer::render(std::shared_ptr<r3d::game_object>& object,
 	r3d::camera& main_camera,
-	std::vector<r3d::light>& lights,
-	bool change_shader,
-	bool bind_vao,
-	bool bind_textures)
+	std::vector<r3d::light>& lights)
 {
 	glm::mat4& model = object->get_transform();
 
@@ -115,18 +123,15 @@ bool mesh_renderer::render(std::shared_ptr<r3d::game_object>& object,
 		return false;
 	}
 
-	if (change_shader)
-	{
-		shader->use();
-		material->shader->set_scene_uniforms(main_camera, lights);
-	}
+	shader->use();
+	material->shader->set_scene_uniforms(main_camera, lights);
 
-	if (bind_textures) { material->bind(); }
+	material->bind();
 
 	// set camera uniforms
 	material->shader->set_model_uniforms(model);
 
-	if (bind_vao) { glBindVertexArray(vertex_array_object); }
+	glBindVertexArray(vertex_array_object);
 
 	// draw the triangles
 #ifndef USE_TINY_OBJ
@@ -138,10 +143,32 @@ bool mesh_renderer::render(std::shared_ptr<r3d::game_object>& object,
 	return true;
 }
 
+void mesh_renderer::render_instanced(std::vector<glm::mat4>& transforms,
+	r3d::camera& main_camera,
+	std::vector<r3d::light>& lights)
+{
+	shader->use();
+	material->shader->set_scene_uniforms(main_camera, lights);
+	material->bind();
+
+	glBindVertexArray(vertex_array_object);
+
+	// upload instance transforms
+	glBindBuffer(GL_ARRAY_BUFFER, instance_buffer);
+	glBufferData(GL_ARRAY_BUFFER, transforms.size() * sizeof(glm::mat4), transforms.data(), GL_DYNAMIC_DRAW);
+
+#ifndef USE_TINY_OBJ
+	glDrawElementsInstanced(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_SHORT, (void*)0, transforms.size());
+#else
+	glDrawArraysInstanced(GL_TRIANGLES, 0, mesh->vertices.size(), transforms.size());
+#endif
+}
+
 void mesh_renderer::destroy()
 {
 	glDeleteTextures(1, &material->diffuse_texture);
 	glDeleteTextures(1, &material->normal_texture);
+	glDeleteBuffers(1, &instance_buffer);
 	glDeleteVertexArrays(1, &vertex_array_object);
 	glDeleteProgram(material->shader->get_program());
 }

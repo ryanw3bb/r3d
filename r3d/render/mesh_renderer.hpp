@@ -47,10 +47,11 @@ namespace r3d
 
 		bool render(std::shared_ptr<r3d::game_object>&,
 			r3d::camera& main_camera,
-			std::vector<r3d::light>& lights,
-			bool change_shader = true,
-			bool bind_vao = true,
-			bool bind_textures = true);
+			std::vector<r3d::light>& lights);
+
+		void render_instanced(std::vector<glm::mat4>& transforms,
+			r3d::camera& main_camera,
+			std::vector<r3d::light>& lights);
 
 		void destroy();
 
@@ -58,6 +59,7 @@ namespace r3d
 		GLuint vertex_array_object;
 		GLuint vertex_buffer_object;
 		GLuint indices_buffer;
+		GLuint instance_buffer;
 	};
 }
 

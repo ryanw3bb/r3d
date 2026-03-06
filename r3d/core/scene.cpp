@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 #include "constants.hpp"
 #include "scene.hpp"
 #include "../core/behaviour.hpp"
@@ -89,25 +90,23 @@ void scene::update()
 		}
 	}
 
-	bool change_shader, bind_vao, bind_textures;
+	// group objects by renderer for instanced drawing
+	std::unordered_map<mesh_renderer*, std::vector<glm::mat4>> render_groups;
 
-	// render scene objects
 	for (auto& object : game_objects)
 	{
 		if (!object->enabled || object->renderer == nullptr) { continue; }
 
-		change_shader = (last_render_object == nullptr) || (object->renderer->shader != last_render_object->renderer->shader);
-		bind_vao = (last_render_object == nullptr) || (object->renderer->mesh != last_render_object->renderer->mesh);
-		bind_textures = (last_render_object == nullptr) || (object->renderer->material != last_render_object->renderer->material);
+		glm::mat4& model = object->get_transform();
+		if (!main_camera.check_frustum_cull(model, object->renderer->bounds)) { continue; }
 
-		// bind buffers and render elements
-		if (object->renderer->render(object, main_camera, lights, change_shader, bind_vao, bind_textures))
-		{
-			last_render_object = object;
-		}
+		render_groups[object->renderer.get()].push_back(model);
 	}
 
-	last_render_object.reset();
+	for (auto& [renderer, transforms] : render_groups)
+	{
+		renderer->render_instanced(transforms, main_camera, lights);
+	}
 
 	// render debug if enabled
 	if (debug_view.get_enabled())

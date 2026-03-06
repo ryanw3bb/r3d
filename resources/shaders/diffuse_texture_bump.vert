@@ -13,7 +13,7 @@ out VS_OUT {
     vec3 TangentFragPos;
 } vs_out;
 
-uniform mat4 model;
+layout (location = 4) in mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 uniform vec3 lightPos;

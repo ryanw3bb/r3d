@@ -31,7 +31,6 @@ void gl_window::init(int width, int height)
 		return;
 	}
 	glfwMakeContextCurrent(window); // Initialize GLFW
-	glfwSwapInterval(1); // Enable vsync
 
 	printf("OpenGL version: %s\n", glGetString(GL_VERSION));
 
@@ -41,6 +40,9 @@ void gl_window::init(int width, int height)
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		return;
 	}
+
+	// Disable vsync for now due to inconsistent frame pacing
+	glfwSwapInterval(0);
 
 	// setting callbacks
 	glfwSetKeyCallback(window, glfw_key_callback);

@@ -14,7 +14,7 @@ game_object::game_object(std::string name, glm::vec3 position, glm::vec3 euler_a
         scale { scale }
 {
     init_print();
-    set_rotation(euler_angles);
+    set_rotation_degrees(euler_angles);
 }
 
 void game_object::add_renderer(std::string mesh_file_path, shader::id shader_type, std::string diffuse_map, std::string normal_map)
@@ -51,14 +51,24 @@ glm::mat4& game_object::get_transform()
     return cached_transform;
 }
 
-void game_object::set_rotation(glm::vec3 euler_degrees)
+void game_object::set_rotation(glm::vec3 euler_radians)
 {
-    euler_angles = glm::radians(euler_degrees);
+    euler_angles = euler_radians;
     rotation = glm::quat(euler_angles);
     transform_dirty = true;
 }
 
 glm::vec3 game_object::get_rotation() const
+{
+    return euler_angles;
+}
+
+void game_object::set_rotation_degrees(glm::vec3 euler_degrees)
+{
+    set_rotation(glm::radians(euler_degrees));
+}
+
+glm::vec3 game_object::get_rotation_degrees() const
 {
     return glm::degrees(euler_angles);
 }

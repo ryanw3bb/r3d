@@ -32,7 +32,9 @@ namespace r3d
 
         void set_aspect(float a) { aspect_ratio = a; }
 
-        void set_rotation(glm::vec3);
+        void set_rotation(glm::vec3) override;
+
+        void set_rotation_degrees(glm::vec3) override;
 
         void set_position(glm::vec3);
 

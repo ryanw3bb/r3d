@@ -13,9 +13,14 @@ void camera::init(int width, int height)
 	this->aspect_ratio = (float)width / (float)height;
 }
 
-void camera::set_rotation(glm::vec3 euler_degrees)
+void camera::set_rotation(glm::vec3 euler_radians)
 {
-	this->game_object::set_rotation(euler_degrees);
+	this->game_object::set_rotation(euler_radians);
+}
+
+void camera::set_rotation_degrees(glm::vec3 euler_degrees)
+{
+	this->game_object::set_rotation_degrees(euler_degrees);
 }
 
 void camera::set_position(glm::vec3 position)

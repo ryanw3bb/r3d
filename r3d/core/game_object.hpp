@@ -60,6 +60,10 @@ namespace r3d
 
         glm::vec3 get_rotation() const;
 
+        virtual void set_rotation_degrees(glm::vec3);
+
+        glm::vec3 get_rotation_degrees() const;
+
         virtual void set_position(glm::vec3 p) { position = p; transform_dirty = true; }
 
         glm::vec3 get_position() { return position; }

@@ -17,9 +17,9 @@ using namespace r3d;
 const int WIDTH = 1280;
 const int HEIGHT = 720;
 const float CAMERA_MOVE_SPEED = 3;
-const float CAMERA_ROTATE_SPEED = 0.05f;
-const float CRATE_ROTATE_SPEED = 30;
-const float FULL_ROTATION = 360;
+const float CAMERA_ROTATE_SPEED = 0.005f;
+const float CRATE_ROTATE_SPEED = glm::radians(30.0f);
+const float FULL_ROTATION = glm::two_pi<float>();
 const int NUM_ROWS = 5;
 
 double last_x, last_y;
@@ -30,7 +30,7 @@ int main()
 {
     main_scene.init(WIDTH, HEIGHT);
     main_scene.get_camera().set_position(glm::vec3(1, 1, -6));
-    main_scene.get_camera().set_rotation(glm::vec3(344, 322, 0));
+    main_scene.get_camera().set_rotation_degrees(glm::vec3(344, 322, 0));
     main_scene.add_light(glm::vec3(4, 8, 6), glm::vec3(0.9, 0.9, 0.9), 45.0f);
     main_scene.add_skybox(std::vector<std::string> { "resources/textures/skybox/left.png",
                                                      "resources/textures/skybox/right.png",

@@ -5,6 +5,7 @@
 #ifndef R3D_GL_INCLUDES_HPP
 #define R3D_GL_INCLUDES_HPP
 
+#define GLM_ENABLE_EXPERIMENTAL
 #define GLM_FORCE_SWIZZLE
 
 #include <GL/glew.h>

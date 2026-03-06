@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(OpenGL REQUIRED)
 
 IF(WIN32)
-    include_directories(C:/dev/external/include)
-    link_directories(C:/dev/external/lib)
+    include_directories(D:/dev/external/include)
+    link_directories(D:/dev/external/lib)
 ELSE()
-    include_directories(/usr/local/include /usr/local/include/freetype2)
+    include_directories(/usr/local/include)
     link_directories(/usr/local/lib)
 ENDIF()
 

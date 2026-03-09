@@ -8,26 +8,25 @@ using namespace r3d;
 
 void ui::init(GLFWwindow* window)
 {
-	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-	// Setup Platform/Renderer backends
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init();
+
+	stats = std::make_shared<fps>();
 }
 
 void ui::pre_render()
 {
-	// (Your code calls glfwPollEvents())
-	// ...
-	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
-	ImGui::ShowDemoWindow(); // Show demo window! :)
+
+	stats->update();
+	render_stats();
 }
 
 void ui::post_render()
@@ -37,6 +36,16 @@ void ui::post_render()
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	// (Your code calls glfwSwapBuffers() etc.)
+}
+
+void ui::render_stats()
+{
+	ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_Once);
+	ImGui::SetNextWindowSize(ImVec2(160, 0), ImGuiCond_Once);
+	ImGui::Begin("Stats", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+	ImGui::Text("FPS: %d", stats->get_fps());
+	ImGui::Text("Frame: %.2f ms", stats->get_frame_time());
+	ImGui::End();
 }
 
 void ui::shutdown()

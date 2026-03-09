@@ -28,6 +28,7 @@ namespace r3d
 		void shutdown();
 
 	private:
+		void render_stats();
 		std::shared_ptr<fps> stats;
 	};
 }

@@ -5,8 +5,6 @@
 #ifndef R3D_FPS_HPP
 #define R3D_FPS_HPP
 
-#include <string>
-#include <vector>
 #include "../render/gl_includes.hpp"
 
 namespace r3d
@@ -14,13 +12,17 @@ namespace r3d
 	class fps
 	{
 	public:
-		void render();
+		void update();
+
+		int get_fps() const;
+		double get_frame_time() const;
 
 	private:
-		const int REFRESH_RATE = 30;
+		const double REFRESH_INTERVAL = 0.5;
 
-		double last_time;
-		std::vector<double> frame_times;
+		double last_time = 0;
+		double interval_elapsed = 0;
+		int frame_count = 0;
 		double frame_time = 0.01;
 	};
 }

@@ -6,7 +6,7 @@
 
 using namespace r3d;
 
-void fps::render()
+void fps::update()
 {
 	double current_time = glfwGetTime();
 	double elapsed = current_time - last_time;
@@ -14,24 +14,24 @@ void fps::render()
 
 	if (elapsed > 0)
 	{
-		frame_times.emplace_back(elapsed);
+		interval_elapsed += elapsed;
+		frame_count++;
 	}
 
-	if (frame_times.size() >= REFRESH_RATE)
+	if (interval_elapsed >= REFRESH_INTERVAL)
 	{
-		double sum_of_frame_times = 0;
-
-		for (auto& n : frame_times)
-		{
-			sum_of_frame_times += n;
-		}
-
-		frame_time = sum_of_frame_times / (float)REFRESH_RATE;
-		frame_times.clear();
+		frame_time = interval_elapsed / frame_count;
+		interval_elapsed = 0;
+		frame_count = 0;
 	}
+}
 
-	int fps = round(1.0 / frame_time);
-	int ms = round(frame_time * 1000.0);
+int fps::get_fps() const
+{
+	return round(1.0 / frame_time);
+}
 
-	std::string data = "r3d\n" + std::to_string(fps) + " fps (" + std::to_string(ms) + "ms)";
+double fps::get_frame_time() const
+{
+	return frame_time * 1000.0;
 }

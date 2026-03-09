@@ -33,7 +33,7 @@ Everything lives under the `r3d` namespace. `main.cpp` is the application entry 
 **Render optimisation:** The scene's render loop groups objects by renderer and draws each group with instanced rendering, avoiding redundant state changes.
 
 **Module layout:**
-- `r3d/core/` — `scene`, `game_object`, `camera`, `light`, `behaviour`, `time`, `mesh`, `bounds`, `constants`
+- `r3d/core/` — `scene`, `game_object`, `camera`, `free_camera`, `light`, `behaviour`, `time`, `mesh`, `bounds`, `constants`
 - `r3d/render/` — `mesh_renderer`, `shader`, `material`, `gl_window`, `gl_includes`
 - `r3d/load/` — mesh loading (Assimp), shader loading, texture loading (stb_image)
 - `r3d/primitive/` — `skybox`

@@ -8,7 +8,7 @@
 #include <memory>
 #include "game_object.hpp"
 #include "light.hpp"
-#include "camera.hpp"
+#include "free_camera.hpp"
 #include "time.hpp"
 #include "../primitive/skybox.hpp"
 #include "../ui/ui.hpp"
@@ -53,7 +53,7 @@ namespace r3d
 
 		void add_skybox(std::vector<std::string>);
 
-		r3d::camera& get_camera() { return main_camera; }
+		r3d::free_camera& get_camera() { return main_camera; }
 
 		const float get_delta_time() { return timer.delta_time; }
 
@@ -64,7 +64,7 @@ namespace r3d
 	private:
 		std::vector<std::shared_ptr<r3d::game_object>> game_objects;
 		std::vector<r3d::light> lights;
-		r3d::camera main_camera;
+		r3d::free_camera main_camera;
 		r3d::time timer;
 		r3d::debug debug_view;
 		r3d::ui canvas;

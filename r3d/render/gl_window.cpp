@@ -47,6 +47,7 @@ void gl_window::init(int width, int height)
 	// setting callbacks
 	glfwSetKeyCallback(window, glfw_key_callback);
 	glfwSetCursorPosCallback(window, glfw_mouse_cursor_callback);
+	glfwSetScrollCallback(window, glfw_scroll_callback);
 	glfwSetWindowPosCallback(window, glfw_window_pos_callback);
 	glfwSetErrorCallback(glfw_error_callback);
 
@@ -102,6 +103,19 @@ void gl_window::glfw_key_callback(GLFWwindow* window, int key, int scancode, int
 void gl_window::glfw_mouse_cursor_callback(GLFWwindow* window, double xpos, double ypos)
 {
 
+}
+
+void gl_window::glfw_scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	if (scroll_callback)
+	{
+		scroll_callback(yoffset);
+	}
+}
+
+void gl_window::set_scroll_callback(std::function<void(double)> callback)
+{
+	scroll_callback = callback;
 }
 
 void gl_window::glfw_window_pos_callback(GLFWwindow* window, int xpos, int ypos)

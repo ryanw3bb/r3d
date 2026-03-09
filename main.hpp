@@ -7,8 +7,6 @@
 
 #include "r3d/core/scene.hpp"
 
-void move_camera(GLFWwindow*);
-
 void rotate_crates();
 
 #endif //R3D_MAIN_HPP

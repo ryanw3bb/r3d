@@ -2,27 +2,19 @@
 // Created by Ryan on 26/03/2018.
 //
 
-#include <memory>
 #include <vector>
 #include <string>
 #include "main.hpp"
-#include "r3d/core/game_object.hpp"
-#include "r3d/core/light.hpp"
-#include "r3d/core/time.hpp"
 #include "r3d/render/shader.hpp"
-#include "r3d/render/mesh_renderer.hpp"
 
 using namespace r3d;
 
 const int WIDTH = 1280;
 const int HEIGHT = 720;
-const float CAMERA_MOVE_SPEED = 3;
-const float CAMERA_ROTATE_SPEED = 0.005f;
 const float CRATE_ROTATE_SPEED = glm::radians(30.0f);
 const float FULL_ROTATION = glm::two_pi<float>();
 const int NUM_ROWS = 5;
 
-double last_x, last_y;
 r3d::scene main_scene;
 std::vector<std::shared_ptr<game_object>> crates;
 
@@ -61,7 +53,6 @@ int main()
 
     while(main_scene.should_update)
     {
-        move_camera(main_scene.get_window());
         rotate_crates();
         main_scene.update();
     }
@@ -81,49 +72,4 @@ void rotate_crates()
     {
         crate->set_rotation(rotation);
     }
-}
-
-void move_camera(GLFWwindow* window)
-{
-    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT))
-    {
-        double x, y;
-        glfwGetCursorPos(window, &x, &y);
-
-        if(last_x != 0)
-        {
-            glm::vec3 rotation = main_scene.get_camera().get_rotation();
-            rotation.x = fmod(rotation.x + (CAMERA_ROTATE_SPEED * (float)(last_y - y)), FULL_ROTATION);
-            rotation.y = fmod(rotation.y + (CAMERA_ROTATE_SPEED * (float)(last_x - x)), FULL_ROTATION);
-            main_scene.get_camera().set_rotation(rotation);
-        }
-
-        last_x = x;
-        last_y = y;
-    }
-    else
-    {
-        last_x = last_y = 0;
-    }
-
-    glm::vec3 position = main_scene.get_camera().get_position();
-
-    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    {
-        position += main_scene.get_camera().forward * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
-    }
-    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-    {
-        position -= main_scene.get_camera().forward * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
-    }
-    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-    {
-        position += main_scene.get_camera().right * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
-    }
-    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-    {
-        position -= main_scene.get_camera().right * main_scene.get_delta_time() * CAMERA_MOVE_SPEED;
-    }
-
-    main_scene.get_camera().set_position(position);
 }

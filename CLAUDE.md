@@ -14,7 +14,7 @@ cmake --build .
 
 The output binary is `r3d_demo`. Resources and DLLs (Windows) are automatically copied next to the binary post-build.
 
-No tests exist in this project.
+No tests exist in this project. Do not attempt to build or run the project — the user verifies changes manually.
 
 ## Architecture
 

@@ -21,6 +21,7 @@ void scene::init(int width, int height)
 	main_camera.init_input(window);
 
 	canvas.init(get_window());
+	canvas.set_scene(this);
 
 	should_update = true;
 }
@@ -80,7 +81,10 @@ void scene::update()
 
 	canvas.pre_render();
 
-	main_camera.process_input(get_window(), timer.delta_time);
+	if (!canvas.wants_input())
+	{
+		main_camera.process_input(get_window(), timer.delta_time);
+	}
 	main_camera.update();
 
 	// update scripts

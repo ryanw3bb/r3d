@@ -61,6 +61,10 @@ namespace r3d
 
 		GLFWwindow* get_window() { return window.window; }
 
+		const std::vector<std::shared_ptr<r3d::game_object>>& get_game_objects() const { return game_objects; }
+
+		std::vector<r3d::light>& get_lights() { return lights; }
+
 	private:
 		std::vector<std::shared_ptr<r3d::game_object>> game_objects;
 		std::vector<r3d::light> lights;

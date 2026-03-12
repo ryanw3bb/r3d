@@ -16,5 +16,7 @@ void time::update()
 {
     current_time = glfwGetTime();
     delta_time = float(current_time - last_time);
+    if (delta_time > MAX_DELTA)
+        delta_time = MAX_DELTA;
     last_time = current_time;
 }

@@ -17,6 +17,7 @@ namespace r3d
         void update();
 
     private:
+        static constexpr float MAX_DELTA = 0.1f;
         double last_time;
         double current_time;
     };

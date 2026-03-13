@@ -14,7 +14,13 @@ shader::shader(id shader_id)
     switch(shader_id)
     {
         case id::UNLIT_TEXTURE:
+            uses_lighting = false;
             load("resources/shaders/unlit_texture.vert", "resources/shaders/unlit_texture.frag");
+            break;
+
+        case id::SINGLE_COLOR:
+            uses_lighting = false;
+            load("resources/shaders/single_color.vert", "resources/shaders/single_color.frag");
             break;
 
         case id::DIFFUSE_COLOR:

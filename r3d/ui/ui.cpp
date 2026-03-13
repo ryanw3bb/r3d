@@ -105,6 +105,7 @@ void ui::render_hierarchy()
 	bool cam_selected = camera_selected;
 	if (ImGui::Selectable("Camera", cam_selected))
 	{
+		if (auto prev = selected_object.lock()) { prev->selected = false; }
 		camera_selected = true;
 		selected_object.reset();
 		selected_light_index = -1;
@@ -124,6 +125,8 @@ void ui::render_hierarchy()
 
 		if (ImGui::Selectable(obj->name.c_str(), is_selected))
 		{
+			if (auto prev = selected_object.lock()) { prev->selected = false; }
+			obj->selected = true;
 			selected_object = obj;
 			selected_light_index = -1;
 			camera_selected = false;
@@ -142,6 +145,7 @@ void ui::render_hierarchy()
 
 		if (ImGui::Selectable(label, is_selected))
 		{
+			if (auto prev = selected_object.lock()) { prev->selected = false; }
 			selected_light_index = i;
 			selected_object.reset();
 			camera_selected = false;

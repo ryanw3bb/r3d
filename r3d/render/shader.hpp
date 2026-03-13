@@ -23,7 +23,8 @@ namespace r3d
 
         enum id
         {
-            UNLIT_TEXTURE, 
+            UNLIT_TEXTURE,
+            SINGLE_COLOR,
             DIFFUSE_TEXTURE, 
             DIFFUSE_TEXTURE_BUMP, 
             DIFFUSE_COLOR, 

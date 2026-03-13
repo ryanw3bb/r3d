@@ -143,17 +143,8 @@ bool mesh_renderer::render(std::shared_ptr<r3d::game_object>& object,
 	return true;
 }
 
-void mesh_renderer::render_instanced(std::vector<glm::mat4>& transforms,
-	r3d::camera& main_camera,
-	std::vector<r3d::light>& lights)
+void mesh_renderer::upload_and_draw_instanced(std::vector<glm::mat4>& transforms)
 {
-	shader->use();
-	material->shader->set_scene_uniforms(main_camera, lights);
-	material->bind();
-
-	glBindVertexArray(vertex_array_object);
-
-	// upload instance transforms
 	glBindBuffer(GL_ARRAY_BUFFER, instance_buffer);
 	glBufferData(GL_ARRAY_BUFFER, transforms.size() * sizeof(glm::mat4), transforms.data(), GL_DYNAMIC_DRAW);
 
@@ -162,6 +153,82 @@ void mesh_renderer::render_instanced(std::vector<glm::mat4>& transforms,
 #else
 	glDrawArraysInstanced(GL_TRIANGLES, 0, mesh->vertices.size(), transforms.size());
 #endif
+}
+
+void mesh_renderer::render_instanced(std::vector<instance_data>& instances,
+	r3d::camera& main_camera,
+	std::vector<r3d::light>& lights)
+{
+	// partition instances by selection state
+	std::vector<glm::mat4> transforms;
+	std::vector<glm::mat4> selected_transforms;
+
+	for (auto& inst : instances)
+	{
+		if (inst.selected)
+			selected_transforms.push_back(inst.transform);
+		else
+			transforms.push_back(inst.transform);
+	}
+
+	shader->use();
+	material->shader->set_scene_uniforms(main_camera, lights);
+	material->bind();
+
+	glBindVertexArray(vertex_array_object);
+
+	// draw unselected objects (no stencil write)
+	if (!transforms.empty())
+	{
+		glStencilMask(0x00);
+		upload_and_draw_instanced(transforms);
+	}
+
+	// draw selected objects with stencil write, then outline
+	if (!selected_transforms.empty())
+	{
+		glStencilFunc(GL_ALWAYS, 0xFF, 0xFF);
+		glStencilMask(0xFF);
+		glStencilOp(GL_KEEP, GL_REPLACE, GL_REPLACE);
+
+		upload_and_draw_instanced(selected_transforms);
+		render_selection_outline(selected_transforms, main_camera, lights);
+	}
+}
+
+void mesh_renderer::render_selection_outline(std::vector<glm::mat4>& selected_transforms,
+	r3d::camera& main_camera,
+	std::vector<r3d::light>& lights)
+{
+	// if not equal to 0xFF written to stencil buffer in previous pass
+	glStencilFunc(GL_NOTEQUAL, 0xFF, 0xFF);
+	glStencilMask(0x00);
+	glDisable(GL_DEPTH_TEST);
+
+	// lazily init outline shader
+	if (!outline_shader)
+	{
+		outline_shader = std::make_unique<r3d::shader>(r3d::shader::id::SINGLE_COLOR);
+	}
+
+	outline_shader->use();
+	outline_shader->set_scene_uniforms(main_camera, lights);
+
+	// scale each selected transform for the outline
+	std::vector<glm::mat4> scaled_transforms;
+	scaled_transforms.reserve(selected_transforms.size());
+	for (auto& t : selected_transforms)
+	{
+		scaled_transforms.push_back(glm::scale(t, glm::vec3(selection_outline_scale)));
+	}
+
+	upload_and_draw_instanced(scaled_transforms);
+
+	// restore to previous configuration
+	glEnable(GL_DEPTH_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+	glStencilMask(0xFF);
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
 }
 
 void mesh_renderer::destroy()

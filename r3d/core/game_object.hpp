@@ -20,6 +20,7 @@ namespace r3d
     {
     public:
         bool enabled;
+        bool selected = false;
         std::string name = "new game_object";
         glm::vec3 position;
         glm::vec3 euler_angles;

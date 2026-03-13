@@ -22,13 +22,20 @@ namespace r3d
 	class camera;
 	class game_object;
 
+	struct instance_data
+	{
+		glm::mat4 transform;
+		bool selected;
+	};
+
 	class mesh_renderer
 	{
 	public:
-		std::shared_ptr<r3d::mesh> mesh; // TODO: should these be unique_ptrs?
+		std::shared_ptr<r3d::mesh> mesh;
 		std::shared_ptr<r3d::material> material;
 		std::shared_ptr<r3d::shader> shader;
 		std::shared_ptr<r3d::bounds> bounds;
+		float selection_outline_scale = 1.075f;
 
 		// default constructor & overloads
 		mesh_renderer() {}
@@ -49,13 +56,20 @@ namespace r3d
 			r3d::camera& main_camera,
 			std::vector<r3d::light>& lights);
 
-		void render_instanced(std::vector<glm::mat4>& transforms,
+		void render_instanced(std::vector<instance_data>& instances,
 			r3d::camera& main_camera,
 			std::vector<r3d::light>& lights);
 
 		void destroy();
 
 	private:
+		void upload_and_draw_instanced(std::vector<glm::mat4>& transforms);
+
+		void render_selection_outline(std::vector<glm::mat4>& selected_transforms,
+			r3d::camera& main_camera,
+			std::vector<r3d::light>& lights);
+
+		std::unique_ptr<r3d::shader> outline_shader;
 		GLuint vertex_array_object;
 		GLuint vertex_buffer_object;
 		GLuint indices_buffer;

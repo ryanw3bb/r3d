@@ -96,8 +96,14 @@ void scene::update()
 		}
 	}
 
+	// render skybox if enabled
+	if (skybox.enabled)
+	{
+		skybox.render(main_camera);
+	}
+
 	// group objects by renderer for instanced drawing
-	std::unordered_map<mesh_renderer*, std::vector<glm::mat4>> render_groups;
+	std::unordered_map<mesh_renderer*, std::vector<instance_data>> render_groups;
 
 	for (auto& object : game_objects)
 	{
@@ -106,24 +112,18 @@ void scene::update()
 		glm::mat4& model = object->get_transform();
 		if (!main_camera.check_frustum_cull(model, object->renderer->bounds)) { continue; }
 
-		render_groups[object->renderer.get()].push_back(model);
+		render_groups[object->renderer.get()].push_back({ model, object->selected });
 	}
 
-	for (auto& [renderer, transforms] : render_groups)
+	for (auto& [renderer, instances] : render_groups)
 	{
-		renderer->render_instanced(transforms, main_camera, lights);
+		renderer->render_instanced(instances, main_camera, lights);
 	}
 
 	// render debug if enabled
 	if (debug_view.get_enabled())
 	{
 		debug_view.get_instance()->render(main_camera.view, main_camera.projection);
-	}
-
-	// render skybox if enabled
-	if (skybox.enabled)
-	{
-		skybox.render(main_camera);
 	}
 
 	// render ui

@@ -4,6 +4,13 @@
 
 #include "gl_window.hpp"
 
+#ifdef _WIN32
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3native.h>
+#include <dwmapi.h>
+#pragma comment(lib, "dwmapi.lib")
+#endif
+
 using namespace r3d;
 
 void gl_window::init(int width, int height)
@@ -31,6 +38,12 @@ void gl_window::init(int width, int height)
 		return;
 	}
 	glfwMakeContextCurrent(window); // Initialize GLFW
+
+#ifdef _WIN32
+	// enable dark title bar on Windows 10/11
+	BOOL dark = TRUE;
+	DwmSetWindowAttribute(glfwGetWin32Window(window), DWMWA_USE_IMMERSIVE_DARK_MODE, &dark, sizeof(dark));
+#endif
 
 	printf("OpenGL version: %s\n", glGetString(GL_VERSION));
 
